@@ -1,2 +1,3 @@
 # PZ_2025_2026_3ID13A
 
+Projekt zespołowy 2025/2026 - 3ID13A:
