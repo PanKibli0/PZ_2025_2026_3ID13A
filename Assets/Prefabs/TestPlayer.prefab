@@ -125,9 +125,9 @@ GameObject:
   - component: {fileID: 2576742078600688998}
   - component: {fileID: 8745334145347072342}
   - component: {fileID: 654268038247028587}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TestPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,9 +268,6 @@ MonoBehaviour:
   moveInput: {x: 0, y: 0}
   attemptedLinearVelocity: 0
   effectiveLinearVelocity: 0
-  linearVelocityDamping: 0.5
-  movementSpeedMultiplier: 3
-  maxMovementSpeed: 5
   dataSO: {fileID: 11400000, guid: 1a32f22c8f3d42749925144c64867b4b, type: 2}
   playerInput: {fileID: 0}
   rigidbody2d: {fileID: 0}
