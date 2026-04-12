@@ -6,36 +6,35 @@ public class EnemyRush : MonoBehaviour
     [SerializeField] private float rushDuration = 0.25f;
     [SerializeField] private float cooldownDuration = 2f;
     [SerializeField] private float maxRushDistance = 3f;
-    [SerializeField] private Color normalColor;
-    [SerializeField] private Color rushColor;
+    [SerializeField] private Color normalColor = Color.white;
+    [SerializeField] private Color rushColor = Color.red;
     [SerializeField] private GameObject rushHitBox;
+    [SerializeField] private PlayerReferenceSO playerReference;
 
-    private Transform player;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private EnemyMovement movement;
 
-    private bool isRushing = false;
-    private bool isOnCooldown = false;
-    private float rushTimer = 0f;
-    private float cooldownTimer = 0f;
+    private bool isRushing;
+    private bool isOnCooldown;
+    private float rushTimer;
+    private float cooldownTimer;
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         movement = GetComponent<EnemyMovement>();
 
-        GameObject p = GameObject.FindGameObjectWithTag("Player");
-        if (p != null) player = p.transform;
-
         spriteRenderer.color = normalColor;
         if (rushHitBox != null) rushHitBox.SetActive(false);
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (player == null) return;
+        if (playerReference == null || playerReference.playerInstance == null) return;
+
+        Transform player = playerReference.playerInstance.transform;
 
         if (isRushing)
         {
@@ -55,22 +54,19 @@ public class EnemyRush : MonoBehaviour
         {
             cooldownTimer -= Time.fixedDeltaTime;
             if (cooldownTimer <= 0f)
-            {
                 isOnCooldown = false;
-            }
+
             rb.linearVelocity = Vector2.zero;
         }
         else
         {
             float distToPlayer = Vector2.Distance(transform.position, player.position);
             if (distToPlayer < maxRushDistance)
-            {
-                startRush();
-            }
+                startRush(player);
         }
     }
 
-    private void startRush()
+    private void startRush(Transform player)
     {
         isRushing = true;
         rushTimer = rushDuration;

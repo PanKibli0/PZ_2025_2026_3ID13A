@@ -2,24 +2,21 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private UnitDataSO unitData;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private PlayerReferenceSO playerReference;
 
-    private Transform player;
-    private Rigidbody2D rb;
-
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-
-        GameObject p = GameObject.FindGameObjectWithTag("Player");
-        if (p != null) player = p.transform;
+        if (unitData != null)
+            rb.linearDamping = unitData.linearDamping;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (player == null) return;
+        if (playerReference == null || playerReference.playerInstance == null || unitData == null) return;
 
-        Vector2 direction = (player.position - transform.position).normalized;
-        rb.linearVelocity = direction * speed;
+        Vector2 direction = (playerReference.playerInstance.transform.position - transform.position).normalized;
+        rb.linearVelocity = direction * unitData.moveSpeed;
     }
 }

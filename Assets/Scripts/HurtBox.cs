@@ -1,14 +1,18 @@
 using UnityEngine;
 
-public class HurtBox : MonoBehaviour
+public class Hurtbox : MonoBehaviour
 {
-    [SerializeField]
-    private CombatControl p_owner;
-    public CombatControl owner
+    [SerializeField] private HealthComponent healthComponent;
+
+    public void takeDamage(int damage, GameObject source)
     {
-        get
-        {
-            return p_owner;
-        }
+        if (healthComponent != null)
+            healthComponent.takeDamage(damage, source);
+    }
+
+    public void heal(int amount, GameObject source)
+    {
+        if (healthComponent != null)
+            healthComponent.heal(amount, source);
     }
 }

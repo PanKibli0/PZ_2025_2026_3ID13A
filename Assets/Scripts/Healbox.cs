@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Hitbox : MonoBehaviour
+public class Healbox : MonoBehaviour
 {
-    [SerializeField] private int damage = 1;
+    [SerializeField] private int healAmount = 1;
     [SerializeField] private GameObject owner;
 
     private FactionType ownerFaction;
@@ -13,20 +13,9 @@ public class Hitbox : MonoBehaviour
         cacheFaction();
     }
 
-    public void init(int damage, GameObject owner)
+    public void init(int healAmount, GameObject owner)
     {
-        this.damage = damage;
-        this.owner = owner;
-        cacheFaction();
-    }
-
-    public void setDamage(int damage)
-    {
-        this.damage = damage;
-    }
-
-    public void setOwner(GameObject owner)
-    {
+        this.healAmount = healAmount;
         this.owner = owner;
         cacheFaction();
     }
@@ -51,10 +40,10 @@ public class Hitbox : MonoBehaviour
         {
             Faction targetFaction = hurtbox.GetComponentInParent<Faction>();
 
-            if (ownerFaction != FactionType.None && targetFaction != null && targetFaction.factionType == ownerFaction)
+            if (ownerFaction != FactionType.None && targetFaction != null && targetFaction.factionType != ownerFaction)
                 return;
 
-            hurtbox.takeDamage(damage, owner);
+            hurtbox.heal(healAmount, owner);
         }
     }
 }

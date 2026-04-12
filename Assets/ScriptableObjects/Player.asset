@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c787e90ae7dc5814897c475745961135, type: 3}
-  m_Name: PlayerDynamicDataSO
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerDynamicDataSO
-  hp: 13
-  linearVelocityDamping: 0.8
-  movementSpeedMultiplier: 10
-  maxMovementSpeed: 5
+  m_Script: {fileID: 11500000, guid: 6dd3c426c3ba87449b4c5d1da02e399e, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: Assembly-CSharp::UnitDataSO
+  maxHealth: 10
+  moveSpeed: 6
+  linearDamping: 0

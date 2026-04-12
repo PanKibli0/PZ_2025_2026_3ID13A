@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2420850552279879705}
   - component: {fileID: 8659860714271877197}
   - component: {fileID: 5341815945127657648}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab33834b93772d84bbc87301c7204a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HurtBox
-  p_owner: {fileID: 654268038247028587}
+  healthComponent: {fileID: 1972823862362731471}
 --- !u!1 &6971119459715790251
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,11 +121,13 @@ GameObject:
   - component: {fileID: 5030289659767109181}
   - component: {fileID: 3184460725994820456}
   - component: {fileID: 4217435325579760294}
-  - component: {fileID: -6516125729194824749}
   - component: {fileID: 2576742078600688998}
   - component: {fileID: 8745334145347072342}
-  - component: {fileID: 654268038247028587}
-  m_Layer: 10
+  - component: {fileID: 1972823862362731471}
+  - component: {fileID: 6572967614724792134}
+  - component: {fileID: 3452586404153358124}
+  - component: {fileID: 8098255173060709020}
+  m_Layer: 7
   m_Name: TestPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -234,8 +236,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6516125729194824749}
-        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+      - m_Target: {fileID: 3452586404153358124}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -248,29 +250,91 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 294dab8f-916c-41a0-aed6-4cc4c64467c3
     m_ActionName: 'Player/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3452586404153358124}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnDebug0
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1a16b717-747c-43c7-a47a-3015a3aaed3e
+    m_ActionName: 'Player/Debug0[/Keyboard/0]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3452586404153358124}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnDebug1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e10716d8-5405-4fd4-b371-6edeb6a0acab
+    m_ActionName: 'Player/Debug1[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3452586404153358124}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnDebug2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8ec81e39-0e86-46d5-bf8c-2eeb3798167d
+    m_ActionName: 'Player/Debug2[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3452586404153358124}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnDebug3
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 074e9816-c7d3-40b2-bcdc-e7bc0eb08e4b
+    m_ActionName: 'Player/Debug3[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8098255173060709020}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 52678cdb-35b7-456f-80df-0784d387be0f
+    m_ActionName: 'Player/Attack[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &-6516125729194824749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6971119459715790251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8f4e8ac450ec874cbccd66aea61cde4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerControl
-  moveInput: {x: 0, y: 0}
-  attemptedLinearVelocity: 0
-  effectiveLinearVelocity: 0
-  dataSO: {fileID: 11400000, guid: 1a32f22c8f3d42749925144c64867b4b, type: 2}
-  playerInput: {fileID: 0}
-  rigidbody2d: {fileID: 0}
 --- !u!50 &2576742078600688998
 Rigidbody2D:
   serializedVersion: 5
@@ -334,7 +398,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &654268038247028587
+--- !u!114 &1972823862362731471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,6 +407,54 @@ MonoBehaviour:
   m_GameObject: {fileID: 6971119459715790251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0d10335388b3e744b3aba5c7b76142e, type: 3}
+  m_Script: {fileID: 11500000, guid: 581ca0f62328cd749bd53ca4d4f0dd6a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CombatControlPlayer
+  m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+  unitData: {fileID: 11400000, guid: ac69c3b8d05342b4b80084f7b4fddeca, type: 2}
+  maxHealth: 0
+  currentHealth: 0
+--- !u!114 &6572967614724792134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6971119459715790251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9903174e5c666e44bd963cf7e6c4d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Faction
+  factionType: 1
+--- !u!114 &3452586404153358124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6971119459715790251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f4e8ac450ec874cbccd66aea61cde4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  unitData: {fileID: 11400000, guid: ac69c3b8d05342b4b80084f7b4fddeca, type: 2}
+  rb: {fileID: 2576742078600688998}
+  playerInput: {fileID: 4217435325579760294}
+  playerReference: {fileID: 11400000, guid: b6a33341249e8244fa9f665039993586, type: 2}
+--- !u!114 &8098255173060709020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6971119459715790251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f7365d59b5f564186b3e486087a045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
+  projectilePrefab: {fileID: 4858384625389973783, guid: be39a5d5f15f8cd4ba378b241c15b0cc, type: 3}
+  fireCooldown: 0.2
+  damage: 1
+  spawnOffset: 0.8
