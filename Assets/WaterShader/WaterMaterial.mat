@@ -50,8 +50,8 @@ Material:
     - _RippleAmp: 3
     - _RippleFreq: 16.67
     - _RippleSpeed: 6.35
-    - _Scale: 25
-    - _Speed: 5
+    - _Scale: 30
+    - _Speed: 1.5
     - _WaveSpeed: 2.62
     - _WaveStrength: 4.4
     - _ZWrite: 0

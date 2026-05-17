@@ -115,9 +115,10 @@ Shader "Custom/InteractiveWater2D"
 
                 float2 p = uv * _Scale;
                 
-                float wave1 = sin(p.x + t) * cos(p.y + t * 0.8);
-                float wave2 = sin(p.x - t * 0.6) * cos(p.y + t * 1.3);
-                float combinedWaves = wave1 + wave2;
+                float wave1 = sin(p.x + t) * cos(p.y + t * 0.4);
+                float wave2 = sin(p.x - t * 0.6) * cos(p.y + t * 0.3);
+                float wave3 = (1 / tan(p.y - t * 0.6));
+                float combinedWaves = wave1 + wave2 + wave3;
 
                 float caustics = smoothstep(0.4, 0.6, abs(combinedWaves));
 
