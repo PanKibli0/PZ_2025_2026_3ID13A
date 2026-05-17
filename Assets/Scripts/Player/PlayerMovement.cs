@@ -17,9 +17,4 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = moveDirection * speed;
     }
-
-    //    public void Update()
-    //    {
-    //        if ()
-    //    }
 }

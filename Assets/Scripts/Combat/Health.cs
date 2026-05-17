@@ -4,11 +4,10 @@ using System;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 10;
-    // TODO: SO DAtaDriven
 
     [SerializeField] private int currentHealth;
 
-    public Action<int, int> onHealthChanged;
+    public Action<int, int> onHealthChanged; // change to SO event for better decoupling
     public Action onDeath;
 
     private void Awake()
@@ -16,19 +15,24 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void applyHit(HitData hitData)
+    public void takeDamage(int amount)
     {
-        Debug.Log($"Received hit with damage: {hitData.damage}");
-
-        currentHealth -= hitData.damage;
+        currentHealth -= amount;
         onHealthChanged?.Invoke(currentHealth, maxHealth);
-
-        Debug.Log($"Current health after hit: {currentHealth}/{maxHealth}");
 
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             onDeath?.Invoke();
         }
+    }
+
+    public void takeHeal(int amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
+        onHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 }

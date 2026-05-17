@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class Hurtbox : MonoBehaviour
@@ -14,15 +15,6 @@ public class Hurtbox : MonoBehaviour
         return faction;
     }
 
-    public void receiveHit(HitData hitData)
-    {
-        if (!canBeHit) return;
-
-        health.applyHit(hitData);
-        canBeHit = false;
-        invulnerabilityTimer = invulnerabilityTime;
-    }
-
     private void Update()
     {
         if (canBeHit) return;
@@ -30,5 +22,17 @@ public class Hurtbox : MonoBehaviour
         invulnerabilityTimer -= Time.deltaTime;
         if (invulnerabilityTimer <= 0f)
             canBeHit = true;
+    }
+
+    public void receiveHit(AttackContext context)
+    {
+        if (!canBeHit) return; // MOZE BYC PROBLEM PRZY SZYBKICH ATAKACH nawet jak invulnerabilityTime = 0
+        if (context.attackerFaction.factionType == faction.factionType) return;
+
+        foreach (var effect in context.effects)
+            effect.apply(gameObject, context.attacker);
+
+        canBeHit = false;
+        invulnerabilityTimer = invulnerabilityTime;
     }
 }
