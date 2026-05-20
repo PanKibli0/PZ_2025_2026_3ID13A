@@ -3,7 +3,7 @@ Shader "StaticTV"
 {
     Properties
     {
-        _MainTex ("Base Texture (Optional)", 2D) = "white" {}
+        _MainTex ("Base Texture (Optional)", 2D) = "black" {}
         _NoiseScale ("Noise Scale (Resolution)", Float) = 10.0
         _Speed ("Flicker Speed", Float) = 10.0
         _ColorTint ("Tint Color", Color) = (1, 1, 1, 1)
