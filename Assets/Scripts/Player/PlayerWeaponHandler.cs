@@ -26,17 +26,11 @@ public class PlayerWeaponHandler : MonoBehaviour
         if (Time.time < lastAttackTime + currentWeapon.cooldown) return;
 
         Vector2 direction = getAimDirection();
+        Vector2 origin = (Vector2)transform.position + direction * attackOffset;
 
-        AttackContext attackContext = new AttackContext
-        {
-            attacker = gameObject,
-            attackerFaction = faction,
-            origin = (Vector2)transform.position + direction * attackOffset,
-            direction = direction,
-            effects = new List<IHitEffect>(currentWeapon.baseEffects)
-        };
+        HitContext hit = new HitContext(gameObject, faction, origin, direction, currentWeapon);
 
-        currentWeapon.attackPattern.execute(attackContext);
+        currentWeapon.attackPattern.execute(hit);
         lastAttackTime = Time.time;
     }
 

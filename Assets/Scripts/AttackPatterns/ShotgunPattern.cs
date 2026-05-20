@@ -9,7 +9,7 @@ public class ShotgunPattern : AttackPattern
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lifetime = 3f;
 
-    public override void execute(AttackContext context)
+    public override void execute(HitContext context)
     {
         for (int i = 0; i < count; i++)
         {
@@ -18,9 +18,7 @@ public class ShotgunPattern : AttackPattern
 
             GameObject obj = Object.Instantiate(projectilePrefab, context.origin, Quaternion.identity);
             obj.transform.up = dir;
-
-            obj.GetComponent<Hitbox>().activate(context);
-            obj.GetComponent<Projectile>().setup(speed, dir, lifetime, context.attackerFaction);
+            obj.GetComponent<Projectile>().setup(speed, dir, lifetime, context.attackerFaction, context);
         }
     }
 }

@@ -4,12 +4,12 @@ public class Hitbox : MonoBehaviour
 {
     [SerializeField] private Collider2D hitboxCollider;
 
-    private AttackContext attackContext;
+    private HitContext hitContext;
     [SerializeField] private bool active;
 
-    public void activate(AttackContext context)
+    public void activate(HitContext context)
     {
-        attackContext = context;
+        hitContext = context;
         active = true;
         hitboxCollider.enabled = true;
     }
@@ -17,8 +17,7 @@ public class Hitbox : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!active) return;
-
         if (other.TryGetComponent(out Hurtbox hurtbox))
-            hurtbox.receiveHit(attackContext);
+            hurtbox.receiveHit(hitContext);
     }
 }

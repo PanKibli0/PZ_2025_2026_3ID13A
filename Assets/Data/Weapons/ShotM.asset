@@ -12,19 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10dd876b70584741a936920e068e75b, type: 3}
   m_Name: ShotM
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: Psc
+  weaponName: 
   cooldown: 0.2
-  baseEffects:
-  - rid: 3376038739778207819
+  damage: 1
+  modifiers: []
   attackPattern:
     rid: 3376038739778207820
   references:
     version: 2
     RefIds:
-    - rid: 3376038739778207819
-      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
-      data:
-        damage: 1
     - rid: 3376038739778207820
       type: {class: ShotgunPattern, ns: , asm: Assembly-CSharp}
       data:

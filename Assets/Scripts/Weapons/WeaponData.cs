@@ -6,9 +6,22 @@ public class WeaponData : ScriptableObject
 {
     public string weaponName;
     public float cooldown;
+    public int damage;
 
     [SerializeReference]
-    public List<IHitEffect> baseEffects;
+    [Tooltip("Natychmiastowe efekty")]
+    public List<IHitModifier> modifiers;
+    // knockback, slow, heal
+
+    // [SerializeReference]
+    // [Tooltip("Efekty statusowe")]
+    // public List<IHitEffect> effects;
+    // burn, poison, stun
+
+    // [SerializeReference]
+    // [Tooltip("Eventy po trafieniu")]
+    // public List<IOnHitAction> actions;
+    // explosion, spawn, chain lightning
 
     [SerializeReference]
     public AttackPattern attackPattern;

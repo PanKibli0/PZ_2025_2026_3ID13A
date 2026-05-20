@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IHitEffect
+public interface IHitModifier
 {
     void apply(GameObject target, GameObject attacker);
 }

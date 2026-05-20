@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10dd876b70584741a936920e068e75b, type: 3}
   m_Name: stb
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: Psc
+  weaponName: 
   cooldown: 0.2
-  baseEffects:
-  - rid: 3376038739778207823
+  damage: 1
+  modifiers: []
   attackPattern:
     rid: 3376038739778207821
   references:
@@ -26,8 +26,5 @@ MonoBehaviour:
       data:
         hitboxPrefab: {fileID: 4526170003070526305, guid: 5db30435bd0678a498c180a0f7cbee93, type: 3}
         range: 0.1
+        width: 0.5
         activeTime: 2
-    - rid: 3376038739778207823
-      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
-      data:
-        damage: 1

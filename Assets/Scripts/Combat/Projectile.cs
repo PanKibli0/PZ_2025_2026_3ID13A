@@ -3,21 +3,35 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Faction ownerFaction;
+    [SerializeField] private LayerMask hurtboxLayer;
+    [SerializeField] private LayerMask destroyOnLayers;
 
-    public void setup(float speed, Vector2 direction, float lifetime, Faction owner)
+    private HitContext hitContext;
+    private Faction ownerFaction;
+
+    public void setup(float speed, Vector2 direction, float lifetime, Faction owner, HitContext context)
     {
         rb.linearVelocity = direction.normalized * speed;
         ownerFaction = owner;
+        hitContext = context;
         Destroy(gameObject, lifetime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out Hurtbox hurtbox))
-            if (hurtbox.getFaction().factionType == ownerFaction.factionType)
-                return;
+        int layer = other.gameObject.layer;
 
+        if ((destroyOnLayers & (1 << layer)) != 0)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        if ((hurtboxLayer & (1 << layer)) == 0) return;
+        if (!other.TryGetComponent(out Hurtbox hurtbox)) return;
+        if (hurtbox.getFaction().factionType == ownerFaction.factionType) return;
+
+        hurtbox.receiveHit(hitContext);
         Destroy(gameObject);
     }
 }

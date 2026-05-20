@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
-[Serializable]
-public class HealEffect : IHitEffect
+[System.Serializable]
+public class HealModifier : IHitModifier
 {
-    [SerializeField] private int amount = 1;
+    [SerializeField] private int amount;
 
     public void apply(GameObject target, GameObject attacker)
     {

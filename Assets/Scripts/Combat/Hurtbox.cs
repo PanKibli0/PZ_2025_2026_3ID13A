@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class Hurtbox : MonoBehaviour
@@ -7,32 +6,24 @@ public class Hurtbox : MonoBehaviour
     [SerializeField] private Faction faction;
     [SerializeField] private float invulnerabilityTime = 0.5f;
 
-    private bool canBeHit = true;
-    private float invulnerabilityTimer;
+    private float lastHitTime = -999f;
 
-    public Faction getFaction()
+    public Faction getFaction() => faction;
+
+    public void receiveHit(HitContext ctx)
     {
-        return faction;
-    }
+        if (Time.time - lastHitTime < invulnerabilityTime) return;
+        if (ctx.attackerFaction.factionType == faction.factionType) return;
 
-    private void Update()
-    {
-        if (canBeHit) return;
+        if (health != null && ctx.damage > 0)
+            health.takeDamage(ctx.damage);
 
-        invulnerabilityTimer -= Time.deltaTime;
-        if (invulnerabilityTimer <= 0f)
-            canBeHit = true;
-    }
+        if (ctx.modifiers != null)
+        {
+            foreach (var m in ctx.modifiers)
+                m.apply(gameObject, ctx.attacker);
+        }
 
-    public void receiveHit(AttackContext context)
-    {
-        if (!canBeHit) return; // MOZE BYC PROBLEM PRZY SZYBKICH ATAKACH nawet jak invulnerabilityTime = 0
-        if (context.attackerFaction.factionType == faction.factionType) return;
-
-        foreach (var effect in context.effects)
-            effect.apply(gameObject, context.attacker);
-
-        canBeHit = false;
-        invulnerabilityTimer = invulnerabilityTime;
+        lastHitTime = Time.time;
     }
 }

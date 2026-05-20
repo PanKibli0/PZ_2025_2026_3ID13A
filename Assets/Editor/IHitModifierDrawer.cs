@@ -2,18 +2,18 @@ using UnityEngine;
 using UnityEditor;
 using System;
 
-[CustomPropertyDrawer(typeof(IHitEffect), true)]
-public class IHitEffectDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(IHitModifier), true)]
+public class IHitModifierDrawer : PropertyDrawer
 {
     private Type[] types;
     private string[] typeNames;
 
-    public IHitEffectDrawer()
+    public IHitModifierDrawer()
     {
         types = new Type[]
         {
-            typeof(DamageEffect),
-            typeof(HealEffect)
+            typeof(HealModifier)
+            // TODO: knockback, slow
         };
 
         typeNames = new string[types.Length];
@@ -41,7 +41,7 @@ public class IHitEffectDrawer : PropertyDrawer
         Rect popupRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
         int newIndex = EditorGUI.Popup(popupRect, label.text, selectedIndex, typeNames);
 
-        if (newIndex != selectedIndex)
+        if (newIndex != selectedIndex && newIndex != -1)
         {
             property.managedReferenceValue = Activator.CreateInstance(types[newIndex]);
             property.serializedObject.ApplyModifiedProperties();
@@ -50,7 +50,8 @@ public class IHitEffectDrawer : PropertyDrawer
         if (property.managedReferenceValue != null)
         {
             EditorGUI.indentLevel++;
-            Rect childRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + 2, position.width, position.height - EditorGUIUtility.singleLineHeight - 2);
+            float height = EditorGUI.GetPropertyHeight(property, true);
+            Rect childRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + 2, position.width, height);
             EditorGUI.PropertyField(childRect, property, GUIContent.none, true);
             EditorGUI.indentLevel--;
         }
@@ -59,7 +60,7 @@ public class IHitEffectDrawer : PropertyDrawer
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         if (property.managedReferenceValue != null)
-            return EditorGUI.GetPropertyHeight(property, true) + EditorGUIUtility.singleLineHeight + 2;
+            return EditorGUI.GetPropertyHeight(property, true) + EditorGUIUtility.singleLineHeight + 4;
 
         return EditorGUIUtility.singleLineHeight;
     }

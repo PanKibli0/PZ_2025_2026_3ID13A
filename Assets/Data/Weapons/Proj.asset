@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10dd876b70584741a936920e068e75b, type: 3}
   m_Name: Proj
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: Psc
+  weaponName: 
   cooldown: 0.2
-  baseEffects:
-  - rid: 3376038739778207818
+  damage: 1
+  modifiers: []
   attackPattern:
     rid: 3376038739778207817
   references:
@@ -27,7 +27,3 @@ MonoBehaviour:
         projectilePrefab: {fileID: 7711275517128807682, guid: b1aa2a35d4f32614cb3afc99e1a2612e, type: 3}
         speed: 10
         lifetime: 5
-    - rid: 3376038739778207818
-      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
-      data:
-        damage: 1
