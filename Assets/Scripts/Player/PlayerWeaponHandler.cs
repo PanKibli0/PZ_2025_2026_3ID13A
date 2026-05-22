@@ -21,15 +21,15 @@ public class PlayerWeaponHandler : MonoBehaviour
     public void onAttack(InputAction.CallbackContext context)
     {
         if (!context.performed || currentWeapon == null) return;
-        if (Time.time < lastAttackTime + currentWeapon.cooldown) return;
+        if (Time.time < lastAttackTime + currentWeapon.attack.cooldown) return;
 
         Vector2 aimDirection = getAimDirection();
 
         Vector2 origin = (Vector2)transform.position + aimDirection * currentWeapon.attackOffset;
 
-        HitContext hit = new HitContext(gameObject, faction, origin, aimDirection, currentWeapon);
+        HitContext hit = new HitContext(gameObject, faction, origin, aimDirection, currentWeapon.attack); 
 
-        currentWeapon.attackPattern.execute(hit);
+        currentWeapon.attack.execute(hit);
         lastAttackTime = Time.time;
     }
 

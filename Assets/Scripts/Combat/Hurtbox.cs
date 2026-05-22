@@ -23,11 +23,9 @@ public class Hurtbox : MonoBehaviour
                 health.takeDamage(context.damage);
         }
 
-        if (context.modifiers != null)
-        {
-            foreach (var m in context.modifiers)
-                m.apply(gameObject, context.attacker);
-        }
+        foreach (var effect in context.effects)
+            if (effect != null)
+                effect.apply(gameObject, context);
 
         lastHitTime = Time.time;
     }

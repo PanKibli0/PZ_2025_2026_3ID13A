@@ -2,18 +2,19 @@ using UnityEngine;
 using UnityEditor;
 using System;
 
-[CustomPropertyDrawer(typeof(IHitModifier), true)]
-public class IHitModifierDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(IHitEffect), true)]
+public class IHitEffectDrawer : PropertyDrawer
 {
     private Type[] types;
     private string[] typeNames;
 
-    public IHitModifierDrawer()
+    public IHitEffectDrawer()
     {
         types = new Type[]
         {
-            typeof(HealModifier)
-            // TODO: knockback, slow
+            typeof(HealHitEffect),
+            typeof(KnockbackHitEffect)
+            
         };
 
         typeNames = new string[types.Length];

@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
-        if (currentHealth == 0) // Uszkodzony przeciwnik na start (??)
+        if (currentHealth <= 0) // Uszkodzony przeciwnik na start (??)
             currentHealth = maxHealth;
     }
 
