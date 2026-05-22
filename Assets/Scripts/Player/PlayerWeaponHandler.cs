@@ -27,9 +27,9 @@ public class PlayerWeaponHandler : MonoBehaviour
 
         Vector2 origin = (Vector2)transform.position + aimDirection * currentWeapon.attackOffset;
 
-        HitContext hit = new HitContext(gameObject, faction, origin, aimDirection, currentWeapon.attack); 
+        HitContext hitContext = currentWeapon.attack.createContext(gameObject, faction, origin, aimDirection);
 
-        currentWeapon.attack.execute(hit);
+        currentWeapon.attack.execute(hitContext);
         lastAttackTime = Time.time;
     }
 

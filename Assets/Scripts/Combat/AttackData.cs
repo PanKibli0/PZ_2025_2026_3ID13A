@@ -21,4 +21,9 @@ public class AttackData
     {
         pattern.execute(context);
     }
+
+    public HitContext createContext(GameObject attacker, Faction attackerFaction, Vector2 origin, Vector2 direction)
+    {
+        return new HitContext(attacker, attackerFaction, origin, direction, this);
+    }
 }

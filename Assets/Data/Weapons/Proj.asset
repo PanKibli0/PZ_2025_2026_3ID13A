@@ -13,17 +13,24 @@ MonoBehaviour:
   m_Name: Proj
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: 
-  cooldown: 0.2
-  damage: 1
-  modifiers: []
-  attackPattern:
-    rid: 3376038739778207817
+  attack:
+    damage: 1
+    cooldown: 0.2
+    effects:
+    - rid: 3376038869781708876
+    pattern:
+      rid: 3376038869781708871
+  attackOffset: 0.6
   references:
     version: 2
     RefIds:
-    - rid: 3376038739778207817
+    - rid: 3376038869781708871
       type: {class: ProjectilePattern, ns: , asm: Assembly-CSharp}
       data:
         projectilePrefab: {fileID: 7711275517128807682, guid: b1aa2a35d4f32614cb3afc99e1a2612e, type: 3}
         speed: 10
         lifetime: 5
+    - rid: 3376038869781708876
+      type: {class: KnockbackHitEffect, ns: , asm: Assembly-CSharp}
+      data:
+        force: 1

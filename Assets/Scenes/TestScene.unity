@@ -558,6 +558,7 @@ GameObject:
   - component: {fileID: 618176599}
   - component: {fileID: 618176598}
   - component: {fileID: 618176597}
+  - component: {fileID: 618176602}
   m_Layer: 7
   m_Name: Dummy
   m_TagString: Untagged
@@ -637,8 +638,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_LinearDamping: 1
+  m_AngularDamping: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -727,6 +728,19 @@ Transform:
   - {fileID: 2004987552}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &618176602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618176596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca249b2db03a49488976b05b75cf03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Move
+  speed: 5
 --- !u!1 &738117832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,7 +1436,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   hitboxCollider: {fileID: 2004987554}
-  active: 1
 --- !u!61 &2004987554
 BoxCollider2D:
   m_ObjectHideFlags: 0

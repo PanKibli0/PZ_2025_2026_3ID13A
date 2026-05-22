@@ -17,7 +17,7 @@ public class Hurtbox : MonoBehaviour
     {
         if (Time.time - lastHitTime < invulnerabilityTime) return;
 
-        if (context.attackerFaction.factionType != faction.factionType)
+        if (context.attackerFaction != null && context.attackerFaction.isEnemy(faction))
         {
             if (health != null && context.damage > 0)
                 health.takeDamage(context.damage);

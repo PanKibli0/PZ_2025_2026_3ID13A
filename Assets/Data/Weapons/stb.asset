@@ -13,18 +13,25 @@ MonoBehaviour:
   m_Name: stb
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: 
-  cooldown: 0.2
-  damage: 1
-  modifiers: []
-  attackPattern:
-    rid: 3376038739778207821
+  attack:
+    damage: 1
+    cooldown: 0.2
+    effects:
+    - rid: 3376038869781708877
+    pattern:
+      rid: 3376038869781708873
+  attackOffset: 0.6
   references:
     version: 2
     RefIds:
-    - rid: 3376038739778207821
+    - rid: 3376038869781708873
       type: {class: StabPattern, ns: , asm: Assembly-CSharp}
       data:
         hitboxPrefab: {fileID: 4526170003070526305, guid: 5db30435bd0678a498c180a0f7cbee93, type: 3}
-        range: 0.1
+        range: 2
         width: 0.5
-        activeTime: 2
+        activeTime: 0.15
+    - rid: 3376038869781708877
+      type: {class: KnockbackHitEffect, ns: , asm: Assembly-CSharp}
+      data:
+        force: 0.1

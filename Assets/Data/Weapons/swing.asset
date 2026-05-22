@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: swing
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: 
-  cooldown: 0.2
-  damage: 1
-  modifiers: []
-  attackPattern:
-    rid: 3376038739778207822
+  attack:
+    damage: 1
+    cooldown: 0.2
+    effects: []
+    pattern:
+      rid: 3376038869781708874
+  attackOffset: 0.6
   references:
     version: 2
     RefIds:
-    - rid: 3376038739778207822
+    - rid: 3376038869781708874
       type: {class: SwingPattern, ns: , asm: Assembly-CSharp}
       data:
         hitboxPrefab: {fileID: 4526170003070526305, guid: 5db30435bd0678a498c180a0f7cbee93, type: 3}
