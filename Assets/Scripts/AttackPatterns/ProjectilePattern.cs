@@ -11,7 +11,7 @@ public class ProjectilePattern : AttackPattern
     {
         GameObject obj = Object.Instantiate(projectilePrefab, context.origin, Quaternion.identity);
         obj.transform.up = context.direction;
-        
-        obj.GetComponent<Projectile>().setup(speed, context.direction, lifetime, context.attackerFaction, context);
+
+        obj.GetComponent<Projectile>().setup(speed, context.direction, lifetime, context);
     }
 }

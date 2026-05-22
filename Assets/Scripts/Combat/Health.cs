@@ -7,32 +7,39 @@ public class Health : MonoBehaviour
 
     [SerializeField] private int currentHealth;
 
-    public Action<int, int> onHealthChanged; // change to SO event for better decoupling
-    public Action onDeath;
+    public event Action<int, int> OnHealthChanged;
+    public event Action OnDeath;
 
     private void Awake()
     {
-        currentHealth = maxHealth;
+        if (currentHealth == 0) // Uszkodzony przeciwnik na start (??)
+            currentHealth = maxHealth;
     }
 
     public void takeDamage(int amount)
     {
+        if (amount <= 0) return;
+
         currentHealth -= amount;
-        onHealthChanged?.Invoke(currentHealth, maxHealth);
+        currentHealth = Mathf.Max(0, currentHealth);
+
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-            onDeath?.Invoke();
-        }
+            OnDeath?.Invoke();
+        
     }
 
     public void takeHeal(int amount)
     {
-        currentHealth += amount;
-        if (currentHealth > maxHealth)
-            currentHealth = maxHealth;
+        if (amount <= 0) return;
 
-        onHealthChanged?.Invoke(currentHealth, maxHealth);
+        currentHealth += amount;
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
+
+    public int getCurrentHealth() { return currentHealth; }
+    public int getMaxHealth() { return maxHealth; }
 }

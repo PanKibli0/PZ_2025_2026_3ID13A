@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: 
   cooldown: 0.2
-  damage: 1
+  damage: 0
   modifiers:
   - rid: 3376038827361304645
   attackPattern:
@@ -31,4 +31,4 @@ MonoBehaviour:
     - rid: 3376038827361304645
       type: {class: HealModifier, ns: , asm: Assembly-CSharp}
       data:
-        amount: 1
+        amount: 5

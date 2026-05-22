@@ -7,12 +7,10 @@ public class Projectile : MonoBehaviour
     [SerializeField] private LayerMask destroyOnLayers;
 
     private HitContext hitContext;
-    private Faction ownerFaction;
 
-    public void setup(float speed, Vector2 direction, float lifetime, Faction owner, HitContext context)
+    public void setup(float speed, Vector2 direction, float lifetime, HitContext context)
     {
         rb.linearVelocity = direction.normalized * speed;
-        ownerFaction = owner;
         hitContext = context;
         Destroy(gameObject, lifetime);
     }
@@ -29,7 +27,7 @@ public class Projectile : MonoBehaviour
 
         if ((hurtboxLayer & (1 << layer)) == 0) return;
         if (!other.TryGetComponent(out Hurtbox hurtbox)) return;
-        if (hurtbox.getFaction().factionType == ownerFaction.factionType) return;
+        if (hurtbox.getFaction().factionType == hitContext.attackerFaction.factionType) return;
 
         hurtbox.receiveHit(hitContext);
         Destroy(gameObject);

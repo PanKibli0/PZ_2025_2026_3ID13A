@@ -8,7 +8,7 @@ public class TestDummyHitbox : MonoBehaviour
 
     private void Start()
     {
-        HitContext ctx = new HitContext(gameObject, ownerFaction, Vector2.zero, Vector2.zero, damage);
-        hitbox.activate(ctx);
+        HitContext context = new HitContext(gameObject, ownerFaction, Vector2.zero, Vector2.zero, damage);
+        hitbox.activate(context);
     }
 }

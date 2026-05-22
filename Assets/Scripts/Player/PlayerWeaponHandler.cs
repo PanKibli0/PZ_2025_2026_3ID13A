@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class PlayerWeaponHandler : MonoBehaviour
 {
     [SerializeField] private WeaponData[] weaponSlots;
-    [SerializeField] private float attackOffset = 0.5f;
     [SerializeField] private Faction faction;
 
 
@@ -21,14 +20,14 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     public void onAttack(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
-        if (currentWeapon == null) return;
+        if (!context.performed || currentWeapon == null) return;
         if (Time.time < lastAttackTime + currentWeapon.cooldown) return;
 
-        Vector2 direction = getAimDirection();
-        Vector2 origin = (Vector2)transform.position + direction * attackOffset;
+        Vector2 aimDirection = getAimDirection();
 
-        HitContext hit = new HitContext(gameObject, faction, origin, direction, currentWeapon);
+        Vector2 origin = (Vector2)transform.position + aimDirection * currentWeapon.attackOffset;
+
+        HitContext hit = new HitContext(gameObject, faction, origin, aimDirection, currentWeapon);
 
         currentWeapon.attackPattern.execute(hit);
         lastAttackTime = Time.time;

@@ -8,20 +8,25 @@ public class Hurtbox : MonoBehaviour
 
     private float lastHitTime = -999f;
 
-    public Faction getFaction() => faction;
+    public Faction getFaction()
+    {
+        return faction;
+    }
 
-    public void receiveHit(HitContext ctx)
+    public void receiveHit(HitContext context)
     {
         if (Time.time - lastHitTime < invulnerabilityTime) return;
-        if (ctx.attackerFaction.factionType == faction.factionType) return;
 
-        if (health != null && ctx.damage > 0)
-            health.takeDamage(ctx.damage);
-
-        if (ctx.modifiers != null)
+        if (context.attackerFaction.factionType != faction.factionType)
         {
-            foreach (var m in ctx.modifiers)
-                m.apply(gameObject, ctx.attacker);
+            if (health != null && context.damage > 0)
+                health.takeDamage(context.damage);
+        }
+
+        if (context.modifiers != null)
+        {
+            foreach (var m in context.modifiers)
+                m.apply(gameObject, context.attacker);
         }
 
         lastHitTime = Time.time;

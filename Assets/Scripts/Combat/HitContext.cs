@@ -17,7 +17,7 @@ public class HitContext
         this.origin = origin;
         this.direction = direction;
         this.damage = weapon.damage;
-        this.modifiers = weapon.modifiers;
+        this.modifiers = weapon.modifiers ?? new List<IHitModifier>();
     }
 
     // DEBUG - maybe help i Future 
@@ -29,6 +29,6 @@ public class HitContext
         this.origin = origin;
         this.direction = direction;
         this.damage = damage;
-        this.modifiers = modifiers;
+        this.modifiers = modifiers ?? new List<IHitModifier>();
     }
 }

@@ -18,7 +18,7 @@ public class ShotgunPattern : AttackPattern
 
             GameObject obj = Object.Instantiate(projectilePrefab, context.origin, Quaternion.identity);
             obj.transform.up = dir;
-            obj.GetComponent<Projectile>().setup(speed, dir, lifetime, context.attackerFaction, context);
+            obj.GetComponent<Projectile>().setup(speed, dir, lifetime, context);
         }
     }
 }
