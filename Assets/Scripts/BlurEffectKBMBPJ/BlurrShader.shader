@@ -57,21 +57,23 @@ Shader "Custom/GlassesBlurShader"
                 float2 uv = input.uv;
                 
                 half4 color = half4(0, 0, 0, 0);
-                float offset = _BlurStrength;
-
-                color += SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, uv + float2(-offset, -offset));
-                color += SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, uv + float2(0, -offset));
-                color += SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, uv + float2(offset, -offset));
+                float totalWeight = 0.0;
                 
-                color += SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, uv + float2(-offset, 0));
-                color += SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, uv); 
-                color += SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, uv + float2(offset, 0));
-                
-                color += SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, uv + float2(-offset, offset));
-                color += SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, uv + float2(0, offset));
-                color += SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, uv + float2(offset, offset));
+                for (float x = -3.0; x <= 3.0; x += 1.0)
+                {
+                    for (float y = -3.0; y <= 3.0; y += 1.0)
+                    {
+                        float2 offset = float2(x, y) * _BlurStrength;
+                        
+                        float weight = exp(-(x*x + y*y) / 4.0);
 
-                return color / 9.0;
+                        color += SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_BlitTexture, uv + offset) * weight;
+                        
+                        totalWeight += weight;
+                    }
+                }
+
+                return color / totalWeight;
             }
             ENDHLSL
         }
