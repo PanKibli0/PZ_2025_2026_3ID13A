@@ -12,11 +12,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea2cbceccc304540ae890b70483bcd7, type: 3}
   m_Name: Enemy2
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  enemyName: 
-  maxHealth: 0
-  enemyColor: {r: 0, g: 0, b: 0, a: 0}
-  movementPhases: []
-  attackPhases: []
+  enemyName: Red
+  maxHealth: 12
+  enemyColor: {r: 1, g: 0, b: 0, a: 1}
+  movementPhases:
+  - condition:
+      rid: 3376038911061000460
+    movement:
+      rid: 3376038911061000461
+    speed: 3
+  - condition:
+      rid: 3376038911061000462
+    movement:
+      rid: 3376038911061000463
+    speed: 5
+  - condition:
+      rid: 3376038911061000464
+    movement:
+      rid: 3376038911061000465
+    speed: 2
+  attackPhases:
+  - condition:
+      rid: 3376038911061000466
+    attack:
+      damage: 3
+      cooldown: 2
+      effects: []
+      pattern:
+        rid: 3376038911061000467
+    weight: 2
+  - condition:
+      rid: 3376038911061000468
+    attack:
+      damage: 1
+      cooldown: 3
+      effects: []
+      pattern:
+        rid: 3376038911061000469
+    weight: 1
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3376038911061000460
+      type: {class: DistanceCondition, ns: , asm: Assembly-CSharp}
+      data:
+        minDistance: 1
+        maxDistance: 5
+    - rid: 3376038911061000461
+      type: {class: AwayFromPlayerMove, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 3376038911061000462
+      type: {class: DistanceCondition, ns: , asm: Assembly-CSharp}
+      data:
+        minDistance: 5
+        maxDistance: 8
+    - rid: 3376038911061000463
+      type: {class: ArcMove, ns: , asm: Assembly-CSharp}
+      data:
+        arcLength: 5
+    - rid: 3376038911061000464
+      type: {class: DistanceCondition, ns: , asm: Assembly-CSharp}
+      data:
+        minDistance: 8
+        maxDistance: 9999
+    - rid: 3376038911061000465
+      type: {class: TowardsPlayerMove, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 3376038911061000466
+      type: {class: DistanceCondition, ns: , asm: Assembly-CSharp}
+      data:
+        minDistance: 1
+        maxDistance: 7
+    - rid: 3376038911061000467
+      type: {class: ProjectilePattern, ns: , asm: Assembly-CSharp}
+      data:
+        projectilePrefab: {fileID: 7711275517128807682, guid: b1aa2a35d4f32614cb3afc99e1a2612e, type: 3}
+        speed: 10
+        lifetime: 5
+    - rid: 3376038911061000468
+      type: {class: DistanceCondition, ns: , asm: Assembly-CSharp}
+      data:
+        minDistance: 1
+        maxDistance: 7
+    - rid: 3376038911061000469
+      type: {class: ShotgunPattern, ns: , asm: Assembly-CSharp}
+      data:
+        projectilePrefab: {fileID: 7711275517128807682, guid: b1aa2a35d4f32614cb3afc99e1a2612e, type: 3}
+        count: 3
+        spread: 45
+        speed: 10
+        lifetime: 3

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: 
   attack:
-    damage: 1
-    cooldown: 20
+    damage: 1000
+    cooldown: 1
     effects:
     - rid: 3376038869781708876
     pattern:
