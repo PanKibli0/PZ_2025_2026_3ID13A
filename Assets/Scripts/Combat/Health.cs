@@ -40,6 +40,13 @@ public class Health : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
+    public void setMaxHealth(int newMaxHealth)
+    {
+        if (newMaxHealth <= 0) return;
+        maxHealth = newMaxHealth;
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
     public int getCurrentHealth() { return currentHealth; }
     public int getMaxHealth() { return maxHealth; }
 }

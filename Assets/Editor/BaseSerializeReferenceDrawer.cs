@@ -1,0 +1,70 @@
+using UnityEngine;
+using UnityEditor;
+using System;
+
+public abstract class BaseSerializeReferenceDrawer : PropertyDrawer
+{
+    protected abstract Type[] getTypes();
+
+    private string[] typeNames;
+
+    private string[] getTypeNames()
+    {
+        if (typeNames == null)
+        {
+            Type[] types = getTypes();
+            typeNames = new string[types.Length];
+            for (int i = 0; i < types.Length; i++)
+                typeNames[i] = types[i].Name;
+        }
+        return typeNames;
+    }
+
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        Type[] types = getTypes();
+        string[] typeNames = getTypeNames();
+
+        Type currentType = property.managedReferenceValue?.GetType();
+        int selectedIndex = -1;
+
+        if (currentType != null)
+        {
+            for (int i = 0; i < types.Length; i++)
+            {
+                if (types[i] == currentType)
+                {
+                    selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        Rect popupRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
+        int newIndex = EditorGUI.Popup(popupRect, label.text, selectedIndex, typeNames);
+
+        if (newIndex != selectedIndex && newIndex >= 0)
+        {
+            property.managedReferenceValue = Activator.CreateInstance(types[newIndex]);
+            property.serializedObject.ApplyModifiedProperties();
+        }
+
+        if (property.managedReferenceValue != null)
+        {
+            EditorGUI.indentLevel++;
+            float height = EditorGUI.GetPropertyHeight(property, true);
+            Rect childRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + 2, position.width, height);
+            EditorGUI.PropertyField(childRect, property, GUIContent.none, true);
+            EditorGUI.indentLevel--;
+        }
+    }
+
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        if (property.managedReferenceValue != null)
+        {
+            return EditorGUI.GetPropertyHeight(property, true) + EditorGUIUtility.singleLineHeight + 4;
+        }
+        return EditorGUIUtility.singleLineHeight;
+    }
+}

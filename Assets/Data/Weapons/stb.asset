@@ -17,21 +17,21 @@ MonoBehaviour:
     damage: 1
     cooldown: 0.2
     effects:
-    - rid: 3376038869781708877
+    - rid: 3376038899520897093
     pattern:
-      rid: 3376038869781708873
+      rid: 3376038899520897094
   attackOffset: 0.6
   references:
     version: 2
     RefIds:
-    - rid: 3376038869781708873
-      type: {class: StabPattern, ns: , asm: Assembly-CSharp}
+    - rid: 3376038899520897093
+      type: {class: HealHitEffect, ns: , asm: Assembly-CSharp}
+      data:
+        amount: 0
+    - rid: 3376038899520897094
+      type: {class: SwingPattern, ns: , asm: Assembly-CSharp}
       data:
         hitboxPrefab: {fileID: 4526170003070526305, guid: 5db30435bd0678a498c180a0f7cbee93, type: 3}
-        range: 2
-        width: 0.5
-        activeTime: 0.15
-    - rid: 3376038869781708877
-      type: {class: KnockbackHitEffect, ns: , asm: Assembly-CSharp}
-      data:
-        force: 0.1
+        range: 1.5
+        width: 2
+        activeTime: 0.25

@@ -15,12 +15,12 @@ MonoBehaviour:
   weaponName: 
   attack:
     damage: 1
-    cooldown: 0.2
+    cooldown: 20
     effects:
     - rid: 3376038869781708876
     pattern:
       rid: 3376038869781708871
-  attackOffset: 0.6
+  attackOffset: 0
   references:
     version: 2
     RefIds:
@@ -33,4 +33,4 @@ MonoBehaviour:
     - rid: 3376038869781708876
       type: {class: KnockbackHitEffect, ns: , asm: Assembly-CSharp}
       data:
-        force: 1
+        force: 10

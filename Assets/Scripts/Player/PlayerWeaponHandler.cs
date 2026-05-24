@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,14 +5,14 @@ public class PlayerWeaponHandler : MonoBehaviour
 {
     [SerializeField] private WeaponData[] weaponSlots;
     [SerializeField] private Faction faction;
-
+    [SerializeField] private float weaponSwitchCooldown = 0.3f;
 
     private WeaponData currentWeapon;
     private float lastAttackTime;
-    
+    private float lastSwitchTime;
 
     private void Awake()
-    { 
+    {
         if (weaponSlots.Length > 0)
             switchWeapon(0);
     }
@@ -24,11 +23,9 @@ public class PlayerWeaponHandler : MonoBehaviour
         if (Time.time < lastAttackTime + currentWeapon.attack.cooldown) return;
 
         Vector2 aimDirection = getAimDirection();
-
         Vector2 origin = (Vector2)transform.position + aimDirection * currentWeapon.attackOffset;
 
         HitContext hitContext = currentWeapon.attack.createContext(gameObject, faction, origin, aimDirection);
-
         currentWeapon.attack.execute(hitContext);
         lastAttackTime = Time.time;
     }
@@ -39,7 +36,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         return (mousePos - (Vector2)transform.position).normalized;
     }
 
-    // Debug
+    // DEBUG - OLD INPUT
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) switchWeapon(0);
@@ -48,11 +45,15 @@ public class PlayerWeaponHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4)) switchWeapon(3);
         if (Input.GetKeyDown(KeyCode.Alpha5)) switchWeapon(4);
     }
-    // END Debug
+    // END DEBUG
 
     private void switchWeapon(int index)
     {
-        if (index < weaponSlots.Length)
+        if (Time.time < lastSwitchTime + weaponSwitchCooldown) return;
+        if (index < weaponSlots.Length && weaponSlots[index] != null)
+        {
             currentWeapon = weaponSlots[index];
+            lastSwitchTime = Time.time;
+        }
     }
 }
