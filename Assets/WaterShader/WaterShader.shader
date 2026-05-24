@@ -1,25 +1,43 @@
+/**
+* @file InteractiveWater2D
+* @brief Shader 2D realizujący efekt wody
+* @details Shader obsługuje proceduralne falowanie, kaustykę, interkację z kroplą wody oraz efekt wiru
+* Przeznaczony do materiałów typu Transparent
+*/
+
 Shader "Custom/InteractiveWater2D"
 {
     Properties
     {
+        /// @brief Główna tekstura
         [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
-        
+
         [Header(Kolory)]
+        /// @brief Główny, bazowy kolor wody
         _BaseColor ("Glowny Kolor Wody", Color) = (0.1, 0.5, 0.8, 1)
+        /// @brief Kolor jasnych odblasków (kaustyki)
         _CausticColor ("Kolor Jasnych Odblaskow", Color) = (1.0, 1.0, 1.0, 0.5)
 
         [Header(Ustawienia Wygladu)]
+        /// @brief Prędkość animacji falowania w czasie
         _Speed ("Predkosc Falowania", Float) = 1.5
+        /// @brief Gęstość i skala wzoru wody
         _Scale ("Gestosc Wzoru Wody", Float) = 15.0
+        /// @brief Siła falowania krawędzi (Vertex displacement)
         _Distortion ("Falowanie Krawedzi", Float) = 0.05
 
         [Header(Interakcja Kropla )]
+        /// @brief Współrzędne UV środka uderzenia kropli
         _DropCenter ("Srodek Kropli (UV)", Vector) = (0.5, 0.5, 0, 0)
+        /// @brief Aktualny promień rozchodzącej się fali
         _DropRadius ("Promien Fali", Float) = 0.0
+        /// @brief Siła zniekształcenia obrazu wywołana przez falę
         _DropStrength ("Sila Znieksztalcenia Kropli", Float) = 0.0
 
         [Header(Interakcja)]
+        /// @brief Współrzędne środka UV środka wiru
         _DrainCenter ("Srodek Splywu (UV)", Vector) = (0.5, 0.5, 0, 0)
+        /// @brief Suła zasysania i obrotu wiru
         _DrainStrength ("Sila Wiru", Float) = 0.0
     }
     SubShader
@@ -45,18 +63,26 @@ Shader "Custom/InteractiveWater2D"
             #pragma fragment frag
             #include "UnityCG.cginc"
 
+            /**
+            * @struct appdata_t
+            * @brief Struktura danych wejściowych wierzchołka z unity
+            */            
             struct appdata_t
             {
-                float4 vertex   : POSITION;
-                float4 color    : COLOR;
-                float2 texcoord : TEXCOORD0;
+                float4 vertex   : POSITION; ///< Lokalna pozycja wierzchołka
+                float4 color    : COLOR;    ///< Kolor przypisany do wierzchołka
+                float2 texcoord : TEXCOORD0;///< Współrzędne tekstury
             };
 
+            /**
+            * @struct v2f
+            * @brief Struktura danych przekazywanych z shadera wierzchołków do shadera fragmentów
+            */
             struct v2f
             {
-                float4 vertex   : SV_POSITION;
-                fixed4 color    : COLOR;
-                float2 texcoord : TEXCOORD0;
+                float4 vertex   : SV_POSITION;  ///< Przekształcona pozycja wierzchołka w przestrzeni ekranu
+                fixed4 color    : COLOR;        ///< Przekształcony kolor wierzchołka
+                float2 texcoord : TEXCOORD0;    ///< Przekazane współrzędne tekstury (UV)
             };
 
             sampler2D _MainTex;
@@ -73,6 +99,13 @@ Shader "Custom/InteractiveWater2D"
             float4 _DrainCenter;
             float _DrainStrength;
 
+            /**
+            * @brief Shader wierzchołkowy (vertex)
+            * @details Odpowiada za transforamcję pozycji wierzchołków do przestzreni rzutowania
+            * oraz dodaje do nich falowanie na krawędziach (Vertex displacement) zależne od czasu
+            * * @param IN Dane wejściowe wierzchołka z silnika
+            * @return Zwraca przetowrzoną strukturę 'v2f'
+            */
             v2f vert(appdata_t IN)
             {
                 v2f OUT;
@@ -90,6 +123,14 @@ Shader "Custom/InteractiveWater2D"
                 return OUT;
             }
 
+            /**
+            * @brief Shader fragmentów (Fragment/Pixel shader)
+            * @details Oblicza ostateczny kolor każdego piksela. Realizuje zniekształcenia przestszeni UV 
+            * dla efektu wiru oraz rozchodzącej się kropli. Generuje proceduralne fale (kaustykę) poprzez 
+            * sumowanie funkcji trygonometrycznych
+            * * @param IN Dane interpolowane z shadera wierzchołkowego
+            * @return Zwraca końcowy kolor piksela (RGBA)
+            */
             fixed4 frag(v2f IN) : SV_Target
             {
                 float2 uv = IN.texcoord;
