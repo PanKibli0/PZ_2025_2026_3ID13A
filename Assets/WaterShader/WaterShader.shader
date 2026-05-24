@@ -5,39 +5,29 @@
 * Przeznaczony do materiałów typu Transparent
 */
 
+/// @cond HIDDEN_FROM_DOXYGEN 
 Shader "Custom/InteractiveWater2D"
 {
     Properties
     {
-        /// @brief Główna tekstura
         [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
 
         [Header(Kolory)]
-        /// @brief Główny, bazowy kolor wody
         _BaseColor ("Glowny Kolor Wody", Color) = (0.1, 0.5, 0.8, 1)
-        /// @brief Kolor jasnych odblasków (kaustyki)
         _CausticColor ("Kolor Jasnych Odblaskow", Color) = (1.0, 1.0, 1.0, 0.5)
 
         [Header(Ustawienia Wygladu)]
-        /// @brief Prędkość animacji falowania w czasie
         _Speed ("Predkosc Falowania", Float) = 1.5
-        /// @brief Gęstość i skala wzoru wody
         _Scale ("Gestosc Wzoru Wody", Float) = 15.0
-        /// @brief Siła falowania krawędzi (Vertex displacement)
         _Distortion ("Falowanie Krawedzi", Float) = 0.05
 
         [Header(Interakcja Kropla )]
-        /// @brief Współrzędne UV środka uderzenia kropli
         _DropCenter ("Srodek Kropli (UV)", Vector) = (0.5, 0.5, 0, 0)
-        /// @brief Aktualny promień rozchodzącej się fali
         _DropRadius ("Promien Fali", Float) = 0.0
-        /// @brief Siła zniekształcenia obrazu wywołana przez falę
         _DropStrength ("Sila Znieksztalcenia Kropli", Float) = 0.0
 
         [Header(Interakcja)]
-        /// @brief Współrzędne środka UV środka wiru
         _DrainCenter ("Srodek Splywu (UV)", Vector) = (0.5, 0.5, 0, 0)
-        /// @brief Suła zasysania i obrotu wiru
         _DrainStrength ("Sila Wiru", Float) = 0.0
     }
     SubShader
@@ -63,6 +53,9 @@ Shader "Custom/InteractiveWater2D"
             #pragma fragment frag
             #include "UnityCG.cginc"
 
+            /// @endcond
+
+
             /**
             * @struct appdata_t
             * @brief Struktura danych wejściowych wierzchołka z unity
@@ -85,18 +78,29 @@ Shader "Custom/InteractiveWater2D"
                 float2 texcoord : TEXCOORD0;    ///< Przekazane współrzędne tekstury (UV)
             };
 
+            /// @brief Główna tekstura przekazwaywana przez SpriteRenderer
             sampler2D _MainTex;
+            /// @brief Główny, bazowy kolor wody (RGBA)
             fixed4 _BaseColor;
+            /// @brief Kolor i intensywność (alpha) jasnych odblasków (kaustyki)
             fixed4 _CausticColor;
+            /// @brief Prędkość animacji falowania w czasie
             float _Speed;
+            /// @brief Gęstość i skala wzoru wody
             float _Scale;
+            /// @brief Siła falowania krawędzi (Vertex displacement)
             float _Distortion;
 
+            /// @brief Współrzędne UV środka uderzenia kropli
             float4 _DropCenter;
+            /// @brief Aktualny promień rozchodzącej się fali po kropli
             float _DropRadius;
+            /// @brief Siła zniekształcenia obrazu wywołana przez falę
             float _DropStrength;
             
+            /// @brief Współrzędne UV środka wiru
             float4 _DrainCenter;
+            /// @brief Siła zasysania i obrotu wiru
             float _DrainStrength;
 
             /**
@@ -174,7 +178,9 @@ Shader "Custom/InteractiveWater2D"
 
                 return finalColor;
             }
+            /// @cond HIDDEN_FROM_DOXYGEN
             ENDCG
         }
     }
 }
+/// @endcond
