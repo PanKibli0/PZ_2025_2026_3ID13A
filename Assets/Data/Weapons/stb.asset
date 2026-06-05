@@ -16,18 +16,13 @@ MonoBehaviour:
   attack:
     damage: 1
     cooldown: 0.2
-    effects:
-    - rid: 3376038899520897093
+    effects: []
     pattern:
       rid: 3376038899520897094
   attackOffset: 0.6
   references:
     version: 2
     RefIds:
-    - rid: 3376038899520897093
-      type: {class: HealHitEffect, ns: , asm: Assembly-CSharp}
-      data:
-        amount: 0
     - rid: 3376038899520897094
       type: {class: SwingPattern, ns: , asm: Assembly-CSharp}
       data:

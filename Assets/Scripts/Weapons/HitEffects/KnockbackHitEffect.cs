@@ -9,9 +9,9 @@ public class KnockbackHitEffect : IHitEffect
     {
         if (target == null) return;
 
-        Rigidbody2D rb = target.GetComponentInParent<Rigidbody2D>();
-        if (rb == null) return;
+        IKnockbackReceiver receiver = target.transform.root.GetComponent<IKnockbackReceiver>();
+        if (receiver == null) return;
 
-        rb.linearVelocity = context.direction * force;
+        receiver.applyKnockback(context.direction * force);
     }
 }

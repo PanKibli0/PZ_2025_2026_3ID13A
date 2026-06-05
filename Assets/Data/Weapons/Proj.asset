@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: 
   attack:
-    damage: 1000
+    damage: 1
     cooldown: 1
     effects:
     - rid: 3376038869781708876
@@ -33,4 +33,4 @@ MonoBehaviour:
     - rid: 3376038869781708876
       type: {class: KnockbackHitEffect, ns: , asm: Assembly-CSharp}
       data:
-        force: 10
+        force: 1

@@ -21,11 +21,11 @@ public class Hurtbox : MonoBehaviour
         {
             if (health != null && context.damage > 0)
                 health.takeDamage(context.damage);
-        }
 
-        foreach (var effect in context.effects)
-            if (effect != null)
-                effect.apply(gameObject, context);
+            foreach (var effect in context.effects)
+                if (effect != null)
+                    effect.apply(gameObject, context);
+        }
 
         lastHitTime = Time.time;
     }

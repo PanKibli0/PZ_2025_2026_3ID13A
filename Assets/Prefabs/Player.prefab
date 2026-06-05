@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c68530162f346f949bf553faf1cb3bd3, type: 2}
   - {fileID: 11400000, guid: f8d822f7bdfc1f74e810f6081d832056, type: 2}
   faction: {fileID: 486002773267143999}
+  weaponSwitchCooldown: 0.3
 --- !u!1 &3199527122523489616
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290ba22b0459c9e45beb210631370252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 10
+  maxHealth: 10000
   currentHealth: 0
 --- !u!1 &3895616882807596121
 GameObject:

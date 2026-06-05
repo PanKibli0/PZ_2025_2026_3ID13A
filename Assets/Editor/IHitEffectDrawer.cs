@@ -9,7 +9,6 @@ public class IHitEffectDrawer : BaseSerializeReferenceDrawer
     {
         return new Type[]
         {
-            typeof(HealHitEffect),
             typeof(KnockbackHitEffect)
         };
     }
