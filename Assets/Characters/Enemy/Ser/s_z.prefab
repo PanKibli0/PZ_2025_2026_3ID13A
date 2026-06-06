@@ -330,7 +330,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5256274099885915818}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.000050383613, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.3797276, w: 0.9250984}
   m_LocalPosition: {x: 0.268, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -392,7 +392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6016610845718981284}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.000025954094, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.22146437, w: 0.97516847}
   m_LocalPosition: {x: 0.27, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -494,6 +494,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: fbfe0a53427da0041b731c73e13b6889, type: 3}
       insertIndex: -1
       addedObject: {fileID: 354628898188168363}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: fbfe0a53427da0041b731c73e13b6889, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8531624532116363803}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: fbfe0a53427da0041b731c73e13b6889, type: 3}
 --- !u!4 &2637759827930812205 stripped
 Transform:
@@ -532,6 +535,28 @@ MonoBehaviour:
     showGizmo: 1
   - color: {r: 0, g: 1, b: 0, a: 1}
     showGizmo: 1
+--- !u!95 &8531624532116363803
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770407076108949326}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7e69553b9db268546915dc4856b7f0e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &6128089769330223543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1819529356487467196, guid: fbfe0a53427da0041b731c73e13b6889, type: 3}
