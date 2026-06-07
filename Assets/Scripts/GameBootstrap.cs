@@ -6,6 +6,7 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private PlayerUI playerUI;
     [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] private CameraController cameraController;
 
     private void Awake()
     {
@@ -18,5 +19,8 @@ public class GameBootstrap : MonoBehaviour
 
         if (enemySpawner != null)
             enemySpawner.init(player.transform);
+
+        if (cameraController != null)
+            cameraController.Init(player.transform);
     }
 }
