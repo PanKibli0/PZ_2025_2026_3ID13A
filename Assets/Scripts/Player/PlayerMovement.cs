@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour, IKnockbackReceiver
 
     private Vector2 moveDirection;
     private float knockbackEndTime;
+    public bool CanMove { get; set; } = true;
 
     public void onMove(InputAction.CallbackContext context)
     {
@@ -23,7 +24,15 @@ public class PlayerMovement : MonoBehaviour, IKnockbackReceiver
 
     private void FixedUpdate()
     {
-        if (Time.time < knockbackEndTime) return;
+        if (Time.time < knockbackEndTime)
+            return;
+
+        if (!CanMove)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         rb.linearVelocity = moveDirection * speed;
     }
 }

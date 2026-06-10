@@ -256,6 +256,8 @@ GameObject:
   - component: {fileID: 7561830155015542158}
   - component: {fileID: 486002773267143999}
   - component: {fileID: 4810788323307388863}
+  - component: {fileID: 6408439620967196395}
+  - component: {fileID: -7784083475154510566}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -433,3 +435,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   rb: {fileID: 3177103508206313642}
   speed: 5
+--- !u!114 &6408439620967196395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925947135481941363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af0f45078fa8ff46a84b481f9175c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatusController
+--- !u!114 &-7784083475154510566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925947135481941363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b5e4f7ac1592d4bb9b8a710d17b908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusTest
+  statusController: {fileID: 6408439620967196395}
+  health: {fileID: 6320375593858290250}
