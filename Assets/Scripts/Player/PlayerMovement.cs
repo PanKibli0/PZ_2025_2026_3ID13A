@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour, IKnockbackReceiver
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed = 5f;
+    private float speedMultiplier = 1f;
 
     private Vector2 moveDirection;
     private float knockbackEndTime;
@@ -33,6 +34,16 @@ public class PlayerMovement : MonoBehaviour, IKnockbackReceiver
             return;
         }
 
-        rb.linearVelocity = moveDirection * speed;
+        rb.linearVelocity = moveDirection * speed * speedMultiplier;
+    }
+
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = multiplier;
+    }
+
+    public float GetSpeedMultiplier()
+    {
+        return speedMultiplier;
     }
 }

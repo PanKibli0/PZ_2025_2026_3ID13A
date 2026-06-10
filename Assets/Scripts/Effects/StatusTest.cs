@@ -4,6 +4,7 @@ public class StatusTest : MonoBehaviour
 {
     [SerializeField] private PlayerStatusController statusController;
     [SerializeField] private Health health;
+    [SerializeField] private PlayerMovement movement;
 
     private void Update()
     {
@@ -28,6 +29,27 @@ public class StatusTest : MonoBehaviour
             );
 
             Debug.Log("Burn applied");
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            statusController.AddEffect(
+                new TiedStatusEffect(
+                    movement,
+                    3f
+                )
+            );
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            statusController.AddEffect(
+                new FrozenStatusEffect(
+                    movement,
+                    5f,
+                    0.5f
+                )
+            );
         }
     }
 }

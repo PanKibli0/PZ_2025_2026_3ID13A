@@ -461,3 +461,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatusTest
   statusController: {fileID: 6408439620967196395}
   health: {fileID: 6320375593858290250}
+  movement: {fileID: 4810788323307388863}
