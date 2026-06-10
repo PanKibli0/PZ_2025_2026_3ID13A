@@ -1,0 +1,28 @@
+using UnityEngine;
+
+public class PlayerInventory : MonoBehaviour
+{
+    public WeaponData[] weapons = new WeaponData[9];
+
+    public bool AddWeapon(WeaponData weapon)
+    {
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            if (weapons[i] == null)
+            {
+                weapons[i] = weapon;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public WeaponData GetWeapon(int index)
+    {
+        if (index < 0 || index >= weapons.Length)
+            return null;
+
+        return weapons[index];
+    }
+}

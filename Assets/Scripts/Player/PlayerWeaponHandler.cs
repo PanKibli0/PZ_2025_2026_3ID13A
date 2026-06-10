@@ -3,9 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerWeaponHandler : MonoBehaviour
 {
-    [SerializeField] private WeaponData[] weaponSlots;
+    [SerializeField] private PlayerInventory inventory;
     [SerializeField] private Faction faction;
     [SerializeField] private float weaponSwitchCooldown = 0.3f;
+    [SerializeField] private HotbarUI hotbar;
+
 
     private WeaponData currentWeapon;
     private float lastAttackTime;
@@ -13,9 +15,26 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     private void Awake()
     {
-        if (weaponSlots.Length > 0)
+        if (inventory == null)
+        {
+            Debug.LogError("PlayerInventory not found on Player!");
+            return;
+        }
+
+        if (inventory.GetWeapon(0) != null)
             switchWeapon(0);
     }
+
+    // DEBUG - OLD INPUT
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) switchWeapon(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) switchWeapon(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) switchWeapon(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) switchWeapon(3);
+        if (Input.GetKeyDown(KeyCode.Alpha5)) switchWeapon(4);
+    }
+    // END DEBUG
 
     public void onAttack(InputAction.CallbackContext context)
     {
@@ -36,24 +55,26 @@ public class PlayerWeaponHandler : MonoBehaviour
         return (mousePos - (Vector2)transform.position).normalized;
     }
 
-    // DEBUG - OLD INPUT
-    private void Update()
+    public void switchWeapon(int index)
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) switchWeapon(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) switchWeapon(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) switchWeapon(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) switchWeapon(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) switchWeapon(4);
-    }
-    // END DEBUG
+        if (Time.time < lastSwitchTime + weaponSwitchCooldown)
+            return;
 
-    private void switchWeapon(int index)
+        WeaponData weapon = inventory.GetWeapon(index);
+
+        if (weapon == null)
+            return;
+
+        currentWeapon = weapon;
+        lastSwitchTime = Time.time;
+        Debug.Log("Switched weapon: " + weapon.weaponName);
+
+        if (hotbar != null)
+            hotbar.SetSelected(index);
+    }
+
+    public void SetHotbar(HotbarUI ui)
     {
-        if (Time.time < lastSwitchTime + weaponSwitchCooldown) return;
-        if (index < weaponSlots.Length && weaponSlots[index] != null)
-        {
-            currentWeapon = weaponSlots[index];
-            lastSwitchTime = Time.time;
-        }
+        hotbar = ui;
     }
 }

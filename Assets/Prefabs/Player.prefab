@@ -44,14 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd42a6a7046f23e40b2ea604dba7ec08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeaponHandler
-  weaponSlots:
-  - {fileID: 11400000, guid: 596aa9a25effb1f4bb8f4777e274abed, type: 2}
-  - {fileID: 11400000, guid: c865c1eb05648f74cad7497f8b4f56a3, type: 2}
-  - {fileID: 11400000, guid: 498ca5a087d4a2d46932385c5cbe9471, type: 2}
-  - {fileID: 11400000, guid: c68530162f346f949bf553faf1cb3bd3, type: 2}
-  - {fileID: 11400000, guid: f8d822f7bdfc1f74e810f6081d832056, type: 2}
+  inventory: {fileID: 3892560421472786224}
   faction: {fileID: 486002773267143999}
   weaponSwitchCooldown: 0.3
+  hotbar: {fileID: 0}
 --- !u!1 &3199527122523489616
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +252,8 @@ GameObject:
   - component: {fileID: 7561830155015542158}
   - component: {fileID: 486002773267143999}
   - component: {fileID: 4810788323307388863}
+  - component: {fileID: 3892560421472786224}
+  - component: {fileID: 8423703386290009606}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -433,3 +431,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   rb: {fileID: 3177103508206313642}
   speed: 5
+--- !u!114 &3892560421472786224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925947135481941363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c025132af26c96468383c4a6a3443d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
+  weapons:
+  - {fileID: 11400000, guid: c865c1eb05648f74cad7497f8b4f56a3, type: 2}
+  - {fileID: 11400000, guid: f8d822f7bdfc1f74e810f6081d832056, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &8423703386290009606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925947135481941363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f561feefa761bfc478cd5e4979df1461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPickupHandler
+  inventory: {fileID: 3892560421472786224}

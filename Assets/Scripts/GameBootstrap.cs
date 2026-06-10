@@ -7,6 +7,7 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private PlayerUI playerUI;
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private CameraController cameraController;
+    [SerializeField] private HotbarUI hotbarUI;
 
     private void Awake()
     {
@@ -22,5 +23,8 @@ public class GameBootstrap : MonoBehaviour
 
         if (cameraController != null)
             cameraController.Init(player.transform);
+
+        PlayerWeaponHandler weaponHandler = player.GetComponentInChildren<PlayerWeaponHandler>();
+        weaponHandler.SetHotbar(hotbarUI);
     }
 }
