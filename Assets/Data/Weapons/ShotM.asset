@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: Shotgun
   attack:
-    damage: -4
-    cooldown: 0.36
+    damage: 1
+    cooldown: 0.3
     effects: []
     pattern:
       rid: 3376038869781708872

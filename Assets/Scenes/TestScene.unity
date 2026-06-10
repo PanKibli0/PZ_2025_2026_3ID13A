@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 199862507}
   - component: {fileID: 199862509}
   - component: {fileID: 199862508}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1420,7 +1420,7 @@ GameObject:
   - component: {fileID: 652567160}
   - component: {fileID: 652567162}
   - component: {fileID: 652567161}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2029,7 +2029,7 @@ GameObject:
   - component: {fileID: 1186308021}
   - component: {fileID: 1186308023}
   - component: {fileID: 1186308022}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2540,7 +2540,7 @@ GameObject:
   - component: {fileID: 1575707030}
   - component: {fileID: 1575707032}
   - component: {fileID: 1575707031}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2729,7 +2729,7 @@ GameObject:
   - component: {fileID: 1641629638}
   - component: {fileID: 1641629640}
   - component: {fileID: 1641629639}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2969,7 +2969,7 @@ GameObject:
   - component: {fileID: 1676538176}
   - component: {fileID: 1676538178}
   - component: {fileID: 1676538177}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3330,7 +3330,7 @@ GameObject:
   - component: {fileID: 1900767252}
   - component: {fileID: 1900767254}
   - component: {fileID: 1900767253}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3484,7 +3484,7 @@ GameObject:
   - component: {fileID: 2075274213}
   - component: {fileID: 2075274215}
   - component: {fileID: 2075274214}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3686,7 +3686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6632140025226289923, guid: 1e18c35605a78844eaac31746b96470b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7252895782507491363, guid: 1e18c35605a78844eaac31746b96470b, type: 3}
       propertyPath: m_LocalPosition.x

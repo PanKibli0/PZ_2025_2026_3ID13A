@@ -175,4 +175,4 @@ MonoBehaviour:
     m_Bits: 512
   destroyOnLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 64

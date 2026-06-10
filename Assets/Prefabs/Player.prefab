@@ -446,7 +446,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 11400000, guid: c865c1eb05648f74cad7497f8b4f56a3, type: 2}
   - {fileID: 11400000, guid: f8d822f7bdfc1f74e810f6081d832056, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 596aa9a25effb1f4bb8f4777e274abed, type: 2}
   - {fileID: 0}
 --- !u!114 &8423703386290009606
 MonoBehaviour:
