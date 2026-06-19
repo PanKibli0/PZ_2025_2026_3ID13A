@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 4810788323307388863}
   - component: {fileID: 6408439620967196395}
   - component: {fileID: -7784083475154510566}
+  - component: {fileID: -7393875830137682149}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -435,6 +436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   rb: {fileID: 3177103508206313642}
   speed: 5
+  slipperyAcceleration: 9
+  slipperyDeceleration: 3
 --- !u!114 &6408439620967196395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,5 +463,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatusTest
   statusController: {fileID: 6408439620967196395}
+  blurController: {fileID: -7393875830137682149}
   health: {fileID: 6320375593858290250}
   movement: {fileID: 4810788323307388863}
+--- !u!114 &-7393875830137682149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925947135481941363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf4cbdd9778f7b545ba27615fcec1d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlurController

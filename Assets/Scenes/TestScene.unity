@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 98199392}
   - component: {fileID: 98199391}
   - component: {fileID: 98199394}
+  - component: {fileID: 98199395}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -256,6 +257,21 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &98199395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98199390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a7f966f98ba864c8c7087fb08cf624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlassesBlurModifier
+  blurMaterial: {fileID: 2100000, guid: 907eb55a16b5967429f371d752e9574f, type: 2}
+  maxBlurAmount: 0.005
+  transitionSpeed: 5
 --- !u!1 &180428146
 GameObject:
   m_ObjectHideFlags: 0

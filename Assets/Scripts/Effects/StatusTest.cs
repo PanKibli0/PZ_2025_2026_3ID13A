@@ -3,8 +3,16 @@ using UnityEngine;
 public class StatusTest : MonoBehaviour
 {
     [SerializeField] private PlayerStatusController statusController;
+    [SerializeField] private BlurController blurController;
     [SerializeField] private Health health;
     [SerializeField] private PlayerMovement movement;
+
+    private PlayerWeaponHandler weaponHandler;
+
+    private void Awake()
+    {
+        weaponHandler = GetComponentInChildren<PlayerWeaponHandler>();
+    }
 
     private void Update()
     {
@@ -48,6 +56,37 @@ public class StatusTest : MonoBehaviour
                     movement,
                     5f,
                     0.5f
+                )
+            );
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            statusController.AddEffect(
+                new SlipStatusEffect(
+                    movement,
+                    10f
+                )
+            );
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            statusController.AddEffect(
+                new LostGlassesStatusEffect(
+                    blurController,
+                    10f
+                )
+            );
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            statusController.AddEffect(
+                new BubbleStatusEffect(
+                    movement,
+                    weaponHandler,
+                    3f
                 )
             );
         }

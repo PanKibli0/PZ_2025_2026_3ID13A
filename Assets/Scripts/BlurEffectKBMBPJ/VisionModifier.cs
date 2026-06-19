@@ -1,25 +1,30 @@
 using UnityEngine;
 
 /// <summary>
-/// Abstrakcyjna klasa bazowa dla modyfikatorów efektów wizualnych kamery
+/// Abstrakcyjna klasa bazowa dla modyfikatorï¿½w efektï¿½w wizualnych kamery
 /// </summary>
 public abstract class VisionModifier : MonoBehaviour
 {
     /// <summary>
-    /// Okreœlenie czy dany efekt jest obecnie aktywny
+    /// Okreï¿½lenie czy dany efekt jest obecnie aktywny
     /// </summary>
     protected bool isEffectActive = false;
 
     /// <summary>
-    /// Prze³¹cza stan aktywnoœci modyfikatora na przeciwny
+    /// Przeï¿½ï¿½cza stan aktywnoï¿½ci modyfikatora na przeciwny
     /// </summary>
     public virtual void ToggleEffect()
     {
         isEffectActive = !isEffectActive;
     }
 
+        public void SetEffectActive(bool active)
+    {
+        isEffectActive = active;
+    }
+
     /// <summary>
-    /// Metoda odpowiedzialna za odœwie¿anie logiki i wygl¹du efektu w ka¿dej klatce
+    /// Metoda odpowiedzialna za odï¿½wieï¿½anie logiki i wyglï¿½du efektu w kaï¿½dej klatce
     /// </summary>
     protected abstract void UpdateVisuals();
 }
