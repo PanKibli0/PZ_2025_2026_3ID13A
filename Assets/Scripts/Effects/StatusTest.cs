@@ -90,5 +90,16 @@ public class StatusTest : MonoBehaviour
                 )
             );
         }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            statusController.AddEffect(
+                new BleedingStatusEffect(
+                    health,
+                    true,
+                    15f
+                )
+            );
+        }
     }
 }

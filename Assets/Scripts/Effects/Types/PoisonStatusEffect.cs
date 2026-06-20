@@ -6,6 +6,7 @@ public class PoisonStatusEffect : StatusEffect
 
     private float duration;
     private float tickTimer;
+
     private const float MaxDuration = 15f;
 
     public PoisonStatusEffect(Health health, float duration = 15f)
@@ -13,10 +14,10 @@ public class PoisonStatusEffect : StatusEffect
         this.health = health;
         this.duration = duration;
     }
-    
+
     public override void OnApply()
     {
-        health.takeDamage(1);
+        ApplyPoisonDamage();
         tickTimer = 1f;
     }
 
@@ -27,21 +28,33 @@ public class PoisonStatusEffect : StatusEffect
 
         if (tickTimer <= 0f)
         {
-            health.takeDamage(1);
+            ApplyPoisonDamage();
             tickTimer = 1f;
         }
 
         if (duration <= 0f)
+            Finished = true;
+    }
+
+    private void ApplyPoisonDamage()
+    {
+        if (health == null)
         {
             Finished = true;
+            return;
         }
+
+        if (health.getCurrentHealth() <= 1)
+            return;
+
+        health.takeDamage(1);
     }
 
     public override void OnExpire()
     {
     }
 
-        public override void Refresh()
+    public override void Refresh()
     {
         duration = MaxDuration;
     }
