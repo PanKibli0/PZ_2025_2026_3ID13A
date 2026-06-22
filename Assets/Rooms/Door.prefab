@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorController
   doorRenderer: {fileID: 5343805039614646027}
   doorCollider: {fileID: 7886608263054186656}
-  transitionTrigger: {fileID: 0}
+  transitionTrigger: {fileID: 473983825322951395}
   closedDoorColor: {r: 1, g: 0, b: 0, a: 1}
   openDoorColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &2393619341643448286
@@ -294,7 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2274893993651498045}
   m_Layer: 0
-  m_Name: DesiredSpawnPoint_LEFT
+  m_Name: DesiredSpawnPoint_RIGHT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 433921543084340351}
   m_Layer: 0
-  m_Name: DesiredSpawnPoint_RIGHT
+  m_Name: DesiredSpawnPoint_LEFT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
