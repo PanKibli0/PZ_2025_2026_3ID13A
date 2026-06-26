@@ -13,6 +13,8 @@ public class PlayerWeaponHandler : MonoBehaviour
     private float lastAttackTime;
     private float lastSwitchTime;
 
+    public bool CanAttack { get; set; } = true;
+
     private void Awake()
     {
         if (inventory == null)
@@ -38,6 +40,7 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     public void onAttack(InputAction.CallbackContext context)
     {
+        if (!CanAttack) return;
         if (!context.performed || currentWeapon == null) return;
         if (Time.time < lastAttackTime + currentWeapon.attack.cooldown) return;
 
