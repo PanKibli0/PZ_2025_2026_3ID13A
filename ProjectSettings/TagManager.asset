@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Room2x2
+  - Room1x1
   layers:
   - Default
   - TransparentFX
