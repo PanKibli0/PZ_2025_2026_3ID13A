@@ -639,6 +639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4721706887969418518}
+  - component: {fileID: 3167975289952468274}
   m_Layer: 0
   m_Name: SinkRoom
   m_TagString: Room2x2
@@ -665,6 +666,24 @@ Transform:
   - {fileID: 7854904478365379458}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3167975289952468274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4215981540328861796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb881f3612b1514aacd2ae5d2a59eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomController
+  roomSize: {x: 36, y: 20}
+  roomDoors:
+  - {fileID: 1098717211414388620}
+  - {fileID: 7571476338226003143}
+  enemySpawner: {fileID: 0}
+  lootPrefab: {fileID: 0}
 --- !u!1 &6011814002869170133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,7 +1295,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1682844706724586424}
   - component: {fileID: 5015098415815505727}
-  - component: {fileID: 7351230860465230879}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -1352,23 +1370,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 38.5, y: 20}
   m_EdgeRadius: 0
---- !u!114 &7351230860465230879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8476204136643181760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deb881f3612b1514aacd2ae5d2a59eee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoomController
-  roomDoors:
-  - {fileID: 1098717211414388620}
-  - {fileID: 7571476338226003143}
-  enemySpawner: {fileID: 0}
-  lootPrefab: {fileID: 0}
 --- !u!1 &8540016773342304872
 GameObject:
   m_ObjectHideFlags: 0

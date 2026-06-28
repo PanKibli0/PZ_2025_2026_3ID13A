@@ -148,7 +148,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3691650402740660074}
   - component: {fileID: 472195521024867303}
-  - component: {fileID: 9180369872184013555}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -221,23 +220,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 35.5, y: 18.5}
   m_EdgeRadius: 0
---- !u!114 &9180369872184013555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 733190227991245798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deb881f3612b1514aacd2ae5d2a59eee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoomController
-  roomDoors:
-  - {fileID: 1497065141017098518}
-  - {fileID: 8188977130808182276}
-  enemySpawner: {fileID: 0}
-  lootPrefab: {fileID: 0}
 --- !u!1 &1445907304852490944
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,6 +734,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3811872494222070605}
+  - component: {fileID: 377541725710366697}
   m_Layer: 0
   m_Name: InductionRoom
   m_TagString: Room2x2
@@ -778,6 +761,24 @@ Transform:
   - {fileID: 4349274102606400476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &377541725710366697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7847440225436499143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb881f3612b1514aacd2ae5d2a59eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomController
+  roomSize: {x: 36, y: 20}
+  roomDoors:
+  - {fileID: 1497065141017098518}
+  - {fileID: 8188977130808182276}
+  enemySpawner: {fileID: 0}
+  lootPrefab: {fileID: 0}
 --- !u!1001 &1844948247288024477
 PrefabInstance:
   m_ObjectHideFlags: 0
