@@ -7,12 +7,12 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private TMP_Text healthText;
     private Health playerHealth;
 
-    public void init(Health health)
+    public void Init(Health health)
     {
         if (playerHealth != null)
         {
-            playerHealth.OnHealthChanged -= updateHealthUI;
-            playerHealth.OnDeath -= onPlayerDeath;
+            playerHealth.OnHealthChanged -= UpdateHealthUI;
+            playerHealth.OnDeath -= OnPlayerDeath;
         }
 
         playerHealth = health;
@@ -20,29 +20,28 @@ public class PlayerUI : MonoBehaviour
         if (playerHealth == null)
             return;
 
-        playerHealth.OnHealthChanged += updateHealthUI;
-        playerHealth.OnDeath += onPlayerDeath;
+        playerHealth.OnHealthChanged += UpdateHealthUI;
+        playerHealth.OnDeath += OnPlayerDeath;
 
-        updateHealthUI(playerHealth.getCurrentHealth(), playerHealth.getMaxHealth());
+        UpdateHealthUI(playerHealth.currentHealth, playerHealth.maxHealth);
     }
 
-    private void updateHealthUI(int current, int max)
+    private void UpdateHealthUI(float current, int max)
     {
-        healthText.text = $"HP: {current} / {max}";
+        healthText.text = $"HP: {Mathf.RoundToInt(current)} / {max}";
     }
 
-    private void onPlayerDeath()
+    private void OnPlayerDeath()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // DEBUG
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnDestroy()
     {
         if (playerHealth != null)
         {
-            playerHealth.OnHealthChanged -= updateHealthUI;
-            playerHealth.OnDeath -= onPlayerDeath;
+            playerHealth.OnHealthChanged -= UpdateHealthUI;
+            playerHealth.OnDeath -= OnPlayerDeath;
         }
     }
 }
-    // TODO: DEATH LOGIC elsewhere

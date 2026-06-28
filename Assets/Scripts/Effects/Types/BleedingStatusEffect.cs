@@ -35,17 +35,17 @@ public class BleedingStatusEffect : StatusEffect
 
             if (isPlayer)
             {
-                health.takeDamage(5);
+                health.TakeDamage(5);
             }
             else
             {
                 int damage = Mathf.CeilToInt(
-                    health.getCurrentHealth() * 0.05f
+                    health.currentHealth * 0.05f
                 );
 
                 damage = Mathf.Max(1, damage);
 
-                health.takeDamage(damage);
+                health.TakeDamage(damage);
             }
         }
 

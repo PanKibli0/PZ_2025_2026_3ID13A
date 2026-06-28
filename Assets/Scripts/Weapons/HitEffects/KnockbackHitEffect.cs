@@ -12,6 +12,6 @@ public class KnockbackHitEffect : IHitEffect
         IKnockbackReceiver receiver = target.transform.root.GetComponent<IKnockbackReceiver>();
         if (receiver == null) return;
 
-        receiver.applyKnockback(context.direction * force);
+        receiver.ApplyKnockback(context.direction * force);
     }
 }

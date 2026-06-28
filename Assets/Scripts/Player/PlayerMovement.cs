@@ -10,22 +10,19 @@ public class PlayerMovement : MonoBehaviour, IKnockbackReceiver
     [SerializeField] private float slipperyDeceleration = 3f;
 
     private float speedMultiplier = 1f;
-
     private Vector2 moveDirection;
     private Vector2 slipperyVelocity;
-
     private float knockbackEndTime;
-
     private bool slipperyMovement;
 
     public bool CanMove { get; set; } = true;
 
-    public void onMove(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context)
     {
         moveDirection = context.ReadValue<Vector2>().normalized;
     }
 
-    public void applyKnockback(Vector2 force, float duration = 0.15f)
+    public void ApplyKnockback(Vector2 force, float duration = 0.15f)
     {
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(force, ForceMode2D.Impulse);
@@ -49,8 +46,7 @@ public class PlayerMovement : MonoBehaviour, IKnockbackReceiver
         }
         else
         {
-            Vector2 targetVelocity =
-                moveDirection * speed * speedMultiplier;
+            Vector2 targetVelocity = moveDirection * speed * speedMultiplier;
 
             if (moveDirection != Vector2.zero)
             {

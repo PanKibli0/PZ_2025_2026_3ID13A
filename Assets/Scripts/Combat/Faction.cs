@@ -1,4 +1,4 @@
-using UnityEngine;
+using System;
 
 public enum FactionType
 {
@@ -7,19 +7,20 @@ public enum FactionType
     Neutral
 }
 
-public class Faction : MonoBehaviour
+[Serializable]
+public class Faction
 {
     public FactionType factionType;
 
-    public bool isAlly(Faction other)
+    public bool IsAlly(Faction other)
     {
         if (other == null) return false;
         return factionType == other.factionType;
     }
 
-    public bool isEnemy(Faction other)
+    public bool IsEnemy(Faction other)
     {
-        if (other == null) return false;        
+        if (other == null) return false;
         return factionType != other.factionType;
     }
 }

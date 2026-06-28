@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
 
     private HitContext hitContext;
 
-    public void setup(float speed, Vector2 direction, float lifetime, HitContext context)
+    public void Setup(float speed, Vector2 direction, float lifetime, HitContext context)
     {
         rb.linearVelocity = direction.normalized * speed;
         hitContext = context;
@@ -27,9 +27,9 @@ public class Projectile : MonoBehaviour
 
         if ((hurtboxLayer & (1 << layer)) == 0) return;
         if (!other.TryGetComponent(out Hurtbox hurtbox)) return;
-        if (hurtbox.getFaction().factionType == hitContext.attackerFaction.factionType) return;
+        if (hurtbox.GetFaction().factionType == hitContext.attackerFaction.factionType) return;
 
-        hurtbox.receiveHit(hitContext);
+        hurtbox.ReceiveHit(hitContext);
         Destroy(gameObject);
     }
 }

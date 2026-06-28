@@ -2,30 +2,26 @@ using UnityEngine;
 
 public class Hurtbox : MonoBehaviour
 {
-    [SerializeField] private Health health;
-    [SerializeField] private Faction faction;
+    [SerializeField] private Unit unit;
     [SerializeField] private float invulnerabilityTime = 0.5f;
 
     private float lastHitTime = -999f;
 
-    public Faction getFaction()
+    public Faction GetFaction()
     {
-        return faction;
+        return unit.faction;
     }
 
-    public void receiveHit(HitContext context)
+    public void ReceiveHit(HitContext context)
     {
         if (Time.time - lastHitTime < invulnerabilityTime) return;
+        if (!context.attackerFaction.IsEnemy(unit.faction)) return;
 
-        if (context.attackerFaction != null && context.attackerFaction.isEnemy(faction))
-        {
-            if (health != null && context.damage > 0)
-                health.takeDamage(context.damage);
+        if (context.damage > 0)
+            unit.health.TakeDamage(context.damage);
 
-            foreach (var effect in context.effects)
-                if (effect != null)
-                    effect.apply(gameObject, context);
-        }
+        foreach (var effect in context.effects)
+            effect?.apply(gameObject, context);
 
         lastHitTime = Time.time;
     }

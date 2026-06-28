@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class EnemyMovementHandler : MonoBehaviour, IKnockbackReceiver
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Health health;
+    [SerializeField] private EnemyUnit unit;
     [SerializeField] private List<MovementPhase> phases;
 
     private IEnemyMove currentMove;
@@ -12,14 +12,14 @@ public class EnemyMovementHandler : MonoBehaviour, IKnockbackReceiver
     private Transform player;
     private float knockbackEndTime;
 
-    public void applyKnockback(Vector2 force, float duration = 0.15f)
+    public void ApplyKnockback(Vector2 force, float duration = 0.15f)
     {
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(force, ForceMode2D.Impulse);
         knockbackEndTime = Time.time + duration;
     }
 
-    public void init(List<MovementPhase> movementPhases, Transform playerTransform)
+    public void Init(List<MovementPhase> movementPhases, Transform playerTransform)
     {
         phases = movementPhases;
         player = playerTransform;
@@ -33,8 +33,7 @@ public class EnemyMovementHandler : MonoBehaviour, IKnockbackReceiver
 
         foreach (var phase in phases)
         {
-            bool met = phase.condition == null || phase.condition.isMet(gameObject, player, health);
-            if (met)
+            if (phase.condition == null || phase.condition.isMet(gameObject, player, unit.health))
             {
                 activePhase = phase;
                 break;

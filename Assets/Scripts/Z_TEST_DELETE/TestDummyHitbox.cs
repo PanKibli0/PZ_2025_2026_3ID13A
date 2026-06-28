@@ -9,6 +9,6 @@ public class TestDummyHitbox : MonoBehaviour
     private void Start()
     {
         HitContext context = new HitContext(gameObject, ownerFaction, Vector2.zero, Vector2.zero, damage);
-        hitbox.activate(context);
+        hitbox.Activate(context);
     }
 }

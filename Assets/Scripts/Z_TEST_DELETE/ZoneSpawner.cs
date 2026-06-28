@@ -21,21 +21,21 @@ public class ZoneSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        EventBus.OnAllEnemiesDefeated += onZoneCleared;
+        EventBus.OnAllEnemiesDefeated += OnZoneCleared;
     }
 
     private void OnDisable()
     {
-        EventBus.OnAllEnemiesDefeated -= onZoneCleared;
+        EventBus.OnAllEnemiesDefeated -= OnZoneCleared;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!isActive) return;
-        activateZone();
+        ActivateZone();
     }
 
-    private void activateZone()
+    private void ActivateZone()
     {
         isActive = false;
 
@@ -59,10 +59,10 @@ public class ZoneSpawner : MonoBehaviour
                 selectedEnemies.Add(new EnemySpawnEntry { enemyData = data, count = 1 });
         }
 
-        enemySpawner.spawnEnemies(selectedEnemies);
+        enemySpawner.SpawnEnemies(selectedEnemies);
     }
 
-    private void onZoneCleared()
+    private void OnZoneCleared()
     {
         isActive = true;
 

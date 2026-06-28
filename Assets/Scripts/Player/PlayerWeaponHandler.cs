@@ -4,10 +4,9 @@ using UnityEngine.InputSystem;
 public class PlayerWeaponHandler : MonoBehaviour
 {
     [SerializeField] private PlayerInventory inventory;
-    [SerializeField] private Faction faction;
+    [SerializeField] private PlayerUnit unit;
     [SerializeField] private float weaponSwitchCooldown = 0.3f;
     [SerializeField] private HotbarUI hotbar;
-
 
     private WeaponData currentWeapon;
     private float lastAttackTime;
@@ -24,41 +23,41 @@ public class PlayerWeaponHandler : MonoBehaviour
         }
 
         if (inventory.GetWeapon(0) != null)
-            switchWeapon(0);
+            SwitchWeapon(0);
     }
 
     // DEBUG - OLD INPUT
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) switchWeapon(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) switchWeapon(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) switchWeapon(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) switchWeapon(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) switchWeapon(4);
+        if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchWeapon(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchWeapon(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) SwitchWeapon(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) SwitchWeapon(3);
+        if (Input.GetKeyDown(KeyCode.Alpha5)) SwitchWeapon(4);
     }
     // END DEBUG
 
-    public void onAttack(InputAction.CallbackContext context)
+    public void OnAttack(InputAction.CallbackContext context)
     {
         if (!CanAttack) return;
         if (!context.performed || currentWeapon == null) return;
         if (Time.time < lastAttackTime + currentWeapon.attack.cooldown) return;
 
-        Vector2 aimDirection = getAimDirection();
+        Vector2 aimDirection = GetAimDirection();
         Vector2 origin = (Vector2)transform.position + aimDirection * currentWeapon.attackOffset;
 
-        HitContext hitContext = currentWeapon.attack.createContext(gameObject, faction, origin, aimDirection);
-        currentWeapon.attack.execute(hitContext);
+        HitContext hitContext = currentWeapon.attack.CreateContext(gameObject, unit.faction, origin, aimDirection);
+        currentWeapon.attack.Execute(hitContext);
         lastAttackTime = Time.time;
     }
 
-    private Vector2 getAimDirection()
+    private Vector2 GetAimDirection()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         return (mousePos - (Vector2)transform.position).normalized;
     }
 
-    public void switchWeapon(int index)
+    public void SwitchWeapon(int index)
     {
         if (Time.time < lastSwitchTime + weaponSwitchCooldown)
             return;

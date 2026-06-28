@@ -8,16 +8,15 @@ public class StabPattern : AttackPattern
     [SerializeField] private float width = 0.5f;
     [SerializeField] private float activeTime = 0.15f;
 
-    public override void execute(HitContext context)
+    public override void Execute(HitContext context)
     {
         Vector2 spawnPos = context.origin + context.direction * (range * 0.5f);
 
         GameObject obj = Object.Instantiate(hitboxPrefab, spawnPos, Quaternion.identity);
         obj.transform.up = context.direction;
         obj.transform.localScale = new Vector3(width, range, 1f);
-        
-        obj.GetComponent<Hitbox>().activate(context);
 
+        obj.GetComponent<Hitbox>().Activate(context);
         Object.Destroy(obj, activeTime);
     }
 }

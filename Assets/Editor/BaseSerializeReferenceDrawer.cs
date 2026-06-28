@@ -1,59 +1,76 @@
 using UnityEngine;
 using UnityEditor;
 using System;
+using System.Linq;
+using System.Reflection;
 
 public abstract class BaseSerializeReferenceDrawer : PropertyDrawer
 {
-    protected abstract Type[] getTypes();
+    protected virtual bool IsValidType(Type type) => true;
 
-    private string[] typeNames;
+    private Type[] cachedTypes;
+    private string[] cachedTypeNames;
 
-    private string[] getTypeNames()
+    private Type[] GetTypes()
     {
-        if (typeNames == null)
-        {
-            Type[] types = getTypes();
-            typeNames = new string[types.Length];
-            for (int i = 0; i < types.Length; i++)
-                typeNames[i] = types[i].Name;
-        }
-        return typeNames;
+        if (cachedTypes != null) return cachedTypes;
+
+        Type baseType = fieldInfo.FieldType;
+
+        cachedTypes = AppDomain.CurrentDomain.GetAssemblies()
+            .SelectMany(a =>
+            {
+                try { return a.GetTypes(); }
+                catch { return Array.Empty<Type>(); }
+            })
+            .Where(t =>
+                !t.IsAbstract &&
+                !t.IsInterface &&
+                !t.IsGenericTypeDefinition &&
+                baseType.IsAssignableFrom(t) &&
+                t != baseType &&
+                t.GetConstructor(Type.EmptyTypes) != null &&
+                IsValidType(t))
+            .OrderBy(t => t.Name)
+            .ToArray();
+
+        return cachedTypes;
+    }
+
+    private string[] GetTypeNames()
+    {
+        if (cachedTypeNames != null) return cachedTypeNames;
+        cachedTypeNames = GetTypes().Select(t => t.Name).ToArray();
+        return cachedTypeNames;
     }
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        Type[] types = getTypes();
-        string[] typeNames = getTypeNames();
+        Type[] types = GetTypes();
+        string[] typeNames = GetTypeNames();
 
         Type currentType = property.managedReferenceValue?.GetType();
-        int selectedIndex = -1;
+        int selectedIndex = currentType != null ? Array.IndexOf(types, currentType) : -1;
 
-        if (currentType != null)
-        {
-            for (int i = 0; i < types.Length; i++)
-            {
-                if (types[i] == currentType)
-                {
-                    selectedIndex = i;
-                    break;
-                }
-            }
-        }
+        string[] displayNames = new string[] { "-- None --" }.Concat(typeNames).ToArray();
+        int displayIndex = selectedIndex + 1;
 
         Rect popupRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
-        int newIndex = EditorGUI.Popup(popupRect, label.text, selectedIndex, typeNames);
+        int newDisplayIndex = EditorGUI.Popup(popupRect, label.text, displayIndex, displayNames);
 
-        if (newIndex != selectedIndex && newIndex >= 0)
+        if (newDisplayIndex != displayIndex)
         {
-            property.managedReferenceValue = Activator.CreateInstance(types[newIndex]);
+            property.managedReferenceValue = newDisplayIndex == 0
+                ? null
+                : Activator.CreateInstance(types[newDisplayIndex - 1]);
             property.serializedObject.ApplyModifiedProperties();
         }
 
         if (property.managedReferenceValue != null)
         {
             EditorGUI.indentLevel++;
-            float height = EditorGUI.GetPropertyHeight(property, true);
-            Rect childRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + 2, position.width, height);
+            float childHeight = EditorGUI.GetPropertyHeight(property, true);
+            Rect childRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + 2, position.width, childHeight);
             EditorGUI.PropertyField(childRect, property, GUIContent.none, true);
             EditorGUI.indentLevel--;
         }
@@ -62,9 +79,8 @@ public abstract class BaseSerializeReferenceDrawer : PropertyDrawer
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         if (property.managedReferenceValue != null)
-        {
             return EditorGUI.GetPropertyHeight(property, true) + EditorGUIUtility.singleLineHeight + 4;
-        }
+
         return EditorGUIUtility.singleLineHeight;
     }
 }

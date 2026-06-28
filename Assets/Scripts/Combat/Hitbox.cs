@@ -6,7 +6,7 @@ public class Hitbox : MonoBehaviour
 
     private HitContext hitContext;
 
-    public void activate(HitContext context)
+    public void Activate(HitContext context)
     {
         hitContext = context;
         hitboxCollider.enabled = true;
@@ -15,6 +15,6 @@ public class Hitbox : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent(out Hurtbox hurtbox))
-            hurtbox.receiveHit(hitContext);
+            hurtbox.ReceiveHit(hitContext);
     }
 }

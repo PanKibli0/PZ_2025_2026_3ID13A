@@ -9,37 +9,35 @@ public class EnemySpawner : MonoBehaviour
     private Transform player;
     private int activeEnemies;
 
-    public void init(Transform playerTransform)
+    public void Init(Transform playerTransform)
     {
         player = playerTransform;
     }
 
-    public void spawnEnemies(List<EnemySpawnEntry> enemiesToSpawn)
+    public void SpawnEnemies(List<EnemySpawnEntry> enemiesToSpawn)
     {
         foreach (var entry in enemiesToSpawn)
         {
             for (int i = 0; i < entry.count; i++)
             {
                 Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
-                spawnEnemy(entry.enemyData, spawnPoint.position);
+                SpawnEnemy(entry.enemyData, spawnPoint.position);
             }
         }
     }
 
-    private void spawnEnemy(EnemyData data, Vector2 position)
+    private void SpawnEnemy(EnemyData data, Vector2 position)
     {
         GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
         EnemySetup setup = enemy.GetComponent<EnemySetup>();
-        setup.init(data, player, this);
+        setup.Init(data, player, this);
         activeEnemies++;
     }
 
-    public void onEnemyDeath()
+    public void OnEnemyDeath()
     {
         activeEnemies--;
         if (activeEnemies == 0)
-        {
             EventBus.publishAllEnemiesDefeated();
-        }
     }
 }

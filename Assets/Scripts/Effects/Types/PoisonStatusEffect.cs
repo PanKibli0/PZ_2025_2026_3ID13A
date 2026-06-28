@@ -44,10 +44,10 @@ public class PoisonStatusEffect : StatusEffect
             return;
         }
 
-        if (health.getCurrentHealth() <= 1)
+        if (health.currentHealth <= 1)
             return;
 
-        health.takeDamage(1);
+        health.TakeDamage(1);
     }
 
     public override void OnExpire()
