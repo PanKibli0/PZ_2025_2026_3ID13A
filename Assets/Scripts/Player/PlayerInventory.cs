@@ -4,6 +4,9 @@ public class PlayerInventory : MonoBehaviour
 {
     public WeaponData[] weapons = new WeaponData[9];
 
+    public int coins = 0;
+
+
     public bool AddWeapon(WeaponData weapon)
     {
         for (int i = 0; i < weapons.Length; i++)
