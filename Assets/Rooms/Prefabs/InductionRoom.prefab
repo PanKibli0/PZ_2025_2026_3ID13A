@@ -235,8 +235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomController
   roomDoors:
   - {fileID: 1497065141017098518}
-  enemyPrefabsToSpawn: []
-  spawnPoints: []
+  - {fileID: 8188977130808182276}
+  enemySpawner: {fileID: 0}
   lootPrefab: {fileID: 0}
 --- !u!1 &1445907304852490944
 GameObject:
@@ -848,6 +848,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5009004801218532133, guid: 27da759128ecb6e4caca8c258cadf317, type: 3}
   m_PrefabInstance: {fileID: 1844948247288024477}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8188977130808182276 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7511870002988551065, guid: 27da759128ecb6e4caca8c258cadf317, type: 3}
+  m_PrefabInstance: {fileID: 1844948247288024477}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f23b00082b06684d8203957d3de00c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
 --- !u!1001 &9005265383589556879
 PrefabInstance:
   m_ObjectHideFlags: 0

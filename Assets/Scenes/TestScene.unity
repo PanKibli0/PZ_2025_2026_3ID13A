@@ -933,6 +933,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 866807116}
   playerUI: {fileID: 310472301}
   enemySpawner: {fileID: 180428147}
+  cameraController: {fileID: 0}
+  hotbarUI: {fileID: 0}
 --- !u!1 &989554445
 GameObject:
   m_ObjectHideFlags: 0

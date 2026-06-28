@@ -581,6 +581,10 @@ PrefabInstance:
       propertyPath: targetTransitionPoint
       value: 
       objectReference: {fileID: 1568114023}
+    - target: {fileID: 4235823740719023916, guid: 3a9fe3775c6c9d94e8cc7bbb03178904, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7202885182811499487, guid: 3a9fe3775c6c9d94e8cc7bbb03178904, type: 3}
       propertyPath: targetTransitionPoint
       value: 
