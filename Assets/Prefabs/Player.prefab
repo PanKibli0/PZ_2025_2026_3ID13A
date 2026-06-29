@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd42a6a7046f23e40b2ea604dba7ec08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeaponHandler
-  inventory: {fileID: 0}
-  unit: {fileID: 0}
+  inventory: {fileID: 3015725469449887093}
+  unit: {fileID: 3765935192943742171}
   weaponSwitchCooldown: 0.3
   hotbar: {fileID: 0}
 --- !u!114 &3015725469449887093
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60cc5a445865d340b09d2746e630de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hurtbox
-  unit: {fileID: 8735152952258547798}
+  unit: {fileID: 3765935192943742171}
   invulnerabilityTime: 0.5
 --- !u!1 &3295122687698916183
 GameObject:
@@ -173,9 +173,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2902931925227186560}
-  - component: {fileID: 6487895726397966260}
-  - component: {fileID: 998448497601448204}
   - component: {fileID: 5550254906933484829}
+  - component: {fileID: 3548352785922669265}
   m_Layer: 0
   m_Name: Status
   m_TagString: Untagged
@@ -198,33 +197,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5678984806363570528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6487895726397966260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3295122687698916183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4af0f45078fa8ff46a84b481f9175c45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatusController
---- !u!114 &998448497601448204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3295122687698916183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b5e4f7ac1592d4bb9b8a710d17b908, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StatusTest
-  statusController: {fileID: 6487895726397966260}
-  blurController: {fileID: 5550254906933484829}
-  movement: {fileID: 2305639397184129601}
 --- !u!114 &5550254906933484829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +209,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf4cbdd9778f7b545ba27615fcec1d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlurController
+--- !u!114 &3548352785922669265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295122687698916183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7c999f30a0d3f4f85d2188f2a8677e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectController
 --- !u!1 &3895616882807596121
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,8 +324,9 @@ GameObject:
   - component: {fileID: 3177103508206313642}
   - component: {fileID: 8485685367944062235}
   - component: {fileID: 7561830155015542158}
-  - component: {fileID: 8735152952258547798}
-  - component: {fileID: 5194982098665622493}
+  - component: {fileID: 3765935192943742171}
+  - component: {fileID: 718035817565977126}
+  - component: {fileID: 673602155233162668}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -459,9 +444,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8079941514207843892}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: onMove
+        m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -477,7 +462,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1299245395712581986}
         m_TargetAssemblyTypeName: PlayerWeaponHandler, Assembly-CSharp
-        m_MethodName: onAttack
+        m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -494,7 +479,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &8735152952258547798
+--- !u!114 &3765935192943742171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -508,7 +493,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUnit
   faction:
     factionType: 0
---- !u!114 &5194982098665622493
+  statusEffects: {fileID: 3548352785922669265}
+  blurController: {fileID: 5550254906933484829}
+--- !u!114 &718035817565977126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -520,8 +507,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57004b394625d8442a3931533c88c668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSetup
-  unit: {fileID: 8735152952258547798}
+  unit: {fileID: 3765935192943742171}
   data: {fileID: 11400000, guid: 3edd65d0ce07c69449f11a77026f6f97, type: 2}
+  playerMovement: {fileID: 8079941514207843892}
+  weaponHandler: {fileID: 1299245395712581986}
+--- !u!114 &673602155233162668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925947135481941363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7f0fb10dc217b4e979bd8e19ff8fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugStatusApplicator
+  unit: {fileID: 3765935192943742171}
+  blurController: {fileID: 5550254906933484829}
 --- !u!1 &9190526296735228094
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +534,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2710525093798624251}
-  - component: {fileID: 2305639397184129601}
+  - component: {fileID: 8079941514207843892}
   m_Layer: 0
   m_Name: Movement
   m_TagString: Untagged
@@ -554,7 +557,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5678984806363570528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2305639397184129601
+--- !u!114 &8079941514207843892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -563,7 +566,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9190526296735228094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ef4b46fc2350984c9ce0f8781027de4, type: 3}
+  m_Script: {fileID: 11500000, guid: f95af1835931ef7478519fdb9019329c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   rb: {fileID: 3177103508206313642}

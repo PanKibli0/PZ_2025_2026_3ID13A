@@ -1,37 +1,30 @@
-using UnityEngine;
-
 public class SlipStatusEffect : StatusEffect
 {
-    private readonly PlayerMovement movement;
-
+    private readonly IMoveHandler moveHandler;
     private float duration;
     private readonly float maxDuration;
 
-    public SlipStatusEffect(
-        PlayerMovement movement,
-        float duration)
+    public SlipStatusEffect(IMoveHandler moveHandler, float duration)
     {
-        this.movement = movement;
+        this.moveHandler = moveHandler;
         this.duration = duration;
-        maxDuration = duration;
+        this.maxDuration = duration;
     }
 
     public override void OnApply()
     {
-        movement.SetSlipperyMovement(true);
+        moveHandler.SetSlipperyMovement(true);
     }
 
     public override void Tick(float deltaTime)
     {
         duration -= deltaTime;
-
-        if (duration <= 0f)
-            Finished = true;
+        if (duration <= 0f) Finished = true;
     }
 
     public override void OnExpire()
     {
-        movement.SetSlipperyMovement(false);
+        moveHandler.SetSlipperyMovement(false);
     }
 
     public override void Refresh()

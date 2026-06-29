@@ -4,6 +4,10 @@ public abstract class Unit : MonoBehaviour
 {
     public Health health = new Health();
     public Faction faction = new Faction();
+    public IMoveHandler moveHandler;
+    public IAttackHandler attackHandler;
+    public StatusEffectController statusEffects;
+    public BlurController blurController;
 
     protected virtual void Awake()
     {

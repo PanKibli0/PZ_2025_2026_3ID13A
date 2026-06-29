@@ -2,26 +2,23 @@ using UnityEngine;
 
 public class BubbleStatusEffect : StatusEffect
 {
-    private readonly PlayerMovement movement;
-    private readonly PlayerWeaponHandler weaponHandler;
+    private readonly IMoveHandler moveHandler;
+    private readonly IAttackHandler attackHandler;
 
     private float timer;
     private readonly float duration;
 
-    public BubbleStatusEffect(
-        PlayerMovement movement,
-        PlayerWeaponHandler weaponHandler,
-        float duration)
+    public BubbleStatusEffect(IMoveHandler moveHandler, IAttackHandler attackHandler, float duration)
     {
-        this.movement = movement;
-        this.weaponHandler = weaponHandler;
+        this.moveHandler = moveHandler;
+        this.attackHandler = attackHandler;
         this.duration = duration;
     }
 
     public override void OnApply()
     {
-        movement.CanMove = false;
-        weaponHandler.CanAttack = false;
+        if (moveHandler != null) moveHandler.CanMove = false;
+        if (attackHandler != null) attackHandler.CanAttack = false;
     }
 
     public override void Tick(float deltaTime)
@@ -34,8 +31,8 @@ public class BubbleStatusEffect : StatusEffect
 
     public override void OnExpire()
     {
-        movement.CanMove = true;
-        weaponHandler.CanAttack = true;
+        if (moveHandler != null) moveHandler.CanMove = true;
+        if (attackHandler != null) attackHandler.CanAttack = true;
     }
 
     public override void Refresh()

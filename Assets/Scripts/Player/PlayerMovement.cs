@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour, IKnockbackReceiver
+public class PlayerMovement : MonoBehaviour, IMoveHandler
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed = 5f;

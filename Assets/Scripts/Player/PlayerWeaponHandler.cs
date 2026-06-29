@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerWeaponHandler : MonoBehaviour
+public class PlayerWeaponHandler : MonoBehaviour, IAttackHandler
 {
     [SerializeField] private PlayerInventory inventory;
     [SerializeField] private PlayerUnit unit;

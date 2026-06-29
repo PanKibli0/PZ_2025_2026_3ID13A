@@ -6,7 +6,6 @@ public abstract class StatusEffect
     public abstract void Tick(float deltaTime);
     public abstract void OnExpire();
 
-    public virtual void Refresh()
-    {
-    }
+    public virtual void Refresh() { }
+    
 }

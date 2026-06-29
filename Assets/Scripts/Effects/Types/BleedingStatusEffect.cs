@@ -1,23 +1,16 @@
-using UnityEngine;
-
 public class BleedingStatusEffect : StatusEffect
 {
     private readonly Health health;
-    private readonly bool isPlayer;
-
     private float timer;
     private float tickTimer;
-
     private readonly float duration;
+    private readonly int damagePerTick;
 
-    public BleedingStatusEffect(
-        Health health,
-        bool isPlayer,
-        float duration = 15f)
+    public BleedingStatusEffect(Health health, float duration = 15f, int damagePerTick = 5)
     {
         this.health = health;
-        this.isPlayer = isPlayer;
         this.duration = duration;
+        this.damagePerTick = damagePerTick;
     }
 
     public override void OnApply()
@@ -32,21 +25,7 @@ public class BleedingStatusEffect : StatusEffect
         if (tickTimer >= 1f)
         {
             tickTimer = 0f;
-
-            if (isPlayer)
-            {
-                health.TakeDamage(5);
-            }
-            else
-            {
-                int damage = Mathf.CeilToInt(
-                    health.currentHealth * 0.05f
-                );
-
-                damage = Mathf.Max(1, damage);
-
-                health.TakeDamage(damage);
-            }
+            health.TakeDamage(damagePerTick);
         }
 
         if (timer >= duration)

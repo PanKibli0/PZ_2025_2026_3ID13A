@@ -1,16 +1,10 @@
 using UnityEngine;
 
-public class IMovable : MonoBehaviour
+public interface IMoveHandler
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    bool CanMove { get; set; }
+    void SetSpeedMultiplier(float multiplier);
+    float GetSpeedMultiplier();
+    void SetSlipperyMovement(bool value);
+    void ApplyKnockback(Vector2 force, float duration);
 }

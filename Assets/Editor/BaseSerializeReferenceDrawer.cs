@@ -3,6 +3,7 @@ using UnityEditor;
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Collections.Generic;
 
 public abstract class BaseSerializeReferenceDrawer : PropertyDrawer
 {
@@ -14,8 +15,10 @@ public abstract class BaseSerializeReferenceDrawer : PropertyDrawer
     private Type[] GetTypes()
     {
         if (cachedTypes != null) return cachedTypes;
-
         Type baseType = fieldInfo.FieldType;
+
+        if (baseType.IsGenericType && baseType.GetGenericTypeDefinition() == typeof(List<>))
+            baseType = baseType.GetGenericArguments()[0];
 
         cachedTypes = AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(a =>
@@ -33,7 +36,6 @@ public abstract class BaseSerializeReferenceDrawer : PropertyDrawer
                 IsValidType(t))
             .OrderBy(t => t.Name)
             .ToArray();
-
         return cachedTypes;
     }
 

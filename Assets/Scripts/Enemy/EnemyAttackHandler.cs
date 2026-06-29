@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class EnemyAttackHandler : MonoBehaviour
+public class EnemyAttackHandler : MonoBehaviour, IAttackHandler
 {
     [SerializeField] private List<AttackPhase> phases;
     [SerializeField] private float phaseChangeCooldown = 0.3f;
@@ -12,6 +12,8 @@ public class EnemyAttackHandler : MonoBehaviour
     private AttackPhase currentPhase;
     private float lastPhaseChangeTime;
 
+    public bool CanAttack { get; set; } = true;
+
     public void Init(List<AttackPhase> attackPhases, Transform playerTransform)
     {
         phases = attackPhases;
@@ -21,6 +23,7 @@ public class EnemyAttackHandler : MonoBehaviour
 
     private void Update()
     {
+        if (!CanAttack) return;
         if (player == null) return;
 
         AttackPhase newPhase = SelectPhase();
@@ -31,7 +34,7 @@ public class EnemyAttackHandler : MonoBehaviour
             lastPhaseChangeTime = Time.time;
         }
 
-        if (currentPhase != null && CanAttack(currentPhase.attack))
+        if (currentPhase != null && CanExecuteAttack(currentPhase.attack))
             ExecuteAttack(currentPhase.attack);
     }
 
@@ -63,7 +66,7 @@ public class EnemyAttackHandler : MonoBehaviour
         return validPhases[0];
     }
 
-    private bool CanAttack(AttackData attack)
+    private bool CanExecuteAttack(AttackData attack)
     {
         if (!lastAttackTimes.ContainsKey(attack)) return true;
         return Time.time >= lastAttackTimes[attack] + attack.cooldown;

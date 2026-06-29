@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class EnemyMovementHandler : MonoBehaviour, IKnockbackReceiver
+public class EnemyMovementHandler : MonoBehaviour, IMoveHandler
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private EnemyUnit unit;
@@ -11,6 +11,27 @@ public class EnemyMovementHandler : MonoBehaviour, IKnockbackReceiver
     private float currentSpeed;
     private Transform player;
     private float knockbackEndTime;
+    private float speedMultiplier = 1f;
+    private bool slipperyMovement;
+    private Vector2 slipperyVelocity;
+
+    public bool CanMove { get; set; } = true;
+
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = Mathf.Max(0f, multiplier);
+    }
+
+    public float GetSpeedMultiplier()
+    {
+        return speedMultiplier;
+    }
+
+    public void SetSlipperyMovement(bool value)
+    {
+        slipperyMovement = value;
+        if (!value) slipperyVelocity = Vector2.zero;
+    }
 
     public void ApplyKnockback(Vector2 force, float duration = 0.15f)
     {
@@ -66,9 +87,32 @@ public class EnemyMovementHandler : MonoBehaviour, IKnockbackReceiver
     private void FixedUpdate()
     {
         if (Time.time < knockbackEndTime) return;
+
+        if (!CanMove)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         if (currentMove == null) return;
 
         Vector2 direction = currentMove.getMovement(rb.position, Time.fixedDeltaTime, currentSpeed);
-        rb.linearVelocity = direction * currentSpeed;
+        float effectiveSpeed = currentSpeed * speedMultiplier;
+
+        if (!slipperyMovement)
+        {
+            rb.linearVelocity = direction * effectiveSpeed;
+        }
+        else
+        {
+            Vector2 target = direction * effectiveSpeed;
+
+            if (direction != Vector2.zero)
+                slipperyVelocity = Vector2.MoveTowards(slipperyVelocity, target, 9f * Time.fixedDeltaTime);
+            else
+                slipperyVelocity = Vector2.MoveTowards(slipperyVelocity, Vector2.zero, 3f * Time.fixedDeltaTime);
+
+            rb.linearVelocity = slipperyVelocity;
+        }
     }
 }

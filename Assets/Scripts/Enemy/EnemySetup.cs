@@ -12,6 +12,8 @@ public class EnemySetup : MonoBehaviour
         unit.faction.factionType = FactionType.Enemy;
         unit.health.Init(data.maxHealth);
         unit.health.OnDeath += spawner.OnEnemyDeath;
+        unit.moveHandler = movementHandler;
+        unit.attackHandler = attackHandler;
 
         if (visualRenderer != null)
             visualRenderer.color = data.enemyColor;
