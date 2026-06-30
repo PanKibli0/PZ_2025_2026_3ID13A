@@ -21,7 +21,9 @@ MonoBehaviour:
     - rid: 2694950951516110922
     pattern:
       rid: 3376038869781708871
-  attackOffset: 0
+  attackOffset: 3
+  weaponSprite: {fileID: -1985112653045239830, guid: 3a2ae3f2ea201de4f90ed4396469910f, type: 3}
+  targetSize: {x: 4, y: 1}
   references:
     version: 2
     RefIds:
@@ -40,3 +42,5 @@ MonoBehaviour:
         projectilePrefab: {fileID: 7711275517128807682, guid: b1aa2a35d4f32614cb3afc99e1a2612e, type: 3}
         speed: 10
         lifetime: 5
+        projectileSprite: {fileID: -6596498788441845813, guid: 61b0502af5e26f64785b75a75fb90c8a, type: 3}
+        projectileSize: {x: 3, y: 1}

@@ -1,22 +1,33 @@
 using UnityEngine;
+using System.Collections;
 
 [System.Serializable]
 public class StabPattern : AttackPattern
 {
-    [SerializeField] private GameObject hitboxPrefab;
-    [SerializeField] private float range = 2f;
-    [SerializeField] private float width = 0.5f;
+    [SerializeField] private float forwardDistance = 2f;
     [SerializeField] private float activeTime = 0.15f;
 
     public override void Execute(HitContext context)
     {
-        Vector2 spawnPos = context.origin + context.direction * (range * 0.5f);
+        Hitbox hitbox = context.attacker.meleeHitbox;
+        hitbox.StartCoroutine(StabRoutine(hitbox, context));
+    }
 
-        GameObject obj = Object.Instantiate(hitboxPrefab, spawnPos, Quaternion.identity);
-        obj.transform.up = context.direction;
-        obj.transform.localScale = new Vector3(width, range, 1f);
+    private IEnumerator StabRoutine(Hitbox hitbox, HitContext context)
+    {
+        Vector3 localDirection = hitbox.transform.parent.InverseTransformDirection(context.direction);
+        hitbox.ActivateFor(context, activeTime);
 
-        obj.GetComponent<Hitbox>().Activate(context);
-        Object.Destroy(obj, activeTime);
+        float elapsed = 0f;
+        while (elapsed < activeTime)
+        {
+            elapsed += Time.deltaTime;
+            float progress = Mathf.Clamp01(elapsed / activeTime);
+            float offset = progress * forwardDistance;
+
+            hitbox.transform.localPosition = localDirection * offset;
+
+            yield return null;
+        }
     }
 }

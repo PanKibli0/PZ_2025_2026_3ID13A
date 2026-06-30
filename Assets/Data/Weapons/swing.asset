@@ -20,13 +20,14 @@ MonoBehaviour:
     pattern:
       rid: 3376038869781708874
   attackOffset: 0.6
+  weaponSprite: {fileID: 5318220618085996759, guid: 620bdcc2eb450a94492f3488ab50ec6e, type: 3}
+  targetSize: {x: 1, y: 8}
   references:
     version: 2
     RefIds:
     - rid: 3376038869781708874
       type: {class: SwingPattern, ns: , asm: Assembly-CSharp}
       data:
-        hitboxPrefab: {fileID: 4526170003070526305, guid: 5db30435bd0678a498c180a0f7cbee93, type: 3}
-        range: 1.5
-        width: 2
+        swingRadius: 1.5
         activeTime: 0.25
+        swingAngle: 90

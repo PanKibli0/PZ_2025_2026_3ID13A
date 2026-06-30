@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class PlayerWeaponHandler : MonoBehaviour, IAttackHandler
 {
@@ -9,33 +10,35 @@ public class PlayerWeaponHandler : MonoBehaviour, IAttackHandler
     [SerializeField] private HotbarUI hotbar;
 
     private WeaponData currentWeapon;
+    private int currentIndex;
     private float lastAttackTime;
     private float lastSwitchTime;
 
     public bool CanAttack { get; set; } = true;
+    public WeaponData CurrentWeapon
+    {
+        get { return currentWeapon; }
+    }
+    public int CurrentIndex
+    {
+        get { return currentIndex; }
+    }
+
+    public event Action OnAttackStarted;
+    public event Action OnAttackEnded;
+    public event Action<int> OnWeaponSwitched;
 
     private void Awake()
     {
         if (inventory == null)
-        {
             Debug.LogError("PlayerInventory not found on Player!");
-            return;
-        }
+    }
 
-        if (inventory.GetWeapon(0) != null)
+    private void Start()
+    {
+        if (inventory != null && inventory.GetWeapon(0) != null)
             SwitchWeapon(0);
     }
-
-    // DEBUG - OLD INPUT
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchWeapon(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchWeapon(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) SwitchWeapon(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) SwitchWeapon(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) SwitchWeapon(4);
-    }
-    // END DEBUG
 
     public void OnAttack(InputAction.CallbackContext context)
     {
@@ -46,9 +49,38 @@ public class PlayerWeaponHandler : MonoBehaviour, IAttackHandler
         Vector2 aimDirection = GetAimDirection();
         Vector2 origin = (Vector2)transform.position + aimDirection * currentWeapon.attackOffset;
 
-        HitContext hitContext = currentWeapon.attack.CreateContext(gameObject, unit.faction, origin, aimDirection);
+        HitContext hitContext = currentWeapon.attack.CreateContext(unit, origin, aimDirection);
+
+        OnAttackStarted?.Invoke();
         currentWeapon.attack.Execute(hitContext);
+        OnAttackEnded?.Invoke();
+
         lastAttackTime = Time.time;
+    }
+
+    public void OnSwitchWeapon1(InputAction.CallbackContext context)
+    {
+        if (context.performed) SwitchWeapon(0);
+    }
+
+    public void OnSwitchWeapon2(InputAction.CallbackContext context)
+    {
+        if (context.performed) SwitchWeapon(1);
+    }
+
+    public void OnSwitchWeapon3(InputAction.CallbackContext context)
+    {
+        if (context.performed) SwitchWeapon(2);
+    }
+
+    public void OnSwitchWeapon4(InputAction.CallbackContext context)
+    {
+        if (context.performed) SwitchWeapon(3);
+    }
+
+    public void OnSwitchWeapon5(InputAction.CallbackContext context)
+    {
+        if (context.performed) SwitchWeapon(4);
     }
 
     private Vector2 GetAimDirection()
@@ -68,8 +100,11 @@ public class PlayerWeaponHandler : MonoBehaviour, IAttackHandler
             return;
 
         currentWeapon = weapon;
+        currentIndex = index;
         lastSwitchTime = Time.time;
-        Debug.Log("Switched weapon: " + weapon.weaponName);
+        Debug.Log($"Switched weapon: {weapon.weaponName}");
+
+        OnWeaponSwitched?.Invoke(index);
 
         if (hotbar != null)
             hotbar.SetSelected(index);

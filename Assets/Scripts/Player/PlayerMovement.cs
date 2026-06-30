@@ -5,9 +5,7 @@ public class PlayerMovement : MonoBehaviour, IMoveHandler
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed = 5f;
-
-    [SerializeField] private float slipperyAcceleration = 9f;
-    [SerializeField] private float slipperyDeceleration = 3f;
+    [SerializeField] private SlipperySettings slipperySettings;
 
     private float speedMultiplier = 1f;
     private Vector2 moveDirection;
@@ -53,7 +51,7 @@ public class PlayerMovement : MonoBehaviour, IMoveHandler
                 slipperyVelocity = Vector2.MoveTowards(
                     slipperyVelocity,
                     targetVelocity,
-                    slipperyAcceleration * Time.fixedDeltaTime
+                    slipperySettings.acceleration * Time.fixedDeltaTime
                 );
             }
             else
@@ -61,7 +59,7 @@ public class PlayerMovement : MonoBehaviour, IMoveHandler
                 slipperyVelocity = Vector2.MoveTowards(
                     slipperyVelocity,
                     Vector2.zero,
-                    slipperyDeceleration * Time.fixedDeltaTime
+                    slipperySettings.deceleration * Time.fixedDeltaTime
                 );
             }
 

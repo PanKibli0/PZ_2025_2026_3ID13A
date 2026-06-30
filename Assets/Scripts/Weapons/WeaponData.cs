@@ -11,4 +11,7 @@ public class WeaponData : ScriptableObject
     [Header("Attack Spawn")]
     public float attackOffset = 0.6f;
 
+    [Header("Visual")]
+    public Sprite weaponSprite;
+    public Vector2 targetSize = Vector2.one;
 }

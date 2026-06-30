@@ -21,8 +21,8 @@ public class AttackData
         pattern.Execute(context);
     }
 
-    public HitContext CreateContext(GameObject attacker, Faction attackerFaction, Vector2 origin, Vector2 direction)
+    public HitContext CreateContext(Unit attacker, Vector2 origin, Vector2 direction)
     {
-        return new HitContext(attacker, attackerFaction, origin, direction, this);
+        return new HitContext(attacker, origin, direction, damage, effects);
     }
 }

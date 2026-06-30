@@ -77,7 +77,7 @@ public class EnemyAttackHandler : MonoBehaviour, IAttackHandler
         Vector2 direction = (player.position - unit.transform.position).normalized;
         Vector2 origin = unit.transform.position + (Vector3)direction * 0.5f;
 
-        HitContext context = attack.CreateContext(gameObject, unit.faction, origin, direction);
+        HitContext context = attack.CreateContext(unit, origin, direction);
         attack.Execute(context);
 
         lastAttackTimes[attack] = Time.time;

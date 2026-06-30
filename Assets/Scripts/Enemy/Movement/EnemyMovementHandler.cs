@@ -6,6 +6,7 @@ public class EnemyMovementHandler : MonoBehaviour, IMoveHandler
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private EnemyUnit unit;
     [SerializeField] private List<MovementPhase> phases;
+    [SerializeField] private SlipperySettings slipperySettings;
 
     private IEnemyMove currentMove;
     private float currentSpeed;
@@ -108,9 +109,9 @@ public class EnemyMovementHandler : MonoBehaviour, IMoveHandler
             Vector2 target = direction * effectiveSpeed;
 
             if (direction != Vector2.zero)
-                slipperyVelocity = Vector2.MoveTowards(slipperyVelocity, target, 9f * Time.fixedDeltaTime);
+                slipperyVelocity = Vector2.MoveTowards(slipperyVelocity, target, slipperySettings.acceleration * Time.fixedDeltaTime);
             else
-                slipperyVelocity = Vector2.MoveTowards(slipperyVelocity, Vector2.zero, 3f * Time.fixedDeltaTime);
+                slipperyVelocity = Vector2.MoveTowards(slipperyVelocity, Vector2.zero, slipperySettings.deceleration * Time.fixedDeltaTime);
 
             rb.linearVelocity = slipperyVelocity;
         }

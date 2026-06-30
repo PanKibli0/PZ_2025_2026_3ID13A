@@ -18,15 +18,15 @@ MonoBehaviour:
     cooldown: 0.2
     effects: []
     pattern:
-      rid: 3376038899520897094
+      rid: 2694950966894264389
   attackOffset: 0.6
+  weaponSprite: {fileID: 5735166711939919652, guid: 4299a2855c97fdf4e8297eea0b3b9f70, type: 3}
+  targetSize: {x: 1, y: 3}
   references:
     version: 2
     RefIds:
-    - rid: 3376038899520897094
-      type: {class: SwingPattern, ns: , asm: Assembly-CSharp}
+    - rid: 2694950966894264389
+      type: {class: StabPattern, ns: , asm: Assembly-CSharp}
       data:
-        hitboxPrefab: {fileID: 4526170003070526305, guid: 5db30435bd0678a498c180a0f7cbee93, type: 3}
-        range: 1.5
-        width: 2
-        activeTime: 0.25
+        forwardDistance: 2
+        activeTime: 0.15

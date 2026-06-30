@@ -52,7 +52,16 @@ public class ZoneSpawner : MonoBehaviour
         {
             EnemyData data = possibleEnemies[Random.Range(0, possibleEnemies.Count)];
 
-            EnemySpawnEntry existing = selectedEnemies.Find(e => e.enemyData == data);
+            EnemySpawnEntry existing = null;
+            foreach (var entry in selectedEnemies)
+            {
+                if (entry.enemyData == data)
+                {
+                    existing = entry;
+                    break;
+                }
+            }
+
             if (existing != null)
                 existing.count++;
             else
