@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dec5d1fcd6e46fd4597f31eade405545, type: 3}
-  m_Name: NewShopHealItem1
+  m_Name: Box of Cookies
   m_EditorClassIdentifier: Assembly-CSharp::ShopHealItemData
-  itemName: heal
-  description: heal
-  icon: {fileID: 5170512377295199150, guid: a4bc369bc7a2fbe43ac85577c82749ea, type: 3}
-  healAmount: 20
+  itemName: Box of cookies
+  description: COOKIEZZ
+  icon: {fileID: 6559816515168748918, guid: a7f7a6950eee0794eac5b1d97dc22828, type: 3}
+  healAmount: 100

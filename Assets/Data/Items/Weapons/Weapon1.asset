@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6fe7165ddc8a14eb879dda1ce6621f, type: 3}
   m_Name: Weapon1
   m_EditorClassIdentifier: Assembly-CSharp::ShopWeaponItemData
-  itemName: 
+  itemName: Shotgun
   description: 
   icon: {fileID: 0}
-  weaponToGive: {fileID: 0}
+  weaponToGive: {fileID: 11400000, guid: c865c1eb05648f74cad7497f8b4f56a3, type: 2}

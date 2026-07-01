@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e6fe7165ddc8a14eb879dda1ce6621f, type: 3}
-  m_Name: Weapon2
+  m_Name: Toothpick
   m_EditorClassIdentifier: Assembly-CSharp::ShopWeaponItemData
-  itemName: 
+  itemName: Sword
   description: 
-  icon: {fileID: 0}
-  weaponToGive: {fileID: 0}
+  icon: {fileID: -5827683446996611929, guid: 5aa23680e6758d84bb35f7b0daa26fb2, type: 3}
+  weaponToGive: {fileID: 11400000, guid: c68530162f346f949bf553faf1cb3bd3, type: 2}
