@@ -6,9 +6,19 @@ public class RoomTransition : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (!collision.CompareTag("Player"))
+            return;
+
+        collision.transform.position = targetTransitionPoint.position;
+
+        RoomController room = targetTransitionPoint.GetComponentInParent<RoomController>();
+
+        if (room != null)
         {
-            collision.transform.position = targetTransitionPoint.position;
+            EventBus.publishOnRoomEntered(
+                room.RoomCenter.position,
+                room.RoomSize
+            );
         }
     }
 }

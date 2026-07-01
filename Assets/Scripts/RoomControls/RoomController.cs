@@ -11,7 +11,10 @@ public class RoomController : MonoBehaviour
     [SerializeField] private List<DoorController> roomDoors;
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private GameObject lootPrefab;
+    public Vector2 RoomSize => roomSize;
 
+    [SerializeField] private Transform roomCenter;
+    public Transform RoomCenter => roomCenter;
     private void OnEnable()
     {
         EventBus.OnAllEnemiesDefeated += HandleEnemiesDefeated;
@@ -49,7 +52,7 @@ public class RoomController : MonoBehaviour
         if (currentState == RoomState.InCombat)
         {
             EndCombat();
-        }
+        }   
     }
 
     private void EndCombat()

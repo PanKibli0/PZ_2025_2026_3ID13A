@@ -9,10 +9,15 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private CameraController cameraController;
     [SerializeField] private HotbarUI hotbarUI;
 
-    private void Awake()
+    private void Start()
     {
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
+        RoomController startRoom = spawnPoint.GetComponentInParent<RoomController>();
 
+        if (startRoom != null)
+        {
+            cameraController.SetRoom(startRoom.RoomCenter.position);
+        }
         // REWORK: ref from player ROOT 
         Health playerHealth = player.GetComponentInChildren<Health>();
         if (playerHealth != null && playerUI != null)
