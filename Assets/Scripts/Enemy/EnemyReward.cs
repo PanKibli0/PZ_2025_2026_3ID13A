@@ -19,7 +19,15 @@ public class EnemyReward : MonoBehaviour
         if (player != null)
             player.AddExperience(enemyData.experienceReward);
         Debug.Log($"Drop chance: {enemyData.moneyDropChance}");
-        if (UnityEngine.Random.value <= enemyData.moneyDropChance)
+
+        PlayerStats playerStats = FindFirstObjectByType<PlayerStats>();
+        float dropChance = enemyData.moneyDropChance;
+        if (playerStats != null)
+        {
+            dropChance *= playerStats.Luck;
+        }
+
+        if (UnityEngine.Random.value <= dropChance)
         {
             Debug.Log("Money dropped");
             GameObject money = Instantiate(

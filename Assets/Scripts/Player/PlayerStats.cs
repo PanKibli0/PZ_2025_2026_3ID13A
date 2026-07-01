@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
 
     public float HealthRegen { get; private set; } = 0f;
 
-    public float Luck { get; private set; } = 0f;
+    public float Luck { get; private set; } = 1f;
 
     public void AddDamage(float value) { DamageMultiplier += value; }
     public void AddAttackSpeed(float value) => AttackSpeedMultiplier += value;

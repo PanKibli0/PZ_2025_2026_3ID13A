@@ -5,7 +5,7 @@ public class PlayerCurrency : MonoBehaviour
 {
     [SerializeField] private int money;
 
-    public event Action<int> OnCoinsChanged;
+    public event Action<int> OnMoneyChanged;
 
     public int Money => money;
 
@@ -16,7 +16,7 @@ public class PlayerCurrency : MonoBehaviour
 
         money += amount;
 
-        OnCoinsChanged?.Invoke(money);
+        OnMoneyChanged?.Invoke(money);
 
         Debug.Log($"Money: {money}");
     }
@@ -28,8 +28,12 @@ public class PlayerCurrency : MonoBehaviour
 
         money -= amount;
 
-        OnCoinsChanged?.Invoke(money);
+        OnMoneyChanged?.Invoke(money);
 
         return true;
+    }
+    public bool CanAfford(int amount)
+    {
+        return money >= amount;
     }
 }
