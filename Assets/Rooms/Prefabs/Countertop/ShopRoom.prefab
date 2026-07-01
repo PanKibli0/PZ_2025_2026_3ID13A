@@ -56,8 +56,8 @@ MonoBehaviour:
   roomDoors:
   - {fileID: 1791918727929699262}
   - {fileID: 7600398019915927463}
-  enemySpawner: {fileID: 0}
   lootPrefab: {fileID: 0}
+  zoneSpawner: {fileID: 0}
   roomCenter: {fileID: 7665951759538249989}
 --- !u!1 &3727188532025247315
 GameObject:

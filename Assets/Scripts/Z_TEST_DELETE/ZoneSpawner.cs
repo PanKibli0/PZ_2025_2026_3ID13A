@@ -29,14 +29,12 @@ public class ZoneSpawner : MonoBehaviour
         EventBus.OnAllEnemiesDefeated -= onZoneCleared;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void activateZone()
     {
-        if (!isActive) return;
-        activateZone();
-    }
+        Debug.Log("activateZone");
+        if (!isActive)
+            return;
 
-    private void activateZone()
-    {
         isActive = false;
 
         if (zoneVisual != null)
@@ -58,8 +56,23 @@ public class ZoneSpawner : MonoBehaviour
             else
                 selectedEnemies.Add(new EnemySpawnEntry { enemyData = data, count = 1 });
         }
-
+        Debug.Log("spawnEnemies");
         enemySpawner.spawnEnemies(selectedEnemies);
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player"))
+            return;
+
+        RoomController room = GetComponentInParent<RoomController>();
+
+        if (room != null)
+            room.PlayerEnteredRoom();
+    }
+
+    public void DespawnEnemies()
+    {
+        enemySpawner.DespawnEnemies();
     }
 
     private void onZoneCleared()

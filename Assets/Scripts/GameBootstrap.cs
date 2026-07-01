@@ -5,7 +5,6 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private PlayerUI playerUI;
-    [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private CameraController cameraController;
     [SerializeField] private HotbarUI hotbarUI;
 
@@ -22,9 +21,14 @@ public class GameBootstrap : MonoBehaviour
         Health playerHealth = player.GetComponentInChildren<Health>();
         if (playerHealth != null && playerUI != null)
             playerUI.init(playerHealth);
+        
+        EnemySpawner[] spawners = FindObjectsByType<EnemySpawner>(
+            FindObjectsSortMode.None);
 
-        if (enemySpawner != null)
-            enemySpawner.init(player.transform);
+        foreach (EnemySpawner spawner in spawners)
+        {
+            spawner.init(player.transform);
+        }
 
         if (cameraController != null)
             cameraController.Init(player.transform);

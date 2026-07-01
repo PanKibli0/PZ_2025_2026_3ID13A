@@ -21,7 +21,7 @@ public class EnemySetup : MonoBehaviour
 
         void onDeath()
         {
-            spawner.onEnemyDeath();
+            spawner.onEnemyDeath(gameObject);
             Destroy(gameObject);
         }
     }

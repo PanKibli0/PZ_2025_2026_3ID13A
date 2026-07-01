@@ -9,16 +9,24 @@ public class RoomTransition : MonoBehaviour
         if (!collision.CompareTag("Player"))
             return;
 
+        RoomController currentRoom = GetComponentInParent<RoomController>();
+
+        if (currentRoom != null)
+        {
+            currentRoom.DespawnEnemies();
+        }
+
         collision.transform.position = targetTransitionPoint.position;
+        RoomController nextRoom = targetTransitionPoint.GetComponentInParent<RoomController>();
 
-        RoomController room = targetTransitionPoint.GetComponentInParent<RoomController>();
-
-        if (room != null)
+        if (nextRoom != null)
         {
             EventBus.publishOnRoomEntered(
-                room.RoomCenter.position,
-                room.RoomSize
+                nextRoom.RoomCenter.position,
+                nextRoom.RoomSize
             );
+
+            nextRoom.PlayerEnteredRoom();
         }
     }
 }
