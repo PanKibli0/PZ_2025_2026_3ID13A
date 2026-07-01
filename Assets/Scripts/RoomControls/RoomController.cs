@@ -6,9 +6,10 @@ public class RoomController : MonoBehaviour
     public enum RoomState { WaitingForPlayer, InCombat, Cleared}
     private RoomState currentState = RoomState.WaitingForPlayer;
 
+    [SerializeField] private Vector2 roomSize = new Vector2(18f, 10f);
+
     [SerializeField] private List<DoorController> roomDoors;
-    [SerializeField] private GameObject[] enemyPrefabsToSpawn;
-    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private GameObject lootPrefab;
 
     private void OnEnable()
@@ -21,12 +22,14 @@ public class RoomController : MonoBehaviour
         EventBus.OnAllEnemiesDefeated -= HandleEnemiesDefeated;
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (currentState == RoomState.WaitingForPlayer && collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            StartCombat();
+            EventBus.publishOnRoomEntered(transform.position, roomSize);
+
+            if (currentState == RoomState.WaitingForPlayer)
+                StartCombat();
         }
     }
 
@@ -38,15 +41,7 @@ public class RoomController : MonoBehaviour
             door.CloseDoor();
         }
 
-        SpawnEnemies();
-    }
-
-    private void SpawnEnemies()
-    {
-        for (int i = 0; i < enemyPrefabsToSpawn.Length; i++)
-        {
-            //Spawnowanie przeciwników
-        }
+        // enemySpawner.SpawnEnemies();
     }
 
     private void HandleEnemiesDefeated()
@@ -66,10 +61,10 @@ public class RoomController : MonoBehaviour
             door.OpenDoor();
         }
 
-        //Spawn lootu, o ile jest przypisany
-        if (lootPrefab != null)
-        {
-            // Instatniate(lootPrefab, transform.position, Quanternion.identity);
-        }
+        // Spawn lootu, o ile jest przypisany
+        if (lootPrefab == null) return;
+        
+        // Instatniate(lootPrefab, transform.position, Quanternion.identity);
+        
     }
 }

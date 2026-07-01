@@ -100,6 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7675448570564967302}
+  - component: {fileID: 8796659881542612771}
   m_Layer: 0
   m_Name: CountertopRoomLeftRightDown 2
   m_TagString: Room1x1
@@ -127,6 +128,25 @@ Transform:
   - {fileID: 1953796127593613523}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8796659881542612771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147660896677365905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb881f3612b1514aacd2ae5d2a59eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomController
+  baseRoomSize: {x: 18, y: 10}
+  roomDoors:
+  - {fileID: 7600398019915927463}
+  - {fileID: 6121695552849228840}
+  - {fileID: 6162271319107933162}
+  enemySpawner: {fileID: 0}
+  lootPrefab: {fileID: 0}
 --- !u!1 &3727188532025247315
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +157,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7097324204298989330}
   - component: {fileID: 5427739049986854927}
-  - component: {fileID: 254234439119284989}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -210,23 +229,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 18, y: 8.75}
   m_EdgeRadius: 0
---- !u!114 &254234439119284989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3727188532025247315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deb881f3612b1514aacd2ae5d2a59eee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoomController
-  roomDoors:
-  - {fileID: 0}
-  enemyPrefabsToSpawn: []
-  spawnPoints: []
-  lootPrefab: {fileID: 0}
 --- !u!1 &5439950646634486978
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,6 +847,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5009004801218532133, guid: 27da759128ecb6e4caca8c258cadf317, type: 3}
   m_PrefabInstance: {fileID: 91633629093971006}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7600398019915927463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7511870002988551065, guid: 27da759128ecb6e4caca8c258cadf317, type: 3}
+  m_PrefabInstance: {fileID: 91633629093971006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f23b00082b06684d8203957d3de00c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
 --- !u!1001 &4380635040197984177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -910,6 +923,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27da759128ecb6e4caca8c258cadf317, type: 3}
+--- !u!114 &6121695552849228840 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7511870002988551065, guid: 27da759128ecb6e4caca8c258cadf317, type: 3}
+  m_PrefabInstance: {fileID: 4380635040197984177}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f23b00082b06684d8203957d3de00c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
 --- !u!4 &8739423161775975572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5009004801218532133, guid: 27da759128ecb6e4caca8c258cadf317, type: 3}
@@ -980,6 +1004,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27da759128ecb6e4caca8c258cadf317, type: 3}
+--- !u!114 &6162271319107933162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7511870002988551065, guid: 27da759128ecb6e4caca8c258cadf317, type: 3}
+  m_PrefabInstance: {fileID: 4448233626173839475}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f23b00082b06684d8203957d3de00c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
 --- !u!4 &8662889085281586006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5009004801218532133, guid: 27da759128ecb6e4caca8c258cadf317, type: 3}
