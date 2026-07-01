@@ -19,6 +19,14 @@ public class Health : MonoBehaviour
     public void takeDamage(int amount)
     {
         if (amount <= 0) return;
+        
+        PlayerStats playerStats = GetComponentInParent<PlayerStats>();
+
+        if (playerStats != null)
+        {
+            if (UnityEngine.Random.value <= playerStats.DodgeChance / 100f)
+                return;
+        }
 
         currentHealth -= amount;
         currentHealth = Mathf.Max(0, currentHealth);

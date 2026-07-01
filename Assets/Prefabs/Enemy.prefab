@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e5a47c44d6dd743b16fe63c9055a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyReward
+  moneyPrefab: {fileID: 7130629743524943110, guid: 5521edb2722b1684d8bd2b620ee42ede, type: 3}
 --- !u!1 &6696557292880798885
 GameObject:
   m_ObjectHideFlags: 0

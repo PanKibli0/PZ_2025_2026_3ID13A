@@ -9,6 +9,7 @@ public class HitContext
     public Vector2 direction;
     public int damage;
     public List<IHitEffect> effects;
+    public bool isCritical;
 
     public HitContext(
     GameObject attacker,

@@ -53,6 +53,13 @@ public class PlayerWeaponHandler : MonoBehaviour
 
         HitContext hitContext = currentWeapon.attack.createContext(gameObject, faction, origin, aimDirection);
         hitContext.damage = Mathf.RoundToInt(hitContext.damage * playerStats.DamageMultiplier);
+        if (Random.value <= playerStats.CriticalChance / 100f)
+        {
+            hitContext.isCritical = true;
+
+            hitContext.damage = Mathf.RoundToInt(
+                hitContext.damage * playerStats.CriticalDamage);
+        }
         currentWeapon.attack.execute(hitContext);
         lastAttackTime = Time.time;
     }

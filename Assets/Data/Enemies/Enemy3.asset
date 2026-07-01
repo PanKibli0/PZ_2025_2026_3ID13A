@@ -37,6 +37,8 @@ MonoBehaviour:
         rid: 3376038911061000449
     weight: 1
   experienceReward: 50
+  moneyDropChance: 1
+  moneyDropAmount: 1
   references:
     version: 2
     RefIds:

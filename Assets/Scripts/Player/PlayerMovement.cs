@@ -20,6 +20,18 @@ public class PlayerMovement : MonoBehaviour, IKnockbackReceiver
 
     public bool CanMove { get; set; } = true;
 
+    [SerializeField] private PlayerStats playerStats;
+
+    private void Awake()
+    {
+        playerStats = GetComponent<PlayerStats>();
+
+        if (playerStats == null)
+        {
+            Debug.LogError("PlayerStats not found!");
+        }
+    }
+
     public void onMove(InputAction.CallbackContext context)
     {
         moveDirection = context.ReadValue<Vector2>().normalized;
@@ -45,12 +57,12 @@ public class PlayerMovement : MonoBehaviour, IKnockbackReceiver
 
         if (!slipperyMovement)
         {
-            rb.linearVelocity = moveDirection * speed * speedMultiplier;
+            rb.linearVelocity = moveDirection * speed * speedMultiplier * playerStats.MoveSpeedMultiplier;
         }
         else
         {
             Vector2 targetVelocity =
-                moveDirection * speed * speedMultiplier;
+                moveDirection * speed * speedMultiplier * playerStats.MoveSpeedMultiplier;
 
             if (moveDirection != Vector2.zero)
             {

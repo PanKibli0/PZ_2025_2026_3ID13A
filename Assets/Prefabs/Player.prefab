@@ -259,6 +259,8 @@ GameObject:
   - component: {fileID: 3990412291207248282}
   - component: {fileID: 7831648854357668940}
   - component: {fileID: 7802248637225127019}
+  - component: {fileID: 3802480604872337767}
+  - component: {fileID: 8064745364670949366}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -438,6 +440,7 @@ MonoBehaviour:
   speed: 5
   slipperyAcceleration: 9
   slipperyDeceleration: 3
+  playerStats: {fileID: 0}
 --- !u!114 &6408439620967196395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,3 +531,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b8043ebcf296a448abef89cfcaff13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+--- !u!114 &3802480604872337767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925947135481941363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5903c6624fd4314bbba5f0ebe8a01a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthRegen
+  health: {fileID: 6320375593858290250}
+  playerStats: {fileID: 7802248637225127019}
+--- !u!114 &8064745364670949366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925947135481941363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d107fdf7aee713346a4e1fbc76480e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCurrency
+  coins: 0
