@@ -7,10 +7,12 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private PlayerUI playerUI;
     [SerializeField] private CameraController cameraController;
     [SerializeField] private HotbarUI hotbarUI;
+    [SerializeField] private UpgradeManager upgradeManager;
 
     private void Start()
     {
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
+        upgradeManager.Init(player);
         RoomController startRoom = spawnPoint.GetComponentInParent<RoomController>();
 
         if (startRoom != null)

@@ -9,20 +9,22 @@ public class UpgradeButtonUI : MonoBehaviour
     [SerializeField] private TMP_Text description;
     private UpgradeData currentUpgrade;
     private UpgradeManager manager;
+    private GameObject player;
 
-    public void Setup(UpgradeData data, UpgradeManager upgradeManager)
+    public void Setup(UpgradeData data, UpgradeManager upgradeManager, GameObject playerObject)
     {
         currentUpgrade = data;
         manager = upgradeManager;
-
+        player = playerObject;
         title.text = data.upgradeName;
         description.text = data.description;
         icon.sprite = data.icon;
+
     }
 
     public void OnClick()
     {
-        currentUpgrade.Apply(FindFirstObjectByType<PlayerExperience>().gameObject);
+        currentUpgrade.Apply(player);
 
         manager.CloseUpgradeMenu();
     }

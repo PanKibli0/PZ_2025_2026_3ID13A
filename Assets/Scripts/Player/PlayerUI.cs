@@ -23,7 +23,7 @@ public class PlayerUI : MonoBehaviour
         playerHealth.OnHealthChanged += updateHealthUI;
         playerHealth.OnDeath += onPlayerDeath;
 
-        updateHealthUI(playerHealth.getCurrentHealth(), playerHealth.getMaxHealth());
+        updateHealthUI(playerHealth.CurrentHealth, playerHealth.MaxHealth);
     }
 
     private void updateHealthUI(int current, int max)

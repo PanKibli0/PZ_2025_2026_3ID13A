@@ -40,7 +40,7 @@ public class BleedingStatusEffect : StatusEffect
             else
             {
                 int damage = Mathf.CeilToInt(
-                    health.getCurrentHealth() * 0.05f
+                    health.CurrentHealth * 0.05f
                 );
 
                 damage = Mathf.Max(1, damage);

@@ -8,6 +8,7 @@ public class PlayerWeaponHandler : MonoBehaviour
     [SerializeField] private float weaponSwitchCooldown = 0.3f;
     [SerializeField] private HotbarUI hotbar;
 
+    [SerializeField] private PlayerStats playerStats;
 
     private WeaponData currentWeapon;
     private float lastAttackTime;
@@ -42,12 +43,16 @@ public class PlayerWeaponHandler : MonoBehaviour
     {
         if (!CanAttack) return;
         if (!context.performed || currentWeapon == null) return;
-        if (Time.time < lastAttackTime + currentWeapon.attack.cooldown) return;
+        float cooldown = currentWeapon.attack.cooldown / playerStats.AttackSpeedMultiplier;
+
+        if (Time.time < lastAttackTime + cooldown)
+            return;
 
         Vector2 aimDirection = getAimDirection();
         Vector2 origin = (Vector2)transform.position + aimDirection * currentWeapon.attackOffset;
 
         HitContext hitContext = currentWeapon.attack.createContext(gameObject, faction, origin, aimDirection);
+        hitContext.damage = Mathf.RoundToInt(hitContext.damage * playerStats.DamageMultiplier);
         currentWeapon.attack.execute(hitContext);
         lastAttackTime = Time.time;
     }
@@ -70,6 +75,7 @@ public class PlayerWeaponHandler : MonoBehaviour
 
         currentWeapon = weapon;
         lastSwitchTime = Time.time;
+
         Debug.Log("Switched weapon: " + weapon.weaponName);
 
         if (hotbar != null)

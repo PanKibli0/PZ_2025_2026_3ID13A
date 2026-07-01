@@ -44,7 +44,7 @@ public class PoisonStatusEffect : StatusEffect
             return;
         }
 
-        if (health.getCurrentHealth() <= 1)
+        if (health.CurrentHealth <= 1)
             return;
 
         health.takeDamage(1);

@@ -9,7 +9,7 @@ public class HealthThresholdCondition : ICondition
     {
         if (health == null) return false;
 
-        float percent = (float)health.getCurrentHealth() / health.getMaxHealth();
+        float percent = (float)health.CurrentHealth / health.MaxHealth;
         return percent <= thresholdPercent;
     }
 }

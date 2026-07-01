@@ -42,11 +42,19 @@ public class Health : MonoBehaviour
 
     public void setMaxHealth(int newMaxHealth)
     {
-        if (newMaxHealth <= 0) return;
+        if (newMaxHealth <= 0)
+            return;
+
+        int difference = newMaxHealth - maxHealth;
+
         maxHealth = newMaxHealth;
+        currentHealth += difference;
+
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
-    public int getCurrentHealth() { return currentHealth; }
-    public int getMaxHealth() { return maxHealth; }
+    public int CurrentHealth => currentHealth;
+    public int MaxHealth => maxHealth;
 }

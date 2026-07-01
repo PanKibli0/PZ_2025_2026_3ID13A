@@ -7,6 +7,7 @@ public class UpgradeManager : MonoBehaviour
 
     [SerializeField] private List<UpgradeData> allUpgrades;
     [SerializeField] private UpgradeButtonUI[] buttons;
+    private GameObject player;
     private void OnEnable()
     {
         EventBus.OnLevelUp += OpenUpgradeMenu;
@@ -15,6 +16,14 @@ public class UpgradeManager : MonoBehaviour
     private void OnDisable()
     {
         EventBus.OnLevelUp -= OpenUpgradeMenu;
+    }
+    private void Awake()
+    {
+        upgradePanel.SetActive(false);
+    }
+    public void Init(GameObject playerObject)
+    {
+        player = playerObject;
     }
 
     private void OpenUpgradeMenu()
@@ -35,11 +44,11 @@ public class UpgradeManager : MonoBehaviour
     {
         List<UpgradeData> pool = new List<UpgradeData>(allUpgrades);
 
-        for (int i = 0; i < buttons.Length; i++)
+        for (int i = 0; i < buttons.Length && pool.Count > 0; i++)
         {
             int index = Random.Range(0, pool.Count);
 
-            buttons[i].Setup(pool[index], this);
+            buttons[i].Setup(pool[index], this, player);
 
             pool.RemoveAt(index);
         }
