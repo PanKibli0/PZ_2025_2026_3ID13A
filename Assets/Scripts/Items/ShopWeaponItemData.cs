@@ -5,8 +5,9 @@ public class ShopWeaponItemData : ItemData
 {
     public WeaponData weaponToGive;
 
-    public override bool ApplyEffect(PlayerInventory inventory)
+    public override bool ApplyEffect(GameObject player)
     {
+        PlayerInventory inventory = player.GetComponent<PlayerInventory>();
         bool success = inventory.AddWeapon(weaponToGive);
         if (success)
         {

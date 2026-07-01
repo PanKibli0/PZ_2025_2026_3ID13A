@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopPickup
   itemData: {fileID: 0}
   price: 15
-  iconRenderer: {fileID: 5082163599681048152}
+  iconRenderer: {fileID: 7564453258005566784}
 --- !u!1 &4308543725003731071
 GameObject:
   m_ObjectHideFlags: 0

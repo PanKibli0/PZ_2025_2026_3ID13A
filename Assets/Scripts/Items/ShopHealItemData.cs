@@ -5,11 +5,12 @@ public class ShopHealItemData : ItemData
 {
     public int healAmount = 20;
 
-    public override bool ApplyEffect(PlayerInventory inventory)
+    public override bool ApplyEffect(GameObject player)
     {
-        Health health = inventory.GetComponent<Health>();
+        Health health = player.GetComponentInChildren<Health>();
         if (health != null)
         {
+            Debug.Log("HealTaken");
             health.takeHeal(healAmount);
             return true;
         }

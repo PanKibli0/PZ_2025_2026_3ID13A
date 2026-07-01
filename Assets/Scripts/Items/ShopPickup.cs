@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShopPickup : MonoBehaviour, IPickup
+public class ShopPickup : MonoBehaviour
 {
     [SerializeField] private ItemData itemData;
     [SerializeField] private int price = 15;
@@ -14,8 +14,13 @@ public class ShopPickup : MonoBehaviour, IPickup
         }
     }
 
-    public void OnPickup(PlayerInventory inventory)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject player = collision.gameObject;
+        PlayerInventory inventory = player.GetComponent<PlayerInventory>();
+        if (inventory == null) return;
+
         if (itemData == null)
         {
             Debug.LogError("Brak ItemData w sklepie");
@@ -24,7 +29,7 @@ public class ShopPickup : MonoBehaviour, IPickup
 
         if (inventory.coins < price) return;
 
-        bool wasPickedUp = itemData.ApplyEffect(inventory);
+        bool wasPickedUp = itemData.ApplyEffect(player);
 
         if (wasPickedUp)
         {

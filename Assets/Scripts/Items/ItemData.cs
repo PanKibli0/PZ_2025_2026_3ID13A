@@ -6,5 +6,5 @@ public abstract class ItemData : ScriptableObject
     public string description;
     public Sprite icon;
 
-    public abstract bool ApplyEffect(PlayerInventory inventory);
+    public abstract bool ApplyEffect(GameObject player);
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec5d1fcd6e46fd4597f31eade405545, type: 3}
   m_Name: NewShopHealItem1
   m_EditorClassIdentifier: Assembly-CSharp::ShopHealItemData
-  itemName: 
-  description: 
-  icon: {fileID: 0}
+  itemName: heal
+  description: heal
+  icon: {fileID: 5170512377295199150, guid: a4bc369bc7a2fbe43ac85577c82749ea, type: 3}
   healAmount: 20
