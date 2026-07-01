@@ -9,4 +9,5 @@ public class EnemyData : ScriptableObject
     public Color enemyColor; // DEBUG
     public List<MovementPhase> movementPhases;
     public List<AttackPhase> attackPhases;
+    public int experienceReward = 50;
 }

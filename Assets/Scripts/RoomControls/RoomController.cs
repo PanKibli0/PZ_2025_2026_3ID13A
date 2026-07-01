@@ -40,7 +40,6 @@ public class RoomController : MonoBehaviour
 
     private void StartCombat()
     {
-        Debug.Log($"StartCombat: {name}");
         if (!roomUnlocked)
         {
             currentState = RoomState.InCombat;
@@ -61,7 +60,6 @@ public class RoomController : MonoBehaviour
     }
     public void PlayerEnteredRoom()
     {
-        Debug.Log($"PlayerEnteredRoom: {name}");
         EventBus.publishOnRoomEntered(RoomCenter.position, RoomSize);
 
         if (currentState == RoomState.WaitingForPlayer ||

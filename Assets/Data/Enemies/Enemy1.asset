@@ -36,6 +36,7 @@ MonoBehaviour:
       pattern:
         rid: 3376038911061000457
     weight: 1
+  experienceReward: 50
   references:
     version: 2
     RefIds:

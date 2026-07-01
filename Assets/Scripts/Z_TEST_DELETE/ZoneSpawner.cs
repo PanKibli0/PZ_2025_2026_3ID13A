@@ -31,7 +31,6 @@ public class ZoneSpawner : MonoBehaviour
 
     public void activateZone()
     {
-        Debug.Log("activateZone");
         if (!isActive)
             return;
 
@@ -56,7 +55,6 @@ public class ZoneSpawner : MonoBehaviour
             else
                 selectedEnemies.Add(new EnemySpawnEntry { enemyData = data, count = 1 });
         }
-        Debug.Log("spawnEnemies");
         enemySpawner.spawnEnemies(selectedEnemies);
     }
     private void OnTriggerEnter2D(Collider2D other)

@@ -6,12 +6,15 @@ public class EnemySetup : MonoBehaviour
     [SerializeField] private EnemyMovementHandler movementHandler;
     [SerializeField] private EnemyAttackHandler attackHandler;
     [SerializeField] private SpriteRenderer visualRenderer;
+    [SerializeField] private EnemyReward reward;
 
     public void init(EnemyData data, Transform player, EnemySpawner spawner)
     {
         health.setMaxHealth(data.maxHealth);
 
         health.OnDeath += onDeath;
+
+        reward.Init(data);
 
         if (visualRenderer != null)
             visualRenderer.color = data.enemyColor;
@@ -21,6 +24,7 @@ public class EnemySetup : MonoBehaviour
 
         void onDeath()
         {
+            reward.GiveRewards();
             spawner.onEnemyDeath(gameObject);
             Destroy(gameObject);
         }
