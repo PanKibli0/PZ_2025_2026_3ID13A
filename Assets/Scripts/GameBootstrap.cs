@@ -21,7 +21,7 @@ public class GameBootstrap : MonoBehaviour
         {
             playerCurrencyUI.Init(currency);
         }
-        //upgradeManager.Init(player);
+        upgradeManager.Init(player);
         RoomController startRoom = spawnPoint.GetComponentInParent<RoomController>();
 
         player.GetComponent<PlayerSetup>().Init(hotbarUI, playerUI);

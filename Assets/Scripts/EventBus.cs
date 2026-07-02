@@ -1,4 +1,5 @@
 using System;
+using static EnemyData;
 
 
 public static class EventBus
@@ -8,6 +9,8 @@ public static class EventBus
     public static event Action<UnityEngine.Vector2, UnityEngine.Vector2> OnRoomEntered;
 
     public static event Action OnLevelUp;
+
+    public static event Action<EnemyType> OnEnemyKilled;
 
     public static void publishAllEnemiesDefeated()
     {
@@ -22,5 +25,10 @@ public static class EventBus
     public static void publishLevelUp()
     {
         OnLevelUp?.Invoke();
+    }
+
+    public static void PublishEnemyKilled(EnemyType enemyType)
+    {
+        OnEnemyKilled?.Invoke(enemyType);
     }
 }

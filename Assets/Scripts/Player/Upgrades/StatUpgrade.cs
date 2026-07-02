@@ -8,9 +8,13 @@ public class StatUpgrade : UpgradeData
 
     public override void Apply(GameObject player)
     {
+        Debug.Log($"Player: {player}");
 
         PlayerStats stats = player.GetComponentInChildren<PlayerStats>();
         PlayerUnit unit = player.GetComponent<PlayerUnit>();
+
+        Debug.Log($"Stats: {stats}");
+        Debug.Log($"Unit: {unit}");
 
         switch (statType)
         {
