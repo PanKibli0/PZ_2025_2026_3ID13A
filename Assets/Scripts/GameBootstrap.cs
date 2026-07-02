@@ -9,11 +9,12 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private HotbarUI hotbarUI;
     [SerializeField] private UpgradeManager upgradeManager;
     [SerializeField] private PlayerCurrencyUI playerCurrencyUI;
+    [SerializeField] private PlayerStatsUI playerStatsUI;
 
     private void Start()
     {
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
-        PlayerCurrency currency = player.GetComponent<PlayerCurrency>();
+        PlayerCurrency currency = player.GetComponentInChildren<PlayerCurrency>();
         if (currency != null && playerCurrencyUI != null)
         {
             playerCurrencyUI.Init(currency);
@@ -22,7 +23,10 @@ public class GameBootstrap : MonoBehaviour
         RoomController startRoom = spawnPoint.GetComponentInParent<RoomController>();
 
         player.GetComponent<PlayerSetup>().Init(hotbarUI, playerUI);
+        playerStatsUI.Init(player);
+        PlayerInputController input = player.GetComponentInChildren<PlayerInputController>();
 
+        input.SetStatsUI(playerStatsUI);
         if (startRoom != null)
         {
             cameraController.SetRoom(startRoom.RoomCenter.position);

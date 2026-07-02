@@ -21,4 +21,19 @@ public class PlayerInputController : MonoBehaviour
             }
         }
     }
+
+    private PlayerStatsUI playerStatsUI;
+
+    public void SetStatsUI(PlayerStatsUI ui)
+    {
+        playerStatsUI = ui;
+    }
+
+    public void OnToggleStats(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        playerStatsUI.Toggle();
+    }
 }
