@@ -21,8 +21,10 @@ public class Hurtbox : MonoBehaviour
             unit.health.TakeDamage(context.damage);
 
         foreach (var effect in context.effects)
+        {
+            if (effect == null) continue;
             effect.Apply(unit, context);
-
+        }
         lastHitTime = Time.time;
     }
 }
