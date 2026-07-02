@@ -67,10 +67,16 @@ public class ShopPickup : MonoBehaviour
             return;
         }
 
-        bool wasPickedUp = itemData.ApplyEffect(player);
+        bool wasPickedUp = false;
 
-        if (!wasPickedUp)
-            return;
+        if (itemData is ShopWeaponItemData weaponItem)
+        {
+            wasPickedUp = weaponItem.ApplyEffect(player);
+        }
+        else if (itemData is ConsumableItemData consumable)
+        {
+            wasPickedUp = inventory.AddItem(consumable);
+        }
 
         currency.SpendMoney(price);
         shopItemUI.HideAction();

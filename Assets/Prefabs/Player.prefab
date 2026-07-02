@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3015725469449887093}
   - component: {fileID: 5117380238838055125}
   - component: {fileID: 2184124755326351139}
+  - component: {fileID: 8290762435713766243}
   m_Layer: 8
   m_Name: Weapon
   m_TagString: Untagged
@@ -191,6 +192,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 498ca5a087d4a2d46932385c5cbe9471, type: 2}
   - {fileID: 11400000, guid: c68530162f346f949bf553faf1cb3bd3, type: 2}
   - {fileID: 11400000, guid: f8d822f7bdfc1f74e810f6081d832056, type: 2}
+  items:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   coins: 0
 --- !u!114 &5117380238838055125
 MonoBehaviour:
@@ -221,6 +228,19 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6777229144597598593}
   weaponHandler: {fileID: 1299245395712581986}
   rotationSpeedDegPerSec: 180
+--- !u!114 &8290762435713766243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164678044727809341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996358e7fa80bbe4caec0dc65e64e8b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerItemController
+  inventory: {fileID: 3015725469449887093}
 --- !u!1 &3199527122523489616
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,4 +950,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputController
   currentVisionModifier: {fileID: 0}
-  playerStatsUI: {fileID: 0}
