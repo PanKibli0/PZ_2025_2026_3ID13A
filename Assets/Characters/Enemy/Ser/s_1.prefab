@@ -193,7 +193,6 @@ Transform:
   m_Children:
   - {fileID: 760782953755926878}
   - {fileID: 2984599247845123298}
-  - {fileID: 173361294525285143}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1081898983335756393
@@ -244,11 +243,11 @@ Transform:
   m_GameObject: {fileID: 4307366727105427200}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.685, z: 0}
   m_LocalScale: {x: 0.57574, y: 0.57574, z: 0.57574}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 443353181988604643}
+  m_Father: {fileID: 760782953755926878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4902531516009429318
 SpriteRenderer:
@@ -327,7 +326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2984599247845123298
 Transform:
   m_ObjectHideFlags: 0
@@ -633,6 +632,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: 4299a2855c97fdf4e8297eea0b3b9f70, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 173361294525285143}
     - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: 4299a2855c97fdf4e8297eea0b3b9f70, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3503359220361547994}
