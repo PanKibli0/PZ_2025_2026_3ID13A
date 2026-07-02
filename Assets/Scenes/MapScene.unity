@@ -324,7 +324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7fe2799ef108d4a95247d5ee0fe902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameBootstrap
-  playerPrefab: {fileID: 3925947135481941363, guid: a8eea4cec0917474aac473a8bc02c074, type: 3}
+  playerPrefabs:
+  - {fileID: 3925947135481941363, guid: 288ea0c463d9feb4fa0310d86cd95da7, type: 3}
+  - {fileID: 3925947135481941363, guid: 75979ee8c04a43f4aafae77d8025eb8a, type: 3}
   spawnPoint: {fileID: 1488178452}
   playerUI: {fileID: 1839742972}
   cameraController: {fileID: 1837421352}
@@ -5601,6 +5603,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7525143138387332625, guid: ddffbec36dd4e634a9a790c49e3e66ea, type: 3}
+      propertyPath: 'possibleEnemies.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c79ab6580b866945a40d4be4a83434d, type: 2}
     - target: {fileID: 8364459958914232301, guid: ddffbec36dd4e634a9a790c49e3e66ea, type: 3}
       propertyPath: targetTransitionPoint
       value: 
