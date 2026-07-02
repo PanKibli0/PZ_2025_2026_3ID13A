@@ -77,15 +77,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "ToggleStats",
-                    "type": "Button",
-                    "id": "5a954ef8-a469-4ed7-8139-0b845a7c2ee1",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -262,17 +253,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwitchWeapon5",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d82382bd-bcf4-47b7-a0d7-7f1dd16866a6",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToggleStats",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

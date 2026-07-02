@@ -5,9 +5,6 @@ public class ShopPickup : MonoBehaviour
     [SerializeField] private ItemData itemData;
     [SerializeField] private int price = 15;
     [SerializeField] private SpriteRenderer iconRenderer;
-    private bool playerInside;
-    private GameObject player;
-    [SerializeField] private ShopItemUI shopItemUI;
 
     private void Start()
     {
@@ -15,51 +12,26 @@ public class ShopPickup : MonoBehaviour
         {
             iconRenderer.sprite = itemData.icon;   
         }
-        shopItemUI.SetPrice(price);
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player"))
-            return;
+        GameObject player = collision.gameObject;
 
-        playerInside = true;
-        player = collision.gameObject;
-
-        PlayerCurrency currency = player.GetComponentInChildren<PlayerCurrency>();
-
-        shopItemUI.ShowAction(currency, price);
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (!collision.CompareTag("Player"))
-            return;
-
-        playerInside = false;
-        player = null;
-
-        shopItemUI.HideAction();
-    }
-    private void Update()
-    {
-        if (!playerInside)
-            return;
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TryBuy();
-        }
-    }
-    private void TryBuy()
-    {
-        PlayerInventory inventory = player.GetComponentInChildren<PlayerInventory>();
+        PlayerInventory inventory = player.GetComponent<PlayerInventory>();
         if (inventory == null)
             return;
 
-        PlayerCurrency currency = player.GetComponentInChildren<PlayerCurrency>();
+        PlayerCurrency currency = player.GetComponent<PlayerCurrency>();
         if (currency == null)
             return;
+
+        if (itemData == null)
+        {
+            Debug.LogError("Brak ItemData w sklepie");
+            return;
+        }
 
         if (!currency.CanAfford(price))
         {
@@ -73,7 +45,9 @@ public class ShopPickup : MonoBehaviour
             return;
 
         currency.SpendMoney(price);
-        shopItemUI.HideAction();
+
+        Debug.Log($"Kupiono {itemData.itemName}");
+
         Destroy(gameObject);
     }
 }

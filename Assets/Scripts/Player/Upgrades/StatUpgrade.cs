@@ -8,8 +8,7 @@ public class StatUpgrade : UpgradeData
 
     public override void Apply(GameObject player)
     {
-
-        PlayerStats stats = player.GetComponentInChildren<PlayerStats>();
+        PlayerStats stats = player.GetComponent<PlayerStats>();
         PlayerUnit unit = player.GetComponent<PlayerUnit>();
 
         switch (statType)
