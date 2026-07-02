@@ -11,7 +11,7 @@ public class ShopHealItemData : ItemData
         if (health != null)
         {
             Debug.Log("HealTaken");
-            health.takeHeal(healAmount);
+            health.TakeHeal(healAmount);
             return true;
         }
         return false;
