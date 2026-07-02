@@ -771,7 +771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f2ac709997064e469b2c54096db2401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPrefab: {fileID: 6632140025226289923, guid: 1e18c35605a78844eaac31746b96470b, type: 3}
   spawnPoints:
   - {fileID: 3407961762044164739}
   - {fileID: 3608822427583753603}
@@ -1188,9 +1187,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZoneSpawner
   enemySpawner: {fileID: 3351410660538911699}
   possibleEnemies:
-  - {fileID: 11400000, guid: 4dc88cc676aa8f641a1a4ad60d7a2e99, type: 2}
-  - {fileID: 11400000, guid: dae60a720bb5d8946ab929d78b2c306b, type: 2}
-  - {fileID: 11400000, guid: c79806e11eed5ca42925372927f7f6e4, type: 2}
+  - {fileID: 11400000, guid: 0c79ab6580b866945a40d4be4a83434d, type: 2}
+  - {fileID: 11400000, guid: ec2d0d6aec2fc2947a18f6ef6da10a61, type: 2}
+  - {fileID: 11400000, guid: fc22b555edf57b5409633627f2e2231d, type: 2}
   totalMinEnemies: 1
   totalMaxEnemies: 8
   zoneVisual: {fileID: 8444801533267303440}
