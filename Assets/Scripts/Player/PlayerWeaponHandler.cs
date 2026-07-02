@@ -8,6 +8,7 @@ public class PlayerWeaponHandler : MonoBehaviour, IAttackHandler
     [SerializeField] private PlayerUnit unit;
     [SerializeField] private float weaponSwitchCooldown = 0.3f;
     [SerializeField] private HotbarUI hotbar;
+    [SerializeField] private PlayerStats playerStats;
 
     private WeaponData currentWeapon;
     private int currentIndex;
@@ -44,12 +45,23 @@ public class PlayerWeaponHandler : MonoBehaviour, IAttackHandler
     {
         if (!CanAttack) return;
         if (!context.performed || currentWeapon == null) return;
-        if (Time.time < lastAttackTime + currentWeapon.attack.cooldown) return;
+        float cooldown = currentWeapon.attack.cooldown / playerStats.AttackSpeedMultiplier;
+
+        if (Time.time < lastAttackTime + cooldown)
+            return;
 
         Vector2 aimDirection = GetAimDirection();
         Vector2 origin = (Vector2)transform.position + aimDirection * currentWeapon.attackOffset;
 
         HitContext hitContext = currentWeapon.attack.CreateContext(unit, origin, aimDirection);
+
+        hitContext.damage = Mathf.RoundToInt(hitContext.damage * playerStats.DamageMultiplier);
+
+        if (UnityEngine.Random.value <= playerStats.CriticalChance / 100f)
+        {
+            hitContext.isCritical = true;
+            hitContext.damage = Mathf.RoundToInt(hitContext.damage * playerStats.CriticalDamage);
+        }
 
         OnAttackStarted?.Invoke();
         currentWeapon.attack.Execute(hitContext);

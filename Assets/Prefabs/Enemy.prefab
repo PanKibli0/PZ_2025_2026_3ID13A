@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 5576805920044003912}
   - component: {fileID: 1754536757908957621}
   - component: {fileID: 2878930183229773086}
+  - component: {fileID: 601997670800116047}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -301,6 +302,20 @@ MonoBehaviour:
   movementHandler: {fileID: 8944302013205916508}
   attackHandler: {fileID: 6665074010219523081}
   visualRenderer: {fileID: 1338610319994760965}
+  reward: {fileID: 601997670800116047}
+--- !u!114 &601997670800116047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6632140025226289923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e5a47c44d6dd743b16fe63c9055a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyReward
+  moneyPrefab: {fileID: 7130629743524943110, guid: 5521edb2722b1684d8bd2b620ee42ede, type: 3}
 --- !u!1 &6696557292880798885
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +395,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -30,6 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7665951759538249989}
   - {fileID: 7097324204298989330}
   - {fileID: 4955651872611047195}
   - {fileID: 3846679032033592066}
@@ -55,8 +56,9 @@ MonoBehaviour:
   roomDoors:
   - {fileID: 1791918727929699262}
   - {fileID: 7600398019915927463}
-  enemySpawner: {fileID: 0}
   lootPrefab: {fileID: 0}
+  zoneSpawner: {fileID: 0}
+  roomCenter: {fileID: 7665951759538249989}
 --- !u!1 &3727188532025247315
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +784,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &8555033359528160638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7665951759538249989}
+  m_Layer: 0
+  m_Name: RoomCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7665951759538249989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8555033359528160638}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.75, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7675448570564967302}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &91633629093971006
 PrefabInstance:
   m_ObjectHideFlags: 0

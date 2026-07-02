@@ -18,8 +18,14 @@ public class ShopPickup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject player = collision.gameObject;
+
         PlayerInventory inventory = player.GetComponent<PlayerInventory>();
-        if (inventory == null) return;
+        if (inventory == null)
+            return;
+
+        PlayerCurrency currency = player.GetComponent<PlayerCurrency>();
+        if (currency == null)
+            return;
 
         if (itemData == null)
         {
@@ -27,15 +33,21 @@ public class ShopPickup : MonoBehaviour
             return;
         }
 
-        if (inventory.coins < price) return;
+        if (!currency.CanAfford(price))
+        {
+            Debug.Log("Za ma³o pieniêdzy");
+            return;
+        }
 
         bool wasPickedUp = itemData.ApplyEffect(player);
 
-        if (wasPickedUp)
-        {
-            inventory.coins -= price;
-            Debug.Log($"Kupiono {itemData.name}");
-            Destroy(gameObject);
-        }
+        if (!wasPickedUp)
+            return;
+
+        currency.SpendMoney(price);
+
+        Debug.Log($"Kupiono {itemData.itemName}");
+
+        Destroy(gameObject);
     }
 }

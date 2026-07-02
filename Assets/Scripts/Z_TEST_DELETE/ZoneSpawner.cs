@@ -29,7 +29,7 @@ public class ZoneSpawner : MonoBehaviour
         EventBus.OnAllEnemiesDefeated -= OnZoneCleared;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void activateZone()
     {
         if (!isActive) return;
         ActivateZone();
@@ -69,6 +69,22 @@ public class ZoneSpawner : MonoBehaviour
         }
 
         enemySpawner.SpawnEnemies(selectedEnemies);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player"))
+            return;
+
+        RoomController room = GetComponentInParent<RoomController>();
+
+        if (room != null)
+            room.PlayerEnteredRoom();
+    }
+
+    public void DespawnEnemies()
+    {
+        enemySpawner.DespawnEnemies();
     }
 
     private void OnZoneCleared()

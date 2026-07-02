@@ -6,6 +6,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private List<Transform> spawnPoints;
 
+    private List<GameObject> spawnedEnemies = new List<GameObject>();
+
     private Transform player;
     private int activeEnemies;
 
@@ -29,15 +31,32 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy(EnemyData data, Vector2 position)
     {
         GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
+
+        spawnedEnemies.Add(enemy);
+
         EnemySetup setup = enemy.GetComponent<EnemySetup>();
         setup.Init(data, player, this);
         activeEnemies++;
     }
 
-    public void OnEnemyDeath()
+    public void OnEnemyDeath(GameObject enemy)
     {
+        spawnedEnemies.Remove(enemy);
         activeEnemies--;
+
         if (activeEnemies == 0)
             EventBus.publishAllEnemiesDefeated();
+    }
+
+    public void DespawnEnemies()
+    {
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            if (enemy != null)
+                Destroy(enemy);
+        }
+
+        spawnedEnemies.Clear();
+        activeEnemies = 0;
     }
 }

@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour, IMoveHandler
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed = 5f;
     [SerializeField] private SlipperySettings slipperySettings;
+    [SerializeField] private PlayerStats playerStats;
 
     private float speedMultiplier = 1f;
     private Vector2 moveDirection;
@@ -14,6 +15,16 @@ public class PlayerMovement : MonoBehaviour, IMoveHandler
     private bool slipperyMovement;
 
     public bool CanMove { get; set; } = true;
+
+    private void Awake()
+    {
+        playerStats = GetComponent<PlayerStats>();
+
+        if (playerStats == null)
+        {
+            Debug.LogError("PlayerStats not found!");
+        }
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -40,11 +51,12 @@ public class PlayerMovement : MonoBehaviour, IMoveHandler
 
         if (!slipperyMovement)
         {
-            rb.linearVelocity = moveDirection * speed * speedMultiplier;
+            rb.linearVelocity = moveDirection * speed * speedMultiplier * playerStats.MoveSpeedMultiplier;
         }
         else
         {
-            Vector2 targetVelocity = moveDirection * speed * speedMultiplier;
+            Vector2 targetVelocity =
+                moveDirection * speed * speedMultiplier * playerStats.MoveSpeedMultiplier;
 
             if (moveDirection != Vector2.zero)
             {

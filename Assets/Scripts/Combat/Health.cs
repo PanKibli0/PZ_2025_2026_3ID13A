@@ -20,6 +20,14 @@ public class Health
     public void TakeDamage(float amount)
     {
         if (amount <= 0) return;
+        
+        PlayerStats playerStats = GetComponentInParent<PlayerStats>();
+
+        if (playerStats != null)
+        {
+            if (UnityEngine.Random.value <= playerStats.DodgeChance / 100f)
+                return;
+        }
 
         currentHealth -= amount;
         currentHealth = Mathf.Max(0, currentHealth);
@@ -42,9 +50,13 @@ public class Health
 
     public void SetMaxHealth(int newMaxHealth)
     {
-        if (newMaxHealth <= 0) return;
+        if (newMaxHealth <= 0)
+            return;
+
+        float difference = newMaxHealth - maxHealth;
 
         maxHealth = newMaxHealth;
+        currentHealth += difference;
         currentHealth = Mathf.Min(currentHealth, maxHealth);
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);

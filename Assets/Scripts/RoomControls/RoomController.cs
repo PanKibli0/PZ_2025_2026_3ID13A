@@ -9,9 +9,14 @@ public class RoomController : MonoBehaviour
     [SerializeField] private Vector2 roomSize = new Vector2(18f, 10f);
 
     [SerializeField] private List<DoorController> roomDoors;
-    [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private GameObject lootPrefab;
+    [SerializeField] private ZoneSpawner zoneSpawner;
 
+    private bool roomUnlocked = false;
+    public Vector2 RoomSize => roomSize;
+
+    [SerializeField] private Transform roomCenter;
+    public Transform RoomCenter => roomCenter;
     private void OnEnable()
     {
         EventBus.OnAllEnemiesDefeated += HandleEnemiesDefeated;
@@ -28,20 +33,22 @@ public class RoomController : MonoBehaviour
         {
             EventBus.publishOnRoomEntered(transform.position, roomSize);
 
-            if (currentState == RoomState.WaitingForPlayer)
+            if (currentState == RoomState.WaitingForPlayer || currentState == RoomState.Cleared)
                 StartCombat();
         }
     }
 
     private void StartCombat()
     {
-        currentState = RoomState.InCombat;
-        foreach (var door in roomDoors)
+        if (!roomUnlocked)
         {
-            door.CloseDoor();
+            currentState = RoomState.InCombat;
+
+            foreach (var door in roomDoors)
+                door.CloseDoor();
         }
 
-        // enemySpawner.SpawnEnemies();
+        zoneSpawner.activateZone();
     }
 
     private void HandleEnemiesDefeated()
@@ -49,11 +56,27 @@ public class RoomController : MonoBehaviour
         if (currentState == RoomState.InCombat)
         {
             EndCombat();
+        }   
+    }
+    public void PlayerEnteredRoom()
+    {
+        EventBus.publishOnRoomEntered(RoomCenter.position, RoomSize);
+
+        if (currentState == RoomState.WaitingForPlayer ||
+            currentState == RoomState.Cleared)
+        {
+            StartCombat();
         }
+    }
+
+    public void DespawnEnemies()
+    {
+        zoneSpawner.DespawnEnemies();
     }
 
     private void EndCombat()
     {
+        roomUnlocked = true;
         currentState = RoomState.Cleared;
 
         foreach(var door in roomDoors)
