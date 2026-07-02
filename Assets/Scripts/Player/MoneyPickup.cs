@@ -11,11 +11,10 @@ public class MoneyPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger z: " + other.name);
         if (!other.CompareTag("Player"))
             return;
 
-        PlayerCurrency currency = other.GetComponent<PlayerCurrency>();
+        PlayerCurrency currency = other.GetComponentInChildren<PlayerCurrency>();
 
         if (currency != null)
         {

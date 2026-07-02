@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: Pistolet
   attack:
-    damage: 1
+    damage: 100
     cooldown: 1
     effects:
     - rid: 2694950951516110917
