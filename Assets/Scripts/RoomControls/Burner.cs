@@ -4,15 +4,16 @@ using System.Collections;
 public class Burner : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Hitbox hitbox;
+    [SerializeField] private Collider2D hitboxCollider;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("Timing")]
     [SerializeField] private float initialDelay = 3f;
     [SerializeField] private float minInterval = 2f;
     [SerializeField] private float maxInterval = 5f;
-    [SerializeField] private float warningTime = 0.6f;
-    [SerializeField] private float activeTime = 0.8f;
+    [SerializeField] private float warningTime = 1.2f;
+    [SerializeField] private float minActiveTime = 2f;
+    [SerializeField] private float maxActiveTime = 3f;
 
     [Header("Damage")]
     [SerializeField] private int minDamage = 1;
@@ -22,12 +23,16 @@ public class Burner : MonoBehaviour
     [SerializeField] private float warningAlpha = 0.5f;
 
     private BurnerUnit burnerUnit;
+    private float fixedActiveTime;
 
     private void Awake()
     {
         burnerUnit = gameObject.AddComponent<BurnerUnit>();
         burnerUnit.faction.factionType = FactionType.Neutral;
 
+        fixedActiveTime = Random.Range(minActiveTime, maxActiveTime);
+
+        hitboxCollider.enabled = false;
         SetAlpha(0f);
     }
 
@@ -44,13 +49,16 @@ public class Burner : MonoBehaviour
         {
             yield return StartCoroutine(WarningPhase());
 
-            ActivateBurner();
-            yield return new WaitForSeconds(activeTime);
+            SetAlpha(1f);
+            hitboxCollider.enabled = true;
 
+            yield return new WaitForSeconds(fixedActiveTime);
+
+            hitboxCollider.enabled = false;
             SetAlpha(0f);
 
-            float waitTime = Random.Range(minInterval, maxInterval);
-            yield return new WaitForSeconds(waitTime);
+            float interval = Random.Range(minInterval, maxInterval);
+            yield return new WaitForSeconds(interval);
         }
     }
 
@@ -69,14 +77,26 @@ public class Burner : MonoBehaviour
         SetAlpha(warningAlpha);
     }
 
-    private void ActivateBurner()
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        TryHit(other);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        TryHit(other);
+    }
+
+    private void TryHit(Collider2D other)
+    {
+        if (!other.TryGetComponent(out Hurtbox hurtbox))
+            return;
+
         Vector2 origin = transform.position;
         int damage = Random.Range(minDamage, maxDamage + 1);
         HitContext context = new HitContext(burnerUnit, origin, Vector2.zero, damage, null);
 
-        hitbox.ActivateFor(context, activeTime);
-        SetAlpha(1f);
+        hurtbox.ReceiveHit(context);
     }
 
     private void SetAlpha(float alpha)

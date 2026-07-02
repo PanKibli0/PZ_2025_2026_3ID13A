@@ -10,6 +10,7 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private UpgradeManager upgradeManager;
     [SerializeField] private PlayerCurrencyUI playerCurrencyUI;
 
+
     private void Start()
     {
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
