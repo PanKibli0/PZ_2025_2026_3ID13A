@@ -11,6 +11,7 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private PlayerCurrencyUI playerCurrencyUI;
     [SerializeField] private PlayerStatsUI playerStatsUI;
 
+
     private void Start()
     {
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
