@@ -5,13 +5,15 @@ public class EnemySetup : MonoBehaviour
     [SerializeField] private EnemyUnit unit;
     [SerializeField] private EnemyMovementHandler movementHandler;
     [SerializeField] private EnemyAttackHandler attackHandler;
-    [SerializeField] private SpriteRenderer visualRenderer;
     [SerializeField] private EnemyReward reward;
+    private EnemyData data;
 
     private EnemySpawner spawner;
 
     public void Init(EnemyData data, Transform player, EnemySpawner spawner)
     {
+        this.data = data;
+
         unit.faction.factionType = FactionType.Enemy;
         unit.health.Init(data.maxHealth);
         unit.health.OnDeath += HandleDeath;
@@ -21,16 +23,16 @@ public class EnemySetup : MonoBehaviour
         reward.Init(data);
         this.spawner = spawner;
 
-        if (visualRenderer != null)
-            visualRenderer.color = data.enemyColor;
-
         movementHandler.Init(data.movementPhases, player);
         attackHandler.Init(data.attackPhases, player);
     }
 
     private void HandleDeath()
     {
+        unit.health.OnDeath -= HandleDeath;
         reward.GiveRewards();
+        EventBus.PublishEnemyKilled(data.enemyType);
+
         spawner.OnEnemyDeath(gameObject);
     }
 }

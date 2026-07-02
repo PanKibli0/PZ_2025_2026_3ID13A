@@ -215,6 +215,14 @@ PrefabInstance:
       propertyPath: targetTransitionPoint
       value: 
       objectReference: {fileID: 168042448}
+    - target: {fileID: 3757782349929415528, guid: 48d0ffc3261829047be9651dbe1d5152, type: 3}
+      propertyPath: possibleEnemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3757782349929415528, guid: 48d0ffc3261829047be9651dbe1d5152, type: 3}
+      propertyPath: 'possibleEnemies.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a1c4fcf949937b044a60378efd84be81, type: 2}
     - target: {fileID: 6498705465519992237, guid: 48d0ffc3261829047be9651dbe1d5152, type: 3}
       propertyPath: targetTransitionPoint
       value: 
@@ -4939,7 +4947,8 @@ PrefabInstance:
       propertyPath: targetTransitionPoint
       value: 
       objectReference: {fileID: 1568114022}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5620318582802558571, guid: ddffbec36dd4e634a9a790c49e3e66ea, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6880152001220379206, guid: ddffbec36dd4e634a9a790c49e3e66ea, type: 3}

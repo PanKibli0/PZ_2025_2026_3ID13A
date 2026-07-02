@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private List<Transform> spawnPoints;
 
     private List<GameObject> spawnedEnemies = new List<GameObject>();
@@ -30,12 +29,27 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy(EnemyData data, Vector2 position)
     {
-        GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
+        if (data.enemyPrefab == null)
+        {
+            Debug.LogError($"EnemyData '{data.enemyName}' nie ma przypisanego prefabu!");
+            return;
+        }
+
+        GameObject enemy = Instantiate(data.enemyPrefab, position, Quaternion.identity);
 
         spawnedEnemies.Add(enemy);
 
         EnemySetup setup = enemy.GetComponent<EnemySetup>();
+
+        if (setup == null)
+        {
+            Debug.LogError($"Prefab '{data.enemyPrefab.name}' nie posiada komponentu EnemySetup!");
+            Destroy(enemy);
+            return;
+        }
+
         setup.Init(data, player, this);
+
         activeEnemies++;
     }
 
