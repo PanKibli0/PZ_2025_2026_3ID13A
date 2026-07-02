@@ -711,6 +711,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 04f0db80-f3b9-4b3c-9298-182d18b8a2d1
     m_ActionName: 'Player/SwitchWeapon5[/Keyboard/5]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4105700544465950793}
+        m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
+        m_MethodName: OnToggleStats
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5a954ef8-a469-4ed7-8139-0b845a7c2ee1
+    m_ActionName: 'Player/ToggleStats[/Keyboard/tab]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -862,6 +878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2710525093798624251}
   - component: {fileID: 8079941514207843892}
+  - component: {fileID: 4105700544465950793}
   m_Layer: 0
   m_Name: Movement
   m_TagString: Untagged
@@ -900,3 +917,17 @@ MonoBehaviour:
   speed: 5
   slipperySettings: {fileID: 11400000, guid: 88014a5dd658a394785e16d9940faa59, type: 2}
   playerStats: {fileID: 6440016766553080481}
+--- !u!114 &4105700544465950793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190526296735228094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b946684cda29ec4dbfc66d3d72313c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInputController
+  currentVisionModifier: {fileID: 0}
+  playerStatsUI: {fileID: 0}
