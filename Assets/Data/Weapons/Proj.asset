@@ -40,7 +40,7 @@ MonoBehaviour:
       type: {class: ProjectilePattern, ns: , asm: Assembly-CSharp}
       data:
         projectilePrefab: {fileID: 7711275517128807682, guid: b1aa2a35d4f32614cb3afc99e1a2612e, type: 3}
-        speed: 10
+        speed: 25
         lifetime: 5
         projectileSprite: {fileID: -6596498788441845813, guid: 61b0502af5e26f64785b75a75fb90c8a, type: 3}
         projectileSize: {x: 3, y: 1}

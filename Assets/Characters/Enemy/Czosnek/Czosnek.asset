@@ -15,7 +15,12 @@ MonoBehaviour:
   enemyName: Czosnek
   enemyPrefab: {fileID: 2016180001046167223, guid: f0bdc0c8d5902d24aacecb75392aed5e, type: 3}
   maxHealth: 55
-  movementPhases: []
+  movementPhases:
+  - condition:
+      rid: -2
+    movement:
+      rid: 4275865542323077193
+    speed: 3
   attackPhases: []
   experienceReward: 50
   moneyDropChance: 1
@@ -23,4 +28,10 @@ MonoBehaviour:
   enemyType: 7
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 4275865542323077193
+      type: {class: RandomMove, ns: , asm: Assembly-CSharp}
+      data:
+        changeInterval: 1
