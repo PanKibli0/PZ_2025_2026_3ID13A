@@ -320,7 +320,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7fe2799ef108d4a95247d5ee0fe902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameBootstrap
-  playerPrefab: {fileID: 3925947135481941363, guid: a8eea4cec0917474aac473a8bc02c074, type: 3}
+  playerPrefabs:
+  - {fileID: 3925947135481941363, guid: 288ea0c463d9feb4fa0310d86cd95da7, type: 3}
+  - {fileID: 3925947135481941363, guid: 75979ee8c04a43f4aafae77d8025eb8a, type: 3}
   spawnPoint: {fileID: 1488178452}
   playerUI: {fileID: 1839742972}
   cameraController: {fileID: 1837421352}

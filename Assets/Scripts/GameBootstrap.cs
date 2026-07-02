@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class GameBootstrap : MonoBehaviour
 {
-    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject[] playerPrefabs;
+
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private PlayerUI playerUI;
     [SerializeField] private CameraController cameraController;
@@ -10,12 +11,23 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private UpgradeManager upgradeManager;
     [SerializeField] private PlayerCurrencyUI playerCurrencyUI;
     [SerializeField] private PlayerStatsUI playerStatsUI;
+
+    private const string CharacterKey = "SelectedCharacter";
     [SerializeField] private QuestManager questManager;
 
 
     private void Start()
     {
-        GameObject player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
+        int selectedIndex = PlayerPrefs.GetInt(CharacterKey, 0);
+
+        if (selectedIndex < 0 || selectedIndex >= playerPrefabs.Length)
+        {
+            selectedIndex = 0;
+        }
+
+        GameObject playerToSpawn = playerPrefabs[selectedIndex];
+        GameObject player = Instantiate(playerToSpawn, spawnPoint.position, Quaternion.identity);
+
         PlayerCurrency currency = player.GetComponentInChildren<PlayerCurrency>();
         if (currency != null && playerCurrencyUI != null)
         {

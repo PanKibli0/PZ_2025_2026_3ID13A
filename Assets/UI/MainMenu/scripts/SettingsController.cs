@@ -20,10 +20,14 @@ public class SettingsController : MonoBehaviour
     [Header("Graphics")]
     [SerializeField] private Toggle fullscreenToggle;
 
+    [Header("Game Settings")]
+    [SerializeField] private TMP_Dropdown characterDropdown;
+
     private const string MasterVolumeKey = "MasterVolume";
     private const string MusicVolumeKey = "MusicVolume";
     private const string SfxVolumeKey = "SfxVolume";
     private const string FullscreenKey = "Fullscreen";
+    private const string CharacterKey = "SelectedCharacter"; 
 
     private void Start()
     {
@@ -38,23 +42,17 @@ public class SettingsController : MonoBehaviour
         float sfxVolume = PlayerPrefs.GetFloat(SfxVolumeKey, 1f);
         bool fullscreen = PlayerPrefs.GetInt(FullscreenKey, 1) == 1;
 
-        if (masterVolumeSlider != null)
-            masterVolumeSlider.value = masterVolume;
+        int selectedCharacter = PlayerPrefs.GetInt(CharacterKey, 0);
 
-        if (musicSlider != null)
-            musicSlider.value = musicVolume;
+        if (masterVolumeSlider != null) masterVolumeSlider.value = masterVolume;
+        if (musicSlider != null) musicSlider.value = musicVolume;
+        if (sfxSlider != null) sfxSlider.value = sfxVolume;
+        if (fullscreenToggle != null) fullscreenToggle.isOn = fullscreen;
 
-        if (sfxSlider != null)
-            sfxSlider.value = sfxVolume;
-
-        if (fullscreenToggle != null)
-            fullscreenToggle.isOn = fullscreen;
+        if (characterDropdown != null) characterDropdown.value = selectedCharacter;
 
         AudioListener.volume = masterVolume;
-
-        if (musicSource != null)
-            musicSource.volume = musicVolume;
-
+        if (musicSource != null) musicSource.volume = musicVolume;
         Screen.fullScreen = fullscreen;
 
         UpdateVolumeTexts();
@@ -62,17 +60,19 @@ public class SettingsController : MonoBehaviour
 
     private void RegisterListeners()
     {
-        if (masterVolumeSlider != null)
-            masterVolumeSlider.onValueChanged.AddListener(SetMasterVolume);
+        if (masterVolumeSlider != null) masterVolumeSlider.onValueChanged.AddListener(SetMasterVolume);
+        if (musicSlider != null) musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        if (sfxSlider != null) sfxSlider.onValueChanged.AddListener(SetSfxVolume);
+        if (fullscreenToggle != null) fullscreenToggle.onValueChanged.AddListener(SetFullscreen);
 
-        if (musicSlider != null)
-            musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        if (characterDropdown != null) characterDropdown.onValueChanged.AddListener(SetCharacter);
+    }
 
-        if (sfxSlider != null)
-            sfxSlider.onValueChanged.AddListener(SetSfxVolume);
-
-        if (fullscreenToggle != null)
-            fullscreenToggle.onValueChanged.AddListener(SetFullscreen);
+    public void SetCharacter(int index)
+    {
+        PlayerPrefs.SetInt(CharacterKey, index);
+        PlayerPrefs.Save();
+        Debug.Log("Zapisano postaæ z indeksem: " + index);
     }
 
     public void SetMasterVolume(float value)
@@ -86,10 +86,7 @@ public class SettingsController : MonoBehaviour
     public void SetMusicVolume(float value)
     {
         PlayerPrefs.SetFloat(MusicVolumeKey, value);
-
-        if (musicSource != null)
-            musicSource.volume = value;
-
+        if (musicSource != null) musicSource.volume = value;
         UpdateVolumeTexts();
         PlayerPrefs.Save();
     }
@@ -105,36 +102,26 @@ public class SettingsController : MonoBehaviour
     {
         PlayerPrefs.SetInt(FullscreenKey, isFullscreen ? 1 : 0);
         Screen.fullScreen = isFullscreen;
-
-
         PlayerPrefs.Save();
     }
 
     public void ResetSettings()
     {
-        if (masterVolumeSlider != null)
-            masterVolumeSlider.value = 1f;
-
-        if (musicSlider != null)
-            musicSlider.value = 1f;
-
-        if (sfxSlider != null)
-            sfxSlider.value = 1f;
-
-        if (fullscreenToggle != null)
-            fullscreenToggle.isOn = true;
+        if (masterVolumeSlider != null) masterVolumeSlider.value = 1f;
+        if (musicSlider != null) musicSlider.value = 1f;
+        if (sfxSlider != null) sfxSlider.value = 1f;
+        if (fullscreenToggle != null) fullscreenToggle.isOn = true;
+        if (characterDropdown != null) characterDropdown.value = 0; 
 
         AudioListener.volume = 1f;
-
-        if (musicSource != null)
-            musicSource.volume = 1f;
-
+        if (musicSource != null) musicSource.volume = 1f;
         Screen.fullScreen = true;
 
         PlayerPrefs.SetFloat(MasterVolumeKey, 1f);
         PlayerPrefs.SetFloat(MusicVolumeKey, 1f);
         PlayerPrefs.SetFloat(SfxVolumeKey, 1f);
         PlayerPrefs.SetInt(FullscreenKey, 1);
+        PlayerPrefs.SetInt(CharacterKey, 0);
 
         UpdateVolumeTexts();
         PlayerPrefs.Save();
