@@ -220,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeaponVisual
   spriteRenderer: {fileID: 6777229144597598593}
   weaponHandler: {fileID: 1299245395712581986}
-  rotationSpeedDegPerSec: 180
+  rotationSpeedDegPerSec: 720
 --- !u!1 &3199527122523489616
 GameObject:
   m_ObjectHideFlags: 0
