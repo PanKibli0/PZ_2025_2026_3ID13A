@@ -10,7 +10,6 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private UpgradeManager upgradeManager;
     [SerializeField] private PlayerCurrencyUI playerCurrencyUI;
 
-
     private void Start()
     {
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
@@ -19,7 +18,7 @@ public class GameBootstrap : MonoBehaviour
         {
             playerCurrencyUI.Init(currency);
         }
-        //upgradeManager.Init(player);
+        upgradeManager.Init(player);
         RoomController startRoom = spawnPoint.GetComponentInParent<RoomController>();
 
         player.GetComponent<PlayerSetup>().Init(hotbarUI, playerUI);
