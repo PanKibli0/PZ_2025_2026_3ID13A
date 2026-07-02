@@ -5172,6 +5172,7 @@ MonoBehaviour:
   sfxText: {fileID: 786741273}
   musicSource: {fileID: 1145951870}
   fullscreenToggle: {fileID: 1756156594}
+  characterDropdown: {fileID: 266485714}
 --- !u!4 &1042510017
 Transform:
   m_ObjectHideFlags: 0
