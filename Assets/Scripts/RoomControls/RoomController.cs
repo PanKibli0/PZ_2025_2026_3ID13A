@@ -93,7 +93,10 @@ public class RoomController : MonoBehaviour
         {
             door.OpenDoor();
         }
-
+        if (zoneSpawner != null)
+        {
+            EventBus.PublishRoomCleared();
+        }
         // Spawn lootu, o ile jest przypisany
         if (lootPrefab == null) return;
         

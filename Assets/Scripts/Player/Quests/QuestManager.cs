@@ -27,11 +27,19 @@ public class QuestManager : MonoBehaviour
     private void OnEnable()
     {
         EventBus.OnEnemyKilled += HandleEnemyKilled;
+        EventBus.OnMoneyCollected += HandleMoneyCollected;
+        EventBus.OnLevelReached += HandleLevelReached;
+        EventBus.OnItemBought += HandleItemBought;
+        EventBus.OnRoomCleared += HandleRoomCleared;
     }
 
     private void OnDisable()
     {
         EventBus.OnEnemyKilled -= HandleEnemyKilled;
+        EventBus.OnMoneyCollected -= HandleMoneyCollected;
+        EventBus.OnLevelReached -= HandleLevelReached;
+        EventBus.OnItemBought -= HandleItemBought;
+        EventBus.OnRoomCleared -= HandleRoomCleared;
     }
 
     private void Start()
@@ -88,11 +96,21 @@ public class QuestManager : MonoBehaviour
             if (quest.IsCompleted)
                 continue;
 
-            if (quest.Data.objectiveType != QuestObjectiveType.KillEnemy)
-                continue;
+            switch (quest.Data.objectiveType)
+            {
+                case QuestObjectiveType.KillEnemy:
 
-            if (quest.Data.enemyType != enemyType)
-                continue;
+                    if (quest.Data.enemyType != enemyType)
+                        continue;
+
+                    break;
+
+                case QuestObjectiveType.KillAnyEnemy:
+                    break;
+
+                default:
+                    continue;
+            }
 
             quest.AddProgress();
             OnQuestsChanged?.Invoke();
@@ -101,6 +119,112 @@ public class QuestManager : MonoBehaviour
                 CompleteQuest(quest);
 
             break;
+        }
+    }
+
+    private void HandleMoneyCollected(int amount)
+    {
+        foreach (Quest quest in activeQuests)
+        {
+            if (quest.Data.objectiveType != QuestObjectiveType.CollectMoney)
+                continue;
+
+            quest.AddProgress(amount);
+
+            OnQuestsChanged?.Invoke();
+
+            if (quest.IsCompleted)
+            {
+                CompleteQuest(quest);
+                break;
+            }
+        }
+    }
+    private void HandleLevelReached(int level)
+    {
+        Quest completedQuest = null;
+
+        foreach (Quest quest in activeQuests)
+        {
+            if (quest.IsCompleted)
+                continue;
+
+            if (quest.Data.objectiveType != QuestObjectiveType.ReachLevel)
+                continue;
+
+            quest.SetProgress(level);
+
+            OnQuestsChanged?.Invoke();
+
+            if (quest.IsCompleted)
+            {
+                completedQuest = quest;
+            }
+
+            break;
+        }
+
+        if (completedQuest != null)
+        {
+            CompleteQuest(completedQuest);
+        }
+    }
+    private void HandleItemBought()
+    {
+        Quest completedQuest = null;
+
+        foreach (Quest quest in activeQuests)
+        {
+            if (quest.IsCompleted)
+                continue;
+
+            if (quest.Data.objectiveType != QuestObjectiveType.BuyItems)
+                continue;
+
+            quest.AddProgress();
+
+            OnQuestsChanged?.Invoke();
+
+            if (quest.IsCompleted)
+            {
+                completedQuest = quest;
+            }
+
+            break;
+        }
+
+        if (completedQuest != null)
+        {
+            CompleteQuest(completedQuest);
+        }
+    }
+    private void HandleRoomCleared()
+    {
+        Quest completedQuest = null;
+
+        foreach (Quest quest in activeQuests)
+        {
+            if (quest.IsCompleted)
+                continue;
+
+            if (quest.Data.objectiveType != QuestObjectiveType.ClearRooms)
+                continue;
+
+            quest.AddProgress();
+
+            OnQuestsChanged?.Invoke();
+
+            if (quest.IsCompleted)
+            {
+                completedQuest = quest;
+            }
+
+            break;
+        }
+
+        if (completedQuest != null)
+        {
+            CompleteQuest(completedQuest);
         }
     }
 

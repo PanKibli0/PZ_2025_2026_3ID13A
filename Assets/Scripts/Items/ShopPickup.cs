@@ -74,6 +74,7 @@ public class ShopPickup : MonoBehaviour
 
         currency.SpendMoney(price);
         shopItemUI.HideAction();
+        EventBus.PublishItemBought();
         Destroy(gameObject);
     }
 }
