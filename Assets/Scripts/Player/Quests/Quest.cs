@@ -13,12 +13,19 @@ public class Quest
         Data = data;
     }
 
-    public void AddProgress()
+    public void AddProgress(int amount = 1)
     {
         if (IsCompleted)
             return;
 
-        CurrentAmount++;
+        CurrentAmount += amount;
+
+        if (CurrentAmount > Data.requiredAmount)
+            CurrentAmount = Data.requiredAmount;
+    }
+    public void SetProgress(int value)
+    {
+        CurrentAmount = Mathf.Min(value, Data.requiredAmount);
     }
     public bool RewardClaimed { get; private set; }
 

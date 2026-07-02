@@ -223,6 +223,10 @@ PrefabInstance:
       propertyPath: 'possibleEnemies.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: a1c4fcf949937b044a60378efd84be81, type: 2}
+    - target: {fileID: 3757782349929415528, guid: 48d0ffc3261829047be9651dbe1d5152, type: 3}
+      propertyPath: 'possibleEnemies.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4dc88cc676aa8f641a1a4ad60d7a2e99, type: 2}
     - target: {fileID: 6498705465519992237, guid: 48d0ffc3261829047be9651dbe1d5152, type: 3}
       propertyPath: targetTransitionPoint
       value: 
@@ -2573,6 +2577,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b067569a55918674c94c0fda5b6b0472, type: 2}
   - {fileID: 11400000, guid: 6418247d86544c14e923dfd4d61ee411, type: 2}
   - {fileID: 11400000, guid: dae38470a13908e4ba1d4e1cf1b66834, type: 2}
+  - {fileID: 11400000, guid: e6be43e9b4f48c94395a6d867e12195f, type: 2}
+  - {fileID: 11400000, guid: 064d0bc5485ef5d49acff8efdc767826, type: 2}
   maxActiveQuests: 3
   notificationUI: {fileID: 1134617915}
 --- !u!4 &1064399132

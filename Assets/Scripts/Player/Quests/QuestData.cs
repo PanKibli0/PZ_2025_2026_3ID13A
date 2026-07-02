@@ -3,7 +3,12 @@ using static EnemyData;
 
 public enum QuestObjectiveType
 {
-    KillEnemy
+    KillEnemy,         // zabij konkretny typ przeciwnika
+    KillAnyEnemy,      // zabij dowolnego przeciwnika
+    CollectMoney,      // zbierz okreœlon¹ iloœæ pieniêdzy
+    ReachLevel,        // osi¹gnij poziom
+    BuyItems,          // kup przedmioty
+    ClearRooms         // wyczyœæ pokoje
 }
 
 [CreateAssetMenu(menuName = "Quest/Quest Data")]

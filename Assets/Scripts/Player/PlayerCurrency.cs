@@ -15,7 +15,7 @@ public class PlayerCurrency : MonoBehaviour
             return;
 
         money += amount;
-
+        EventBus.PublishMoneyCollected(amount);
         OnMoneyChanged?.Invoke(money);
 
         Debug.Log($"Money: {money}");
