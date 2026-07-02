@@ -330,6 +330,7 @@ MonoBehaviour:
   upgradeManager: {fileID: 75871402}
   playerCurrencyUI: {fileID: 2076215732}
   playerStatsUI: {fileID: 1827731094}
+  questManager: {fileID: 1064399131}
 --- !u!4 &75871401
 Transform:
   m_ObjectHideFlags: 0

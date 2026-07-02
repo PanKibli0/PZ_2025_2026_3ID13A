@@ -13,6 +13,8 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private PlayerStatsUI playerStatsUI;
 
     private const string CharacterKey = "SelectedCharacter";
+    [SerializeField] private QuestManager questManager;
+
 
     private void Start()
     {
@@ -32,6 +34,7 @@ public class GameBootstrap : MonoBehaviour
             playerCurrencyUI.Init(currency);
         }
         upgradeManager.Init(player);
+        questManager.Init(player);
         RoomController startRoom = spawnPoint.GetComponentInParent<RoomController>();
 
         player.GetComponent<PlayerSetup>().Init(hotbarUI, playerUI);
