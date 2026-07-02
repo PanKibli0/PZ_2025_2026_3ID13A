@@ -32,13 +32,16 @@ MonoBehaviour:
     attack:
       damage: 2
       cooldown: 2
-      effects: []
+      effects:
+      - rid: -2
       pattern:
         rid: 3376038911061000449
     weight: 1
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 3376038911061000444
       type: {class: HealthThresholdCondition, ns: , asm: Assembly-CSharp}
       data:

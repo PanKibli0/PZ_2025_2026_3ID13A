@@ -1,64 +1,95 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
-public class PlayerWeaponHandler : MonoBehaviour
+public class PlayerWeaponHandler : MonoBehaviour, IAttackHandler
 {
     [SerializeField] private PlayerInventory inventory;
-    [SerializeField] private Faction faction;
+    [SerializeField] private PlayerUnit unit;
     [SerializeField] private float weaponSwitchCooldown = 0.3f;
     [SerializeField] private HotbarUI hotbar;
 
-
     private WeaponData currentWeapon;
+    private int currentIndex;
     private float lastAttackTime;
     private float lastSwitchTime;
 
     public bool CanAttack { get; set; } = true;
+    public WeaponData CurrentWeapon
+    {
+        get { return currentWeapon; }
+    }
+    public int CurrentIndex
+    {
+        get { return currentIndex; }
+    }
+
+    public event Action OnAttackStarted;
+    public event Action OnAttackEnded;
+    public event Action<int> OnWeaponSwitched;
 
     private void Awake()
     {
         if (inventory == null)
-        {
             Debug.LogError("PlayerInventory not found on Player!");
-            return;
-        }
-
-        if (inventory.GetWeapon(0) != null)
-            switchWeapon(0);
     }
 
-    // DEBUG - OLD INPUT
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) switchWeapon(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) switchWeapon(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) switchWeapon(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) switchWeapon(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) switchWeapon(4);
+        if (inventory != null && inventory.GetWeapon(0) != null)
+            SwitchWeapon(0);
     }
-    // END DEBUG
 
-    public void onAttack(InputAction.CallbackContext context)
+    public void OnAttack(InputAction.CallbackContext context)
     {
         if (!CanAttack) return;
         if (!context.performed || currentWeapon == null) return;
         if (Time.time < lastAttackTime + currentWeapon.attack.cooldown) return;
 
-        Vector2 aimDirection = getAimDirection();
+        Vector2 aimDirection = GetAimDirection();
         Vector2 origin = (Vector2)transform.position + aimDirection * currentWeapon.attackOffset;
 
-        HitContext hitContext = currentWeapon.attack.createContext(gameObject, faction, origin, aimDirection);
-        currentWeapon.attack.execute(hitContext);
+        HitContext hitContext = currentWeapon.attack.CreateContext(unit, origin, aimDirection);
+
+        OnAttackStarted?.Invoke();
+        currentWeapon.attack.Execute(hitContext);
+        OnAttackEnded?.Invoke();
+
         lastAttackTime = Time.time;
     }
 
-    private Vector2 getAimDirection()
+    public void OnSwitchWeapon1(InputAction.CallbackContext context)
+    {
+        if (context.performed) SwitchWeapon(0);
+    }
+
+    public void OnSwitchWeapon2(InputAction.CallbackContext context)
+    {
+        if (context.performed) SwitchWeapon(1);
+    }
+
+    public void OnSwitchWeapon3(InputAction.CallbackContext context)
+    {
+        if (context.performed) SwitchWeapon(2);
+    }
+
+    public void OnSwitchWeapon4(InputAction.CallbackContext context)
+    {
+        if (context.performed) SwitchWeapon(3);
+    }
+
+    public void OnSwitchWeapon5(InputAction.CallbackContext context)
+    {
+        if (context.performed) SwitchWeapon(4);
+    }
+
+    private Vector2 GetAimDirection()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         return (mousePos - (Vector2)transform.position).normalized;
     }
 
-    public void switchWeapon(int index)
+    public void SwitchWeapon(int index)
     {
         if (Time.time < lastSwitchTime + weaponSwitchCooldown)
             return;
@@ -69,8 +100,11 @@ public class PlayerWeaponHandler : MonoBehaviour
             return;
 
         currentWeapon = weapon;
+        currentIndex = index;
         lastSwitchTime = Time.time;
-        Debug.Log("Switched weapon: " + weapon.weaponName);
+        Debug.Log($"Switched weapon: {weapon.weaponName}");
+
+        OnWeaponSwitched?.Invoke(index);
 
         if (hotbar != null)
             hotbar.SetSelected(index);

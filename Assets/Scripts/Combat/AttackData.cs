@@ -16,14 +16,13 @@ public class AttackData
     [SerializeReference]
     public AttackPattern pattern;
 
-
-    public void execute(HitContext context)
+    public void Execute(HitContext context)
     {
-        pattern.execute(context);
+        pattern.Execute(context);
     }
 
-    public HitContext createContext(GameObject attacker, Faction attackerFaction, Vector2 origin, Vector2 direction)
+    public HitContext CreateContext(Unit attacker, Vector2 origin, Vector2 direction)
     {
-        return new HitContext(attacker, attackerFaction, origin, direction, this);
+        return new HitContext(attacker, origin, direction, damage, effects);
     }
 }

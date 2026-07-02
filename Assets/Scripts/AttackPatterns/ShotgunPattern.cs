@@ -8,8 +8,10 @@ public class ShotgunPattern : AttackPattern
     [SerializeField] private float spread = 45f;
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lifetime = 3f;
+    [SerializeField] private Sprite projectileSprite;
+    [SerializeField] private Vector2 projectileSize = Vector2.one;
 
-    public override void execute(HitContext context)
+    public override void Execute(HitContext context)
     {
         for (int i = 0; i < count; i++)
         {
@@ -18,7 +20,7 @@ public class ShotgunPattern : AttackPattern
 
             GameObject obj = Object.Instantiate(projectilePrefab, context.origin, Quaternion.identity);
             obj.transform.up = dir;
-            obj.GetComponent<Projectile>().setup(speed, dir, lifetime, context);
+            obj.GetComponent<Projectile>().Setup(speed, dir, lifetime, context, projectileSprite, projectileSize);
         }
     }
 }

@@ -6,12 +6,14 @@ public class ProjectilePattern : AttackPattern
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lifetime = 5f;
+    [SerializeField] private Sprite projectileSprite;
+    [SerializeField] private Vector2 projectileSize = Vector2.one;
 
-    public override void execute(HitContext context)
+    public override void Execute(HitContext context)
     {
         GameObject obj = Object.Instantiate(projectilePrefab, context.origin, Quaternion.identity);
         obj.transform.up = context.direction;
 
-        obj.GetComponent<Projectile>().setup(speed, context.direction, lifetime, context);
+        obj.GetComponent<Projectile>().Setup(speed, context.direction, lifetime, context, projectileSprite, projectileSize);
     }
 }

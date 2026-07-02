@@ -1,22 +1,23 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
-public class Health : MonoBehaviour
+[Serializable]
+public class Health
 {
-    [SerializeField] private int maxHealth = 10;
+    public int maxHealth { get; private set; }
+    public float currentHealth { get; private set; }
 
-    [SerializeField] private int currentHealth;
-
-    public event Action<int, int> OnHealthChanged;
+    public event Action<float, int> OnHealthChanged;
     public event Action OnDeath;
 
-    private void Awake()
+    public void Init(int max)
     {
-        if (currentHealth <= 0) // Uszkodzony przeciwnik na start (??)
-            currentHealth = maxHealth;
+        maxHealth = max;
+        currentHealth = max;
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
-    public void takeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if (amount <= 0) return;
 
@@ -27,10 +28,9 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
             OnDeath?.Invoke();
-        
     }
 
-    public void takeHeal(int amount)
+    public void TakeHeal(float amount)
     {
         if (amount <= 0) return;
 
@@ -40,13 +40,13 @@ public class Health : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
-    public void setMaxHealth(int newMaxHealth)
+    public void SetMaxHealth(int newMaxHealth)
     {
         if (newMaxHealth <= 0) return;
+
         maxHealth = newMaxHealth;
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
-
-    public int getCurrentHealth() { return currentHealth; }
-    public int getMaxHealth() { return maxHealth; }
 }

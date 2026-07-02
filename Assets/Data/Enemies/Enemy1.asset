@@ -32,13 +32,18 @@ MonoBehaviour:
     attack:
       damage: 1
       cooldown: 5
-      effects: []
+      effects:
+      - rid: 2694950951516110916
       pattern:
         rid: 3376038911061000457
     weight: 1
   references:
     version: 2
     RefIds:
+    - rid: 2694950951516110916
+      type: {class: LostGlassesHitEffect, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 10
     - rid: 3376038911061000452
       type: {class: DistanceCondition, ns: , asm: Assembly-CSharp}
       data:

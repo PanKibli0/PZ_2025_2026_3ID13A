@@ -34,7 +34,7 @@ public class BurnStatusEffect : StatusEffect
 
         if (tickTimer <= 0f)
         {
-            health.takeDamage(damagePerTick);
+            health.TakeDamage(damagePerTick);
             tickTimer = tickInterval;
         }
 

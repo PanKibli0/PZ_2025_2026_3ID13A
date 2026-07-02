@@ -1,34 +1,30 @@
-using UnityEngine;
-
 public class TiedStatusEffect : StatusEffect
 {
-    private readonly PlayerMovement movement;
+    private readonly IMoveHandler moveHandler;
     private float duration;
     private readonly float maxDuration;
 
-    public TiedStatusEffect(PlayerMovement movement, float duration)
+    public TiedStatusEffect(IMoveHandler moveHandler, float duration)
     {
-        this.movement = movement;
+        this.moveHandler = moveHandler;
         this.duration = duration;
-        maxDuration = duration;
+        this.maxDuration = duration;
     }
 
     public override void OnApply()
     {
-        movement.CanMove = false;
+        moveHandler.CanMove = false;
     }
 
     public override void Tick(float deltaTime)
     {
         duration -= deltaTime;
-
-        if (duration <= 0f)
-            Finished = true;
+        if (duration <= 0f) Finished = true;
     }
 
     public override void OnExpire()
     {
-        movement.CanMove = true;
+        moveHandler.CanMove = true;
     }
 
     public override void Refresh()

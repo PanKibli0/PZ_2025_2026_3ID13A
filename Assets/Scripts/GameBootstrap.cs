@@ -13,18 +13,12 @@ public class GameBootstrap : MonoBehaviour
     {
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
 
-        // REWORK: ref from player ROOT 
-        Health playerHealth = player.GetComponentInChildren<Health>();
-        if (playerHealth != null && playerUI != null)
-            playerUI.init(playerHealth);
+        player.GetComponent<PlayerSetup>().Init(hotbarUI, playerUI);
 
         if (enemySpawner != null)
-            enemySpawner.init(player.transform);
+            enemySpawner.Init(player.transform);
 
         if (cameraController != null)
             cameraController.Init(player.transform);
-
-        PlayerWeaponHandler weaponHandler = player.GetComponentInChildren<PlayerWeaponHandler>();
-        weaponHandler.SetHotbar(hotbarUI);
     }
 }

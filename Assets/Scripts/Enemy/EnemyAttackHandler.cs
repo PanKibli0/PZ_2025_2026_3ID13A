@@ -1,19 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class EnemyAttackHandler : MonoBehaviour
+public class EnemyAttackHandler : MonoBehaviour, IAttackHandler
 {
     [SerializeField] private List<AttackPhase> phases;
-    [SerializeField] private float phaseChangeCooldown = 0.3f; // REWORK ?? : SHared DATA SO WITH WEAPON SWITCH???
-    [SerializeField] private Faction faction;
+    [SerializeField] private float phaseChangeCooldown = 0.3f;
+    [SerializeField] private EnemyUnit unit;
 
     private Transform player;
-    
     private Dictionary<AttackData, float> lastAttackTimes;
     private AttackPhase currentPhase;
     private float lastPhaseChangeTime;
 
-    public void init(List<AttackPhase> attackPhases, Transform playerTransform)
+    public bool CanAttack { get; set; } = true;
+
+    public void Init(List<AttackPhase> attackPhases, Transform playerTransform)
     {
         phases = attackPhases;
         player = playerTransform;
@@ -22,9 +23,10 @@ public class EnemyAttackHandler : MonoBehaviour
 
     private void Update()
     {
+        if (!CanAttack) return;
         if (player == null) return;
 
-        AttackPhase newPhase = selectPhase();
+        AttackPhase newPhase = SelectPhase();
 
         if (newPhase != currentPhase && Time.time >= lastPhaseChangeTime + phaseChangeCooldown)
         {
@@ -32,13 +34,11 @@ public class EnemyAttackHandler : MonoBehaviour
             lastPhaseChangeTime = Time.time;
         }
 
-        if (currentPhase != null && canAttack(currentPhase.attack))
-        {
-            executeAttack(currentPhase.attack);
-        }
+        if (currentPhase != null && CanExecuteAttack(currentPhase.attack))
+            ExecuteAttack(currentPhase.attack);
     }
 
-    private AttackPhase selectPhase()
+    private AttackPhase SelectPhase()
     {
         List<AttackPhase> validPhases = new List<AttackPhase>();
         float totalWeight = 0f;
@@ -66,19 +66,19 @@ public class EnemyAttackHandler : MonoBehaviour
         return validPhases[0];
     }
 
-    private bool canAttack(AttackData attack)
+    private bool CanExecuteAttack(AttackData attack)
     {
         if (!lastAttackTimes.ContainsKey(attack)) return true;
         return Time.time >= lastAttackTimes[attack] + attack.cooldown;
     }
 
-    private void executeAttack(AttackData attack)
+    private void ExecuteAttack(AttackData attack)
     {
-        Vector2 direction = (player.position - transform.parent.position).normalized;
-        Vector2 origin = transform.parent.position + (Vector3)direction * 0.5f;
+        Vector2 direction = (player.position - unit.transform.position).normalized;
+        Vector2 origin = unit.transform.position + (Vector3)direction * 0.5f;
 
-        HitContext context = attack.createContext(gameObject, faction, origin, direction);
-        attack.execute(context);
+        HitContext context = attack.CreateContext(unit, origin, direction);
+        attack.Execute(context);
 
         lastAttackTimes[attack] = Time.time;
     }
