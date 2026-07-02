@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8459631051384065611}
   - component: {fileID: 1156930830054547787}
   - component: {fileID: 1911883549786597037}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: zj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 563389125958383270}
   - component: {fileID: 4562318741244738339}
   - component: {fileID: 1756048571802590580}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 3643797286313232726}
   - component: {fileID: 8524027767972632520}
   - component: {fileID: 416765415170112825}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 467443079651478347}
   - component: {fileID: 3803734230204252182}
   - component: {fileID: 8666841875638570900}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

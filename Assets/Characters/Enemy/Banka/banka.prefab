@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 5562299327096565133}
   - component: {fileID: 2608813988438944297}
   - component: {fileID: 1459421216126422275}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: banka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 5361311255412074786}
   - component: {fileID: 8177939740401281624}
   - component: {fileID: 8511443304523900303}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 3643797286313232726}
   - component: {fileID: 8524027767972632520}
   - component: {fileID: 416765415170112825}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 1470318783391602262}
   - component: {fileID: 8010254361003093720}
   - component: {fileID: 2029674003067202229}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,7 +612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8151549442771266802}
   - component: {fileID: 1676356225716735022}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: banka_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

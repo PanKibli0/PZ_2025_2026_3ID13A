@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5924787669910110519}
   - component: {fileID: 2208711368669725363}
   - component: {fileID: 1772261181779757725}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pomidorek
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 3449166980120104565}
   - component: {fileID: 7454924983807763796}
   - component: {fileID: 2246782235670100604}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 3643797286313232726}
   - component: {fileID: 8524027767972632520}
   - component: {fileID: 416765415170112825}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2760434835286836621}
   - component: {fileID: 3245448886858544077}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cien_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 1502402641742697003}
   - component: {fileID: 6620069551565722267}
   - component: {fileID: 7002023062669215524}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 370614973102991700}
   - component: {fileID: 2973348520919683603}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: explosion_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,6 +796,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pomidor_kamikadze_1
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 38bfd71c86629cb439841c4ed4f3bc87, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 38bfd71c86629cb439841c4ed4f3bc87, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.045
@@ -836,9 +840,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1483710586404955412, guid: 38bfd71c86629cb439841c4ed4f3bc87, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 206176839366231293, guid: 38bfd71c86629cb439841c4ed4f3bc87, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 386791141387813222, guid: 38bfd71c86629cb439841c4ed4f3bc87, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205218737115150394, guid: 38bfd71c86629cb439841c4ed4f3bc87, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3297364353584691495, guid: 38bfd71c86629cb439841c4ed4f3bc87, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4257508509235537429, guid: 38bfd71c86629cb439841c4ed4f3bc87, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.06466866
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181300385887193387, guid: 38bfd71c86629cb439841c4ed4f3bc87, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772873413537946698, guid: 38bfd71c86629cb439841c4ed4f3bc87, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
