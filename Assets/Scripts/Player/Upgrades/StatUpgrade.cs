@@ -9,7 +9,7 @@ public class StatUpgrade : UpgradeData
     public override void Apply(GameObject player)
     {
         PlayerStats stats = player.GetComponent<PlayerStats>();
-        Health health = player.GetComponentInChildren<Health>();
+        PlayerUnit unit = player.GetComponent<PlayerUnit>();
 
         switch (statType)
         {
@@ -46,7 +46,7 @@ public class StatUpgrade : UpgradeData
                 break;
 
             case PlayerStatType.MaxHealth:
-                health.setMaxHealth(health.MaxHealth + Mathf.RoundToInt(value));
+                unit.health.SetMaxHealth(unit.health.maxHealth + Mathf.RoundToInt(value));
                 break;
         }
     }

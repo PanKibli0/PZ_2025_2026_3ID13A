@@ -7,11 +7,10 @@ public class ShopHealItemData : ItemData
 
     public override bool ApplyEffect(GameObject player)
     {
-        Health health = player.GetComponentInChildren<Health>();
-        if (health != null)
+        PlayerUnit unit = player.GetComponent<PlayerUnit>();
+        if (unit != null)
         {
-            Debug.Log("HealTaken");
-            health.TakeHeal(healAmount);
+            unit.health.TakeHeal(healAmount);
             return true;
         }
         return false;

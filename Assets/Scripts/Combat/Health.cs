@@ -7,6 +7,8 @@ public class Health
     public int maxHealth { get; private set; }
     public float currentHealth { get; private set; }
 
+    private PlayerStats playerStats;
+
     public event Action<float, int> OnHealthChanged;
     public event Action OnDeath;
 
@@ -17,11 +19,14 @@ public class Health
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
+    public void SetPlayerStats(PlayerStats stats)
+    {
+        playerStats = stats;
+    }
+
     public void TakeDamage(float amount)
     {
         if (amount <= 0) return;
-        
-        PlayerStats playerStats = GetComponentInParent<PlayerStats>();
 
         if (playerStats != null)
         {

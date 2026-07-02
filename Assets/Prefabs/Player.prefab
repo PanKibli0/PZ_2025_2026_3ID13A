@@ -172,6 +172,7 @@ MonoBehaviour:
   unit: {fileID: 3765935192943742171}
   weaponSwitchCooldown: 0.3
   hotbar: {fileID: 0}
+  playerStats: {fileID: 6440016766553080481}
 --- !u!114 &3015725469449887093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +191,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 498ca5a087d4a2d46932385c5cbe9471, type: 2}
   - {fileID: 11400000, guid: c68530162f346f949bf553faf1cb3bd3, type: 2}
   - {fileID: 11400000, guid: f8d822f7bdfc1f74e810f6081d832056, type: 2}
+  coins: 0
 --- !u!114 &5117380238838055125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeaponVisual
   spriteRenderer: {fileID: 6777229144597598593}
   weaponHandler: {fileID: 1299245395712581986}
+  rotationSpeedDegPerSec: 720
 --- !u!1 &3199527122523489616
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +492,7 @@ Transform:
   - {fileID: 861645450849686462}
   - {fileID: 2902931925227186560}
   - {fileID: 5512130216697640943}
+  - {fileID: 5761057667883224536}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &3177103508206313642
@@ -745,6 +749,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 3edd65d0ce07c69449f11a77026f6f97, type: 2}
   playerMovement: {fileID: 8079941514207843892}
   weaponHandler: {fileID: 1299245395712581986}
+  playerStats: {fileID: 6440016766553080481}
 --- !u!114 &673602155233162668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,6 +763,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebugStatusApplicator
   unit: {fileID: 3765935192943742171}
+--- !u!1 &4508087616824406415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5761057667883224536}
+  - component: {fileID: 6440016766553080481}
+  - component: {fileID: 331138700862539135}
+  - component: {fileID: 2141817144285078740}
+  - component: {fileID: 4726238933388547996}
+  m_Layer: 0
+  m_Name: Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5761057667883224536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508087616824406415}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.015575, y: -0.026324999, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5678984806363570528}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6440016766553080481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508087616824406415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b8043ebcf296a448abef89cfcaff13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+--- !u!114 &331138700862539135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508087616824406415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca0ea1dc664942459bf1757bf352cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerExperience
+  currentLevel: 1
+  currentXP: 0
+  xpToNextLevel: 100
+--- !u!114 &2141817144285078740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508087616824406415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5903c6624fd4314bbba5f0ebe8a01a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthRegen
+  unit: {fileID: 3765935192943742171}
+  playerStats: {fileID: 6440016766553080481}
+--- !u!114 &4726238933388547996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508087616824406415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d107fdf7aee713346a4e1fbc76480e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCurrency
+  money: 0
 --- !u!1 &9190526296735228094
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,3 +899,4 @@ MonoBehaviour:
   rb: {fileID: 3177103508206313642}
   speed: 5
   slipperySettings: {fileID: 11400000, guid: 88014a5dd658a394785e16d9940faa59, type: 2}
+  playerStats: {fileID: 6440016766553080481}

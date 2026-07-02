@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour, IMoveHandler
 
     private void Awake()
     {
-        playerStats = GetComponent<PlayerStats>();
+        playerStats = transform.parent.GetComponentInChildren<PlayerStats>();
 
         if (playerStats == null)
         {
