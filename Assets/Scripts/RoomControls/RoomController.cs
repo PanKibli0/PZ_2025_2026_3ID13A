@@ -40,6 +40,13 @@ public class RoomController : MonoBehaviour
 
     private void StartCombat()
     {
+        if (zoneSpawner == null)
+        {
+            roomUnlocked = true;
+            currentState = RoomState.Cleared;
+            return;
+        }
+
         if (!roomUnlocked)
         {
             currentState = RoomState.InCombat;
@@ -71,6 +78,9 @@ public class RoomController : MonoBehaviour
 
     public void DespawnEnemies()
     {
+        if (zoneSpawner == null)
+            return;
+
         zoneSpawner.DespawnEnemies();
     }
 
