@@ -20,4 +20,10 @@ public class Quest
 
         CurrentAmount++;
     }
+    public bool RewardClaimed { get; private set; }
+
+    public void ClaimReward()
+    {
+        RewardClaimed = true;
+    }
 }
