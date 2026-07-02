@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea2cbceccc304540ae890b70483bcd7, type: 3}
+  m_Name: Czosnek
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Czosnek
+  enemyPrefab: {fileID: 2016180001046167223, guid: f0bdc0c8d5902d24aacecb75392aed5e, type: 3}
+  maxHealth: 55
+  movementPhases:
+  - condition:
+      rid: -2
+    movement:
+      rid: 4275865542323077193
+    speed: 3
+  attackPhases: []
+  experienceReward: 50
+  moneyDropChance: 1
+  moneyDropAmount: 1
+  enemyType: 7
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 4275865542323077193
+      type: {class: RandomMove, ns: , asm: Assembly-CSharp}
+      data:
+        changeInterval: 1

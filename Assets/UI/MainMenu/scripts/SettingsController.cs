@@ -121,7 +121,7 @@ public class SettingsController : MonoBehaviour
         PlayerPrefs.SetFloat(MusicVolumeKey, 1f);
         PlayerPrefs.SetFloat(SfxVolumeKey, 1f);
         PlayerPrefs.SetInt(FullscreenKey, 1);
-        PlayerPrefs.SetInt(CharacterKey, 0); 
+        PlayerPrefs.SetInt(CharacterKey, 0);
 
         UpdateVolumeTexts();
         PlayerPrefs.Save();
