@@ -7,7 +7,7 @@ public class ShopWeaponItemData : ItemData
 
     public override bool ApplyEffect(GameObject player)
     {
-        PlayerInventory inventory = player.GetComponent<PlayerInventory>();
+        PlayerInventory inventory = player.GetComponentInChildren<PlayerInventory>();
         bool success = inventory.AddWeapon(weaponToGive);
         if (success)
         {

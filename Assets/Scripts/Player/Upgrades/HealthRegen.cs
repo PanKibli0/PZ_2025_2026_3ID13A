@@ -13,7 +13,7 @@ public class HealthRegen : MonoBehaviour
             unit = GetComponentInParent<PlayerUnit>();
 
         if (playerStats == null)
-            playerStats = GetComponent<PlayerStats>();
+            playerStats = GetComponentInChildren<PlayerStats>();
     }
 
     private void Update()
