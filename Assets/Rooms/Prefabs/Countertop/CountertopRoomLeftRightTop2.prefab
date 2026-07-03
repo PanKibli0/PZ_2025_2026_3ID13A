@@ -181,6 +181,7 @@ MonoBehaviour:
   - {fileID: 7600398019915927463}
   lootPrefab: {fileID: 0}
   zoneSpawner: {fileID: 8189853374106882007}
+  enemySpawner: {fileID: 3522697080510259397}
   roomCenter: {fileID: 2712315061054621942}
 --- !u!1 &2335683148578009523
 GameObject:

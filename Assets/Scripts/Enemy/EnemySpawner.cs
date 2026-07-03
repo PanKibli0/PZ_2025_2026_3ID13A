@@ -4,12 +4,12 @@ using System.Collections.Generic;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<Transform> spawnPoints;
-
     private List<GameObject> spawnedEnemies = new List<GameObject>();
 
     private Transform player;
     private int activeEnemies;
 
+    public event System.Action OnAllEnemiesDead;
     public void Init(Transform playerTransform)
     {
         player = playerTransform;
@@ -17,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemies(List<EnemySpawnEntry> enemiesToSpawn)
     {
+        Debug.Log($"Do zrespienia: {enemiesToSpawn.Count}");
         foreach (var entry in enemiesToSpawn)
         {
             for (int i = 0; i < entry.count; i++)
@@ -59,7 +60,7 @@ public class EnemySpawner : MonoBehaviour
         activeEnemies--;
 
         if (activeEnemies == 0)
-            EventBus.publishAllEnemiesDefeated();
+            OnAllEnemiesDead?.Invoke();
     }
 
     public void DespawnEnemies()
@@ -72,5 +73,10 @@ public class EnemySpawner : MonoBehaviour
 
         spawnedEnemies.Clear();
         activeEnemies = 0;
+    }
+    public void Spawn(List<EnemySpawnEntry> enemies)
+    {
+        Debug.Log("EnemySpawner Spawn");
+        SpawnEnemies(enemies);
     }
 }

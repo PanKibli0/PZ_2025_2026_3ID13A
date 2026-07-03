@@ -10,6 +10,8 @@ public class PlayerInventory : MonoBehaviour
     public int HotbarSlotCount => WeaponSlotCount + ItemSlotCount;
     public int coins = 0;
 
+    public bool HasKey { get; private set; }
+
     public event Action OnInventoryChanged;
 
     public bool AddWeapon(WeaponData weapon)
@@ -50,6 +52,10 @@ public class PlayerInventory : MonoBehaviour
             if (items[i] == null)
             {
                 items[i] = item;
+
+                if (item is KeyItemData)
+                    HasKey = true;
+
                 OnInventoryChanged?.Invoke();
                 return true;
             }
@@ -57,6 +63,7 @@ public class PlayerInventory : MonoBehaviour
 
         return false;
     }
+
     public ItemData GetItem(int index)
     {
         if (index < 0 || index >= items.Length)
@@ -86,4 +93,5 @@ public class PlayerInventory : MonoBehaviour
 
         return success;
     }
+
 }

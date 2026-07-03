@@ -3,38 +3,55 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-    public enum RoomState { WaitingForPlayer, InCombat, Cleared}
+    public enum RoomState { WaitingForPlayer, InCombat, Cleared }
     private RoomState currentState = RoomState.WaitingForPlayer;
 
     [SerializeField] private Vector2 roomSize = new Vector2(18f, 10f);
-
     [SerializeField] private List<DoorController> roomDoors;
     [SerializeField] private GameObject lootPrefab;
     [SerializeField] private ZoneSpawner zoneSpawner;
+    [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] private GameObject keyPickupPrefab;
+    [SerializeField] private Transform keySpawnPoint;
+    [SerializeField] private Transform roomCenter;
+
+    [SerializeField] private bool autoStartCombat = true;
 
     private bool roomUnlocked = false;
     public Vector2 RoomSize => roomSize;
-
-    [SerializeField] private Transform roomCenter;
     public Transform RoomCenter => roomCenter;
-    private void OnEnable()
+
+    private void Awake()
     {
-        EventBus.OnAllEnemiesDefeated += HandleEnemiesDefeated;
+        if (enemySpawner == null)
+            enemySpawner = GetComponentInChildren<EnemySpawner>();
+
+        if (enemySpawner != null)
+            enemySpawner.OnAllEnemiesDead += HandleEnemiesDefeated;
     }
 
     private void OnDisable()
     {
-        EventBus.OnAllEnemiesDefeated -= HandleEnemiesDefeated;
+        if (enemySpawner != null)
+            enemySpawner.OnAllEnemiesDead -= HandleEnemiesDefeated;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            EventBus.publishOnRoomEntered(transform.position, roomSize);
-
-            if (currentState == RoomState.WaitingForPlayer || currentState == RoomState.Cleared)
+         if (autoStartCombat && (currentState == RoomState.WaitingForPlayer || currentState == RoomState.Cleared))
+            {
                 StartCombat();
+            }
+        }
+    }
+
+    public void StartEventCombat()
+    {
+        if (currentState == RoomState.WaitingForPlayer)
+        {
+            StartCombat();
         }
     }
 
@@ -50,38 +67,29 @@ public class RoomController : MonoBehaviour
         if (!roomUnlocked)
         {
             currentState = RoomState.InCombat;
-
             foreach (var door in roomDoors)
                 door.CloseDoor();
         }
 
-        zoneSpawner.activateZone();
+        zoneSpawner.activateZoneManual();
     }
 
     private void HandleEnemiesDefeated()
     {
-        if (currentState == RoomState.InCombat)
-        {
-            EndCombat();
-        }   
-    }
-    public void PlayerEnteredRoom()
-    {
-        EventBus.publishOnRoomEntered(RoomCenter.position, RoomSize);
-
-        if (currentState == RoomState.WaitingForPlayer ||
-            currentState == RoomState.Cleared)
-        {
-            StartCombat();
-        }
-    }
-
-    public void DespawnEnemies()
-    {
-        if (zoneSpawner == null)
+        if (currentState != RoomState.InCombat)
             return;
 
-        zoneSpawner.DespawnEnemies();
+        EndCombat();
+        SpawnKey();
+    }
+
+    private void SpawnKey()
+    {
+        if (keyPickupPrefab == null) return;
+
+        Vector3 pos = keySpawnPoint != null ? keySpawnPoint.position : transform.position;
+        Instantiate(keyPickupPrefab, pos, Quaternion.identity);
+        Debug.Log("Klucz zrespiony na scenie!");
     }
 
     private void EndCombat()
@@ -89,18 +97,25 @@ public class RoomController : MonoBehaviour
         roomUnlocked = true;
         currentState = RoomState.Cleared;
 
-        foreach(var door in roomDoors)
-        {
+        foreach (var door in roomDoors)
             door.OpenDoor();
+
+        EventBus.PublishRoomCleared();
+    }
+    public void PlayerEnteredRoom()
+    {
+        EventBus.publishOnRoomEntered(RoomCenter.position, RoomSize);
+
+        if (autoStartCombat && (currentState == RoomState.WaitingForPlayer || currentState == RoomState.Cleared))
+        {
+            StartCombat();
         }
+    }
+    public void DespawnEnemies()
+    {
         if (zoneSpawner != null)
         {
-            EventBus.PublishRoomCleared();
+            zoneSpawner.DespawnEnemies();
         }
-        // Spawn lootu, o ile jest przypisany
-        if (lootPrefab == null) return;
-        
-        // Instatniate(lootPrefab, transform.position, Quanternion.identity);
-        
     }
 }

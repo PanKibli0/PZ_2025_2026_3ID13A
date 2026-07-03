@@ -17,6 +17,9 @@ public class ZoneSpawner : MonoBehaviour
     [SerializeField] private SpriteRenderer zoneVisual;
     [SerializeField] private Collider2D zoneCollider;
 
+    [SerializeField] private bool isBossRoom = false;
+    [SerializeField] private EnemyData bossEnemy;
+
     private bool isActive = true;
 
     private void OnEnable()
@@ -29,7 +32,7 @@ public class ZoneSpawner : MonoBehaviour
         EventBus.OnAllEnemiesDefeated -= OnZoneCleared;
     }
 
-    public void activateZone()
+    public void activateZoneManual()
     {
         if (!isActive) return;
         ActivateZone();
@@ -46,26 +49,38 @@ public class ZoneSpawner : MonoBehaviour
             zoneCollider.enabled = false;
 
         List<EnemySpawnEntry> selectedEnemies = new List<EnemySpawnEntry>();
-        int totalCount = Random.Range(totalMinEnemies, totalMaxEnemies + 1);
 
-        for (int i = 0; i < totalCount; i++)
+        if (isBossRoom)
         {
-            EnemyData data = possibleEnemies[Random.Range(0, possibleEnemies.Count)];
-
-            EnemySpawnEntry existing = null;
-            foreach (var entry in selectedEnemies)
+            selectedEnemies.Add(new EnemySpawnEntry
             {
-                if (entry.enemyData == data)
-                {
-                    existing = entry;
-                    break;
-                }
-            }
+                enemyData = bossEnemy,
+                count = 1
+            });
+        }
+        else
+        {
+            int totalCount = Random.Range(totalMinEnemies, totalMaxEnemies + 1);
 
-            if (existing != null)
-                existing.count++;
-            else
-                selectedEnemies.Add(new EnemySpawnEntry { enemyData = data, count = 1 });
+            for (int i = 0; i < totalCount; i++)
+            {
+                EnemyData data = possibleEnemies[Random.Range(0, possibleEnemies.Count)];
+
+                EnemySpawnEntry existing = null;
+                foreach (var entry in selectedEnemies)
+                {
+                    if (entry.enemyData == data)
+                    {
+                        existing = entry;
+                        break;
+                    }
+                }
+
+                if (existing != null)
+                    existing.count++;
+                else
+                    selectedEnemies.Add(new EnemySpawnEntry { enemyData = data, count = 1 });
+            }
         }
 
         enemySpawner.SpawnEnemies(selectedEnemies);

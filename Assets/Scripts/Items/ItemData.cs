@@ -13,4 +13,5 @@ public abstract class ItemData : ScriptableObject
     [SerializeField] protected float effectMultiplier = 0.5f;
 
     public abstract bool ApplyEffect(GameObject target);
+    public virtual void OnPickup(PlayerInventory inventory) { }
 }

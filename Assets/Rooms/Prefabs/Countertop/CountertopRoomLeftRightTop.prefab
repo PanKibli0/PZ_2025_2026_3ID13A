@@ -59,7 +59,11 @@ MonoBehaviour:
   - {fileID: 7600398019915927463}
   lootPrefab: {fileID: 0}
   zoneSpawner: {fileID: 2472889366918769137}
+  enemySpawner: {fileID: 9183807214624708966}
+  keyPickupPrefab: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
   roomCenter: {fileID: 8123480288111781301}
+  autoStartCombat: 1
 --- !u!1 &2120646698144449026
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,13 +371,13 @@ MonoBehaviour:
   enemySpawner: {fileID: 9183807214624708966}
   possibleEnemies:
   - {fileID: 11400000, guid: d2c6783a296b4e24ebc400f6f2a94fc6, type: 2}
-  - {fileID: 11400000, guid: fc22b555edf57b5409633627f2e2231d, type: 2}
-  - {fileID: 11400000, guid: 50b1ce6f751c7ed4fbaf4ebeac0eacda, type: 2}
-  - {fileID: 11400000, guid: ec2d0d6aec2fc2947a18f6ef6da10a61, type: 2}
+  - {fileID: 11400000, guid: d2c6783a296b4e24ebc400f6f2a94fc6, type: 2}
   totalMinEnemies: 1
   totalMaxEnemies: 8
   zoneVisual: {fileID: 653346257547189536}
   zoneCollider: {fileID: 8317850342816996339}
+  isBossRoom: 0
+  bossEnemy: {fileID: 0}
 --- !u!1 &3571354498232597151
 GameObject:
   m_ObjectHideFlags: 0
