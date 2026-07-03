@@ -33,7 +33,7 @@ public class PlayerUI : MonoBehaviour
 
     private void OnPlayerDeath()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     private void OnDestroy()
