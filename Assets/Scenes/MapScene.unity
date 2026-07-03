@@ -222,7 +222,7 @@ PrefabInstance:
     - target: {fileID: 3757782349929415528, guid: 48d0ffc3261829047be9651dbe1d5152, type: 3}
       propertyPath: 'possibleEnemies.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: a1c4fcf949937b044a60378efd84be81, type: 2}
+      objectReference: {fileID: 11400000, guid: ec2d0d6aec2fc2947a18f6ef6da10a61, type: 2}
     - target: {fileID: 3757782349929415528, guid: 48d0ffc3261829047be9651dbe1d5152, type: 3}
       propertyPath: 'possibleEnemies.Array.data[1]'
       value: 

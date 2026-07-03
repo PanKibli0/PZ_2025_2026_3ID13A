@@ -13,7 +13,8 @@ public class EnemyData : ScriptableObject
         Golabek,
         Pomidor,
         Ser,
-        Czosnek
+        Czosnek,
+        Piernikonator
     }
 
     public string enemyName;

@@ -19,17 +19,17 @@ MonoBehaviour:
   - condition:
       rid: -2
     movement:
-      rid: 2772554975313395790
+      rid: 4275865559017193552
     speed: 2
   attackPhases:
   - condition:
       rid: -2
     attack:
       damage: 1
-      cooldown: 0
+      cooldown: 1
       effects: []
       pattern:
-        rid: 2772554975313395794
+        rid: 4275865559017193555
     weight: 1
   experienceReward: 30
   moneyDropChance: 0.2
@@ -40,11 +40,13 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 2772554975313395790
-      type: {class: TowardsPlayerMove, ns: , asm: Assembly-CSharp}
-      data: 
-    - rid: 2772554975313395794
-      type: {class: StabPattern, ns: , asm: Assembly-CSharp}
+    - rid: 4275865559017193552
+      type: {class: RandomMove, ns: , asm: Assembly-CSharp}
       data:
-        forwardDistance: 2
-        activeTime: 0.15
+        changeInterval: 2
+    - rid: 4275865559017193555
+      type: {class: SwingPattern, ns: , asm: Assembly-CSharp}
+      data:
+        swingRadius: 1.5
+        activeTime: 1
+        swingAngle: 110

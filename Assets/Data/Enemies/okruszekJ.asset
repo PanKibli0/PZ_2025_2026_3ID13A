@@ -10,45 +10,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ea2cbceccc304540ae890b70483bcd7, type: 3}
-  m_Name: Czosnek
+  m_Name: okruszekJ
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  enemyName: Czosnek
-  enemyPrefab: {fileID: 2016180001046167223, guid: f0bdc0c8d5902d24aacecb75392aed5e, type: 3}
-  maxHealth: 6
+  enemyName: Okruszek jasny
+  enemyPrefab: {fileID: 8170860534698364837, guid: ddce05b7584967840b0e7d12efa56569, type: 3}
+  maxHealth: 3
   movementPhases:
   - condition:
       rid: -2
     movement:
-      rid: 4275865559017193543
+      rid: 8145072267598233609
     speed: 2
   attackPhases:
   - condition:
       rid: -2
     attack:
       damage: 1
-      cooldown: 2
-      effects:
-      - rid: 2772554975313395782
+      cooldown: 1
+      effects: []
       pattern:
-        rid: 2772554975313395783
+        rid: 8145072267598233610
     weight: 1
   experienceReward: 50
   moneyDropChance: 1
   moneyDropAmount: 1
-  enemyType: 7
+  enemyType: 0
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 2772554975313395782
-      type: {class: PoisonHitEffect, ns: , asm: Assembly-CSharp}
-      data: 
-    - rid: 2772554975313395783
-      type: {class: StabPattern, ns: , asm: Assembly-CSharp}
+    - rid: 8145072267598233609
+      type: {class: RandomMove, ns: , asm: Assembly-CSharp}
       data:
-        forwardDistance: 2
-        activeTime: 0.15
-    - rid: 4275865559017193543
-      type: {class: TowardsPlayerMove, ns: , asm: Assembly-CSharp}
-      data: 
+        changeInterval: 1
+    - rid: 8145072267598233610
+      type: {class: ProjectilePattern, ns: , asm: Assembly-CSharp}
+      data:
+        projectilePrefab: {fileID: 7711275517128807682, guid: b1aa2a35d4f32614cb3afc99e1a2612e, type: 3}
+        speed: 1
+        lifetime: 1
+        projectileSprite: {fileID: 0}
+        projectileSize: {x: 1, y: 1}
