@@ -19,7 +19,7 @@ MonoBehaviour:
   - condition:
       rid: -2
     movement:
-      rid: 2772554975313395790
+      rid: 4275865559017193545
     speed: 2
   attackPhases:
   - condition:
@@ -41,9 +41,6 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 2772554975313395790
-      type: {class: TowardsPlayerMove, ns: , asm: Assembly-CSharp}
-      data: 
     - rid: 2772554975313395793
       type: {class: PoisonHitEffect, ns: , asm: Assembly-CSharp}
       data: 
@@ -51,4 +48,8 @@ MonoBehaviour:
       type: {class: StabPattern, ns: , asm: Assembly-CSharp}
       data:
         forwardDistance: 2
-        activeTime: 0.15
+        activeTime: 0.5
+    - rid: 4275865559017193545
+      type: {class: ArcMove, ns: , asm: Assembly-CSharp}
+      data:
+        arcLength: 2

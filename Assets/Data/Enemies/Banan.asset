@@ -30,7 +30,7 @@ MonoBehaviour:
   - condition:
       rid: -2
     attack:
-      damage: 1
+      damage: 2
       cooldown: 3
       effects:
       - rid: 2772554975313395787

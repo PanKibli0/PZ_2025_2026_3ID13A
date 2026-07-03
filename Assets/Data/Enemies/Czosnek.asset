@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Czosnek
   enemyPrefab: {fileID: 2016180001046167223, guid: f0bdc0c8d5902d24aacecb75392aed5e, type: 3}
-  maxHealth: 2
+  maxHealth: 6
   movementPhases:
   - condition:
       rid: -2
     movement:
-      rid: 2772554975313395781
-    speed: 4
+      rid: 4275865559017193543
+    speed: 2
   attackPhases:
   - condition:
       rid: -2
@@ -41,10 +41,6 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 2772554975313395781
-      type: {class: RandomMove, ns: , asm: Assembly-CSharp}
-      data:
-        changeInterval: 1
     - rid: 2772554975313395782
       type: {class: PoisonHitEffect, ns: , asm: Assembly-CSharp}
       data: 
@@ -53,3 +49,6 @@ MonoBehaviour:
       data:
         forwardDistance: 2
         activeTime: 0.15
+    - rid: 4275865559017193543
+      type: {class: TowardsPlayerMove, ns: , asm: Assembly-CSharp}
+      data: 

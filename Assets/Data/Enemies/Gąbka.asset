@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: "G\u0105bka"
   enemyPrefab: {fileID: 2016180001046167223, guid: ced73d1dc17d8594d991155ce70d9420, type: 3}
-  maxHealth: 5
+  maxHealth: 10
   movementPhases:
   - condition:
       rid: -2
@@ -25,8 +25,8 @@ MonoBehaviour:
   - condition:
       rid: -2
     attack:
-      damage: 0
-      cooldown: 5
+      damage: 1
+      cooldown: 3
       effects:
       - rid: 2772554975313395797
       pattern:
