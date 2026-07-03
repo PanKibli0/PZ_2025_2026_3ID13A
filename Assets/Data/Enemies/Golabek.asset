@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea2cbceccc304540ae890b70483bcd7, type: 3}
+  m_Name: Golabek
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: "Go\u0142abek"
+  enemyPrefab: {fileID: 2016180001046167223, guid: 0323061638433e944949e8b61c316c92, type: 3}
+  maxHealth: 12
+  movementPhases:
+  - condition:
+      rid: 8145072267598233602
+    movement:
+      rid: 8145072267598233603
+    speed: 6
+  - condition:
+      rid: 8145072267598233604
+    movement:
+      rid: 8145072267598233605
+    speed: 1
+  attackPhases:
+  - condition:
+      rid: 8145072267598233608
+    attack:
+      damage: 2
+      cooldown: 2
+      effects:
+      - rid: 8145072267598233607
+      pattern:
+        rid: 8145072267598233606
+    weight: 1
+  experienceReward: 50
+  moneyDropChance: 1
+  moneyDropAmount: 1
+  enemyType: 4
+  references:
+    version: 2
+    RefIds:
+    - rid: 8145072267598233602
+      type: {class: DistanceCondition, ns: , asm: Assembly-CSharp}
+      data:
+        minDistance: 5
+        maxDistance: 3.4028235e+38
+    - rid: 8145072267598233603
+      type: {class: TowardsPlayerMove, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 8145072267598233604
+      type: {class: DistanceCondition, ns: , asm: Assembly-CSharp}
+      data:
+        minDistance: 0
+        maxDistance: 5
+    - rid: 8145072267598233605
+      type: {class: AwayFromPlayerMove, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 8145072267598233606
+      type: {class: AreaPattern, ns: , asm: Assembly-CSharp}
+      data:
+        hitboxPrefab: {fileID: 0}
+        radius: 2
+        activeTime: 0.1
+    - rid: 8145072267598233607
+      type: {class: LostGlassesHitEffect, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 2
+    - rid: 8145072267598233608
+      type: {class: DistanceCondition, ns: , asm: Assembly-CSharp}
+      data:
+        minDistance: 0
+        maxDistance: 1

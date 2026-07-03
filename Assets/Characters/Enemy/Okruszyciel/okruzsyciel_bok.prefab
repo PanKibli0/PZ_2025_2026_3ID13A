@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 7509094600446348391}
   - component: {fileID: 6248703136693096391}
   - component: {fileID: 1497692658902201027}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,8 +189,8 @@ Transform:
   m_GameObject: {fileID: 834830300116435369}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
+  m_LocalPosition: {x: 0, y: 4.5, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 0.39999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7001238027404303625}
@@ -913,7 +913,7 @@ GameObject:
   - component: {fileID: 1931984532478837715}
   - component: {fileID: 8413466476895737186}
   - component: {fileID: 5323759615420134429}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -929,8 +929,8 @@ Transform:
   m_GameObject: {fileID: 6585058534751190113}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
+  m_LocalPosition: {x: 0, y: 5.01, z: 0}
+  m_LocalScale: {x: 4.0299997, y: 7.5147867, z: 0.39999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7001238027404303625}
