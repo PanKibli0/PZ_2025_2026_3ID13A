@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatUpgrade
   upgradeName: "Si\u0142acz"
   description: "Zwi\u0119ksza obra\u017Cenia zadawane o 5%"
-  icon: {fileID: 0}
+  icon: {fileID: -4346244404228752641, guid: eb3e3e1015afb71498c19750491edff2, type: 3}
   statType: 0
   value: 0.05

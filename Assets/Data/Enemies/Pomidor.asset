@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Pomidor
   enemyPrefab: {fileID: 2016180001046167223, guid: 881d8591dfa049245a9ca9116020b7ef, type: 3}
-  maxHealth: 4
+  maxHealth: 10
   movementPhases:
   - condition:
       rid: 4275865559017193546

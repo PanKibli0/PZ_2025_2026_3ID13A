@@ -672,7 +672,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c79ab6580b866945a40d4be4a83434d, type: 2}
   - {fileID: 11400000, guid: 50b1ce6f751c7ed4fbaf4ebeac0eacda, type: 2}
   - {fileID: 11400000, guid: ec2d0d6aec2fc2947a18f6ef6da10a61, type: 2}
-  totalMinEnemies: 1
+  totalMinEnemies: 5
   totalMaxEnemies: 12
   zoneVisual: {fileID: 7611260636774506076}
   zoneCollider: {fileID: 16770747918940102}

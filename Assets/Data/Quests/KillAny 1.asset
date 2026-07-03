@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24647517be8287442b6b1770e42794b8, type: 3}
-  m_Name: KillAny
+  m_Name: KillAny 1
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questName: Zabijaka
-  description: "Zabij 10 przeciwnik\xF3w"
+  questName: Zabijaka 2
+  description: "Zabij 20 przeciwnik\xF3w"
   objectiveType: 1
   enemyType: 0
-  requiredAmount: 10
+  requiredAmount: 20
   moneyReward: 15
-  experienceReward: 50
+  experienceReward: 25

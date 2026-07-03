@@ -667,10 +667,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZoneSpawner
   enemySpawner: {fileID: 2050046700242715493}
   possibleEnemies:
-  - {fileID: 11400000, guid: d2c6783a296b4e24ebc400f6f2a94fc6, type: 2}
-  - {fileID: 11400000, guid: fc22b555edf57b5409633627f2e2231d, type: 2}
-  - {fileID: 11400000, guid: 50b1ce6f751c7ed4fbaf4ebeac0eacda, type: 2}
   - {fileID: 11400000, guid: ec2d0d6aec2fc2947a18f6ef6da10a61, type: 2}
+  - {fileID: 11400000, guid: bb3c40d076a4095469bee6657e26cfdc, type: 2}
+  - {fileID: 11400000, guid: df52c3357cc03b745815c4885b66ae68, type: 2}
   totalMinEnemies: 1
   totalMaxEnemies: 8
   zoneVisual: {fileID: 9220587052952560883}
@@ -1330,6 +1329,18 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 796679215765286938, guid: 4b8a7915938f3824fa9eebe4cefa2f86, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796679215765286938, guid: 4b8a7915938f3824fa9eebe4cefa2f86, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796679215765286938, guid: 4b8a7915938f3824fa9eebe4cefa2f86, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796679215765286938, guid: 4b8a7915938f3824fa9eebe4cefa2f86, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.17
       objectReference: {fileID: 0}
@@ -1368,6 +1379,10 @@ PrefabInstance:
     - target: {fileID: 796679215765286938, guid: 4b8a7915938f3824fa9eebe4cefa2f86, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 796679215765286938, guid: 4b8a7915938f3824fa9eebe4cefa2f86, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

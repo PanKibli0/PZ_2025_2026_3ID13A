@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: KillSponge
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questName: "G\u0105bki "
-  description: "Zabij 5 g\u0105bek"
+  description: "Zabij 5 przeciwnik\xF3w \"G\u0105bka\""
   objectiveType: 0
   enemyType: 1
   requiredAmount: 5
-  moneyReward: 40
+  moneyReward: 15
   experienceReward: 50

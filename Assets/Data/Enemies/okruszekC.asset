@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Okruszek ciemny
   enemyPrefab: {fileID: 5679015070452160014, guid: 9c6a8f42bdb6a9044b294b7baf566d46, type: 3}
-  maxHealth: 2
+  maxHealth: 3
   movementPhases:
   - condition:
       rid: -2
@@ -48,7 +48,7 @@ MonoBehaviour:
       type: {class: ProjectilePattern, ns: , asm: Assembly-CSharp}
       data:
         projectilePrefab: {fileID: 7711275517128807682, guid: b1aa2a35d4f32614cb3afc99e1a2612e, type: 3}
-        speed: 1
-        lifetime: 1
+        speed: 2
+        lifetime: 10
         projectileSprite: {fileID: 0}
         projectileSize: {x: 1, y: 1}

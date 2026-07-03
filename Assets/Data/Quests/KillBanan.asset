@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: KillBanan
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questName: Bananini
-  description: "Zabij 10 banan\xF3w"
+  description: "Zabij 10 przeciwnik\xF3w \"Banan\""
   objectiveType: 0
   enemyType: 0
   requiredAmount: 10
-  moneyReward: 20
+  moneyReward: 10
   experienceReward: 50

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Plaster sera
   enemyPrefab: {fileID: 2016180001046167223, guid: b5f60e8e4f1f82f458fd6b3968c601e2, type: 3}
-  maxHealth: 3
+  maxHealth: 12
   movementPhases:
   - condition:
       rid: -2

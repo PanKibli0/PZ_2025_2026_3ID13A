@@ -15,4 +15,8 @@ MonoBehaviour:
   itemName: Box of cookies
   description: COOKIEZZ
   icon: {fileID: 6559816515168748918, guid: a7f7a6950eee0794eac5b1d97dc22828, type: 3}
+  statusEffect: 0
+  effectDuration: 0
+  effectDamage: 0
+  effectMultiplier: 0
   healAmount: 100

@@ -483,6 +483,7 @@ MonoBehaviour:
   possibleEnemies:
   - {fileID: 11400000, guid: 50b1ce6f751c7ed4fbaf4ebeac0eacda, type: 2}
   - {fileID: 11400000, guid: 7a93976f6536a504c91dcfa998d7542d, type: 2}
+  - {fileID: 11400000, guid: 0c79ab6580b866945a40d4be4a83434d, type: 2}
   totalMinEnemies: 1
   totalMaxEnemies: 8
   zoneVisual: {fileID: 7409771484435920042}

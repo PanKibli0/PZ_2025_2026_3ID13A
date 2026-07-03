@@ -221,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3757782349929415528, guid: 48d0ffc3261829047be9651dbe1d5152, type: 3}
       propertyPath: possibleEnemies.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3757782349929415528, guid: 48d0ffc3261829047be9651dbe1d5152, type: 3}
       propertyPath: 'possibleEnemies.Array.data[0]'
@@ -230,7 +230,11 @@ PrefabInstance:
     - target: {fileID: 3757782349929415528, guid: 48d0ffc3261829047be9651dbe1d5152, type: 3}
       propertyPath: 'possibleEnemies.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 4dc88cc676aa8f641a1a4ad60d7a2e99, type: 2}
+      objectReference: {fileID: 11400000, guid: df52c3357cc03b745815c4885b66ae68, type: 2}
+    - target: {fileID: 3757782349929415528, guid: 48d0ffc3261829047be9651dbe1d5152, type: 3}
+      propertyPath: 'possibleEnemies.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bb3c40d076a4095469bee6657e26cfdc, type: 2}
     - target: {fileID: 6498705465519992237, guid: 48d0ffc3261829047be9651dbe1d5152, type: 3}
       propertyPath: targetTransitionPoint
       value: 
@@ -384,7 +388,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
   upgradePanel: {fileID: 750495171}
   allUpgrades:
+  - {fileID: 11400000, guid: 49c0c8c30d7dc6b4cb5c9e0ebe248a30, type: 2}
+  - {fileID: 11400000, guid: 65351d579266e6c4286d977ba54c129a, type: 2}
+  - {fileID: 11400000, guid: e2880bed43f63cd49a5da0d9eb054dea, type: 2}
   - {fileID: 11400000, guid: 7840e03820d8dfa4480df7dfab832a69, type: 2}
+  - {fileID: 11400000, guid: 726375c3a04e8c14db6f0b58376c7c40, type: 2}
+  - {fileID: 11400000, guid: f5c8ceda5a80e6c48b0f652fc21f9d76, type: 2}
+  - {fileID: 11400000, guid: 0f8dbdb873807224bb4ec2d9dadc323d, type: 2}
   buttons:
   - {fileID: 2136509745}
   - {fileID: 570324090}
@@ -2793,12 +2803,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager
   questPool:
-  - {fileID: 11400000, guid: 07a9f34384a68fd4f92fb7172357c2dd, type: 2}
-  - {fileID: 11400000, guid: b067569a55918674c94c0fda5b6b0472, type: 2}
-  - {fileID: 11400000, guid: 6418247d86544c14e923dfd4d61ee411, type: 2}
   - {fileID: 11400000, guid: e6be43e9b4f48c94395a6d867e12195f, type: 2}
+  - {fileID: 11400000, guid: 1e1ec5cc4d9ebce4db162a59918ddc4e, type: 2}
+  - {fileID: 11400000, guid: b067569a55918674c94c0fda5b6b0472, type: 2}
+  - {fileID: 11400000, guid: b83ee97867b4eb544a3c351f6a0f6ff5, type: 2}
+  - {fileID: 11400000, guid: 07a9f34384a68fd4f92fb7172357c2dd, type: 2}
+  - {fileID: 11400000, guid: cb5e6ce43c59a26478e4d06ca2ea1589, type: 2}
+  - {fileID: 11400000, guid: 6418247d86544c14e923dfd4d61ee411, type: 2}
+  - {fileID: 11400000, guid: 8acaff7f13196b54c8e6e27654f49517, type: 2}
+  - {fileID: 11400000, guid: 442b168d1b0b884468964864779c3dd1, type: 2}
   - {fileID: 11400000, guid: 064d0bc5485ef5d49acff8efdc767826, type: 2}
   - {fileID: 11400000, guid: 64c0f3221a683094291e88c9efa9436b, type: 2}
+  - {fileID: 11400000, guid: 6a3ea970cc4fe2848bb0f95cec627371, type: 2}
   maxActiveQuests: 3
   notificationUI: {fileID: 1134617915}
 --- !u!4 &1064399132

@@ -191,6 +191,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 498ca5a087d4a2d46932385c5cbe9471, type: 2}
   - {fileID: 11400000, guid: c68530162f346f949bf553faf1cb3bd3, type: 2}
   - {fileID: 11400000, guid: f8d822f7bdfc1f74e810f6081d832056, type: 2}
+  items:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   coins: 0
 --- !u!114 &5117380238838055125
 MonoBehaviour:
@@ -840,7 +846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerExperience
   currentLevel: 1
   currentXP: 0
-  xpToNextLevel: 100
+  xpToNextLevel: 400
 --- !u!114 &2141817144285078740
 MonoBehaviour:
   m_ObjectHideFlags: 0

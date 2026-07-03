@@ -837,6 +837,7 @@ MonoBehaviour:
   keyPickupPrefab: {fileID: 0}
   keySpawnPoint: {fileID: 0}
   roomCenter: {fileID: 5695433949399981687}
+  autoStartCombat: 1
 --- !u!1 &4688266955012212015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,9 +1192,7 @@ MonoBehaviour:
   enemySpawner: {fileID: 3351410660538911699}
   possibleEnemies:
   - {fileID: 11400000, guid: 0c79ab6580b866945a40d4be4a83434d, type: 2}
-  - {fileID: 11400000, guid: ec2d0d6aec2fc2947a18f6ef6da10a61, type: 2}
-  - {fileID: 11400000, guid: fc22b555edf57b5409633627f2e2231d, type: 2}
-  totalMinEnemies: 1
+  totalMinEnemies: 5
   totalMaxEnemies: 8
   zoneVisual: {fileID: 8444801533267303440}
   zoneCollider: {fileID: 5298166874479512100}

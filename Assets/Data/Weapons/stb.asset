@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10dd876b70584741a936920e068e75b, type: 3}
   m_Name: stb
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: 
+  weaponName: "Ig\u0142a"
   attack:
     damage: 1
     cooldown: 0.2
@@ -20,7 +20,7 @@ MonoBehaviour:
     pattern:
       rid: 2694950966894264389
   attackOffset: 0.6
-  weaponSprite: {fileID: 5735166711939919652, guid: 4299a2855c97fdf4e8297eea0b3b9f70, type: 3}
+  weaponSprite: {fileID: -993183575786483884, guid: ef4e1ab75f6029042a7324dfb716dfcf, type: 3}
   targetSize: {x: 1, y: 3}
   references:
     version: 2

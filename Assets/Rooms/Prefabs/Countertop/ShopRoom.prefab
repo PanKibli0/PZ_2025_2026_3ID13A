@@ -58,7 +58,11 @@ MonoBehaviour:
   - {fileID: 7600398019915927463}
   lootPrefab: {fileID: 0}
   zoneSpawner: {fileID: 0}
+  enemySpawner: {fileID: 0}
+  keyPickupPrefab: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
   roomCenter: {fileID: 7665951759538249989}
+  autoStartCombat: 1
 --- !u!1 &3727188532025247315
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,6 +949,10 @@ PrefabInstance:
       value: ShopPedestal 3
       objectReference: {fileID: 0}
     - target: {fileID: 4194499021269162418, guid: 1d04b689decad7044a3fbc7a2a6800d8, type: 3}
+      propertyPath: price
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194499021269162418, guid: 1d04b689decad7044a3fbc7a2a6800d8, type: 3}
       propertyPath: itemData
       value: 
       objectReference: {fileID: 11400000, guid: 9ceb3431fc237254e892d4a9279d6575, type: 2}
@@ -1009,6 +1017,10 @@ PrefabInstance:
     - target: {fileID: 3745897186585118288, guid: 1d04b689decad7044a3fbc7a2a6800d8, type: 3}
       propertyPath: m_Name
       value: ShopPedestal 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194499021269162418, guid: 1d04b689decad7044a3fbc7a2a6800d8, type: 3}
+      propertyPath: price
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4194499021269162418, guid: 1d04b689decad7044a3fbc7a2a6800d8, type: 3}
       propertyPath: itemData

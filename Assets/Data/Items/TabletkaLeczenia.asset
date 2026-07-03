@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dec5d1fcd6e46fd4597f31eade405545, type: 3}
-  m_Name: Vitamin D
-  m_EditorClassIdentifier: Assembly-CSharp::ShopHealItemData
-  itemName: Vitamin D
-  description: Wiecej leczenia
-  icon: {fileID: 4318401646101677470, guid: c1751d183bf0f6e47af42c1079a7da98, type: 3}
+  m_Name: TabletkaLeczenia
+  m_EditorClassIdentifier: Assembly-CSharp::ConsumableItemData
+  itemName: Tabletka1
+  description: Leczy o 15
+  icon: {fileID: -9200866858387474226, guid: d5aa1193fe0ba594fbbcf2915bd5096b, type: 3}
   statusEffect: 0
   effectDuration: 0
   effectDamage: 0
   effectMultiplier: 0
-  healAmount: 25
+  healAmount: 15
