@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class HotbarSlotUI : MonoBehaviour
 {
     [SerializeField] private Image background;
-    [SerializeField] private Image weaponIcon;
+    [SerializeField] private Image itemIcon;
     [SerializeField] private TMP_Text keyNumber;
 
     public void SetKeyNumber(int number)
@@ -17,12 +17,12 @@ public class HotbarSlotUI : MonoBehaviour
     {
         if (icon == null)
         {
-            weaponIcon.enabled = false;
+            itemIcon.enabled = false;
             return;
         }
 
-        weaponIcon.enabled = true;
-        weaponIcon.sprite = icon;
+        itemIcon.enabled = true;
+        itemIcon.sprite = icon;
     }
 
     public void SetSelected(bool selected)

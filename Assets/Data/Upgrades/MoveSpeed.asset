@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4298ae3563bcc747833582002a9f30e, type: 3}
   m_Name: MoveSpeed
   m_EditorClassIdentifier: Assembly-CSharp::StatUpgrade
-  upgradeName: "50% szybko\u015Bci"
-  description: "Szybko\u015B\u0107"
+  upgradeName: "Marato\u0144czyk"
+  description: "Zwi\u0119ksza szybko\u015B\u0107 bazow\u0105"
   icon: {fileID: 0}
   statType: 2
-  value: 0.5
+  value: 0.05

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4298ae3563bcc747833582002a9f30e, type: 3}
-  m_Name: CritUpgrade
+  m_Name: CritDmgUpgrade 1
   m_EditorClassIdentifier: Assembly-CSharp::StatUpgrade
-  upgradeName: Crit
-  description: Crit
+  upgradeName: Sokole oko
+  description: "Zwi\u0119ksza obra\u017Cenia krytyczne"
   icon: {fileID: 0}
-  statType: 0
-  value: 100
+  statType: 6
+  value: 0.1

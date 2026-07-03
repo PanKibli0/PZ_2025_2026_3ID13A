@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24647517be8287442b6b1770e42794b8, type: 3}
-  m_Name: KillTomato
+  m_Name: KillBanan
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questName: Pomidory
-  description: Zabij  2 pomidory
+  questName: Bananini
+  description: "Zabij 10 banan\xF3w"
   objectiveType: 0
-  enemyType: 5
-  requiredAmount: 2
-  moneyReward: 11
-  experienceReward: 22
+  enemyType: 0
+  requiredAmount: 10
+  moneyReward: 20
+  experienceReward: 50

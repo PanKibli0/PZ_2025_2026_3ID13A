@@ -35,6 +35,7 @@ public class GameBootstrap : MonoBehaviour
         }
         upgradeManager.Init(player);
         questManager.Init(player);
+        hotbarUI.Init(player);
         RoomController startRoom = spawnPoint.GetComponentInParent<RoomController>();
 
         player.GetComponent<PlayerSetup>().Init(hotbarUI, playerUI);

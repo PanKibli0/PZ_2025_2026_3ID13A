@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4298ae3563bcc747833582002a9f30e, type: 3}
-  m_Name: HealthUpgrade
+  m_Name: CritChanceUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::StatUpgrade
-  upgradeName: Ambrozja
-  description: "Zwi\u0119ksza maksymalne zdrowia"
+  upgradeName: Snajper
+  description: "Zwi\u0119ksza szans\u0119 na trafienie krytyczne"
   icon: {fileID: 0}
-  statType: 3
-  value: 5
+  statType: 5
+  value: 10

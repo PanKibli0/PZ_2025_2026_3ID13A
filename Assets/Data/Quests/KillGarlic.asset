@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24647517be8287442b6b1770e42794b8, type: 3}
   m_Name: KillGarlic
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questName: "Z\u0105bek czosnku"
+  questName: Wampir
   description: "Zabij 10 przeciwnik\xF3w \"Czosnek\""
   objectiveType: 0
   enemyType: 7

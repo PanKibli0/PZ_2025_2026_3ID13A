@@ -30,18 +30,11 @@ public class PlayerStatsUI : MonoBehaviour
         playerMovement = playerObject.GetComponentInChildren<PlayerMovement>();
         playerWeaponHandler = playerObject.GetComponentInChildren<PlayerWeaponHandler>();
 
-        Debug.Log($"PlayerMovement: {playerMovement}");
-        Debug.Log($"PlayerWeaponHandler: {playerWeaponHandler}");
-        Debug.Log($"PlayerUnit: {player}");
-        Debug.Log($"PlayerStats: {stats}");
-
         panel.SetActive(false);
     }
 
     public void Toggle()
     {
-        Debug.Log($"Movement: {playerMovement}");
-        Debug.Log($"Weapon: {playerWeaponHandler}");
         bool isOpening = !panel.activeSelf;
 
         panel.SetActive(isOpening);
