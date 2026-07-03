@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4298ae3563bcc747833582002a9f30e, type: 3}
   m_Name: DodgeChanceUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::StatUpgrade
-  upgradeName: Unik
-  description: Unik
+  upgradeName: Matrix
+  description: "Zwi\u0119ksza szans\u0119 na unik ataku"
   icon: {fileID: 0}
   statType: 7
-  value: 50
+  value: 5

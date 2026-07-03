@@ -8,8 +8,6 @@ public class PlayerExperience : MonoBehaviour
 
     public void AddExperience(int amount)
     {
-        Debug.Log($"AddExperience amount = {amount}");
-
         currentXP += amount;
 
         Debug.Log($"XP: {currentXP}/{xpToNextLevel}");

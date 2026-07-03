@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4298ae3563bcc747833582002a9f30e, type: 3}
   m_Name: RegenUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::StatUpgrade
-  upgradeName: Regeneracja
-  description: regen
+  upgradeName: "Banda\u017C"
+  description: "Zwi\u0119ksza regeneracj\u0119 zdrowia"
   icon: {fileID: 0}
   statType: 4
-  value: 5
+  value: 1

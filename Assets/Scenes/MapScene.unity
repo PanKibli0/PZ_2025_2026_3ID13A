@@ -330,7 +330,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1488178452}
   playerUI: {fileID: 1839742972}
   cameraController: {fileID: 1837421352}
-  hotbarUI: {fileID: 0}
+  hotbarUI: {fileID: 102833455}
   upgradeManager: {fileID: 75871402}
   playerCurrencyUI: {fileID: 2076215732}
   playerStatsUI: {fileID: 1827731094}
@@ -369,6 +369,98 @@ MonoBehaviour:
   - {fileID: 2136509745}
   - {fileID: 570324090}
   - {fileID: 684320606}
+--- !u!1 &102833453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 102833454}
+  - component: {fileID: 102833457}
+  - component: {fileID: 102833456}
+  - component: {fileID: 102833455}
+  m_Layer: 5
+  m_Name: Hotbar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &102833454
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102833453}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 654230659}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -452}
+  m_SizeDelta: {x: 1000, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &102833455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102833453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc8e23e1ae2fe5488415c0394a09fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HotbarUI
+  slotPrefab: {fileID: 811800156420687891, guid: 0ec743a0581097d48a7363e3d242f04e, type: 3}
+  slotParent: {fileID: 102833454}
+--- !u!114 &102833456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102833453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 0
+--- !u!114 &102833457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102833453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1001 &168042446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1097,6 +1189,10 @@ PrefabInstance:
       propertyPath: targetTransitionPoint
       value: 
       objectReference: {fileID: 168042447}
+    - target: {fileID: 3409832697537108285, guid: 7ffc8f96f1cc80042aa78cf9bc6899ff, type: 3}
+      propertyPath: 'possibleEnemies.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fc22b555edf57b5409633627f2e2231d, type: 2}
     - target: {fileID: 3449551518411473993, guid: 7ffc8f96f1cc80042aa78cf9bc6899ff, type: 3}
       propertyPath: targetTransitionPoint
       value: 
@@ -1746,6 +1842,7 @@ RectTransform:
   - {fileID: 1827731091}
   - {fileID: 1588723913}
   - {fileID: 1134617916}
+  - {fileID: 102833454}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2576,9 +2673,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 07a9f34384a68fd4f92fb7172357c2dd, type: 2}
   - {fileID: 11400000, guid: b067569a55918674c94c0fda5b6b0472, type: 2}
   - {fileID: 11400000, guid: 6418247d86544c14e923dfd4d61ee411, type: 2}
-  - {fileID: 11400000, guid: dae38470a13908e4ba1d4e1cf1b66834, type: 2}
   - {fileID: 11400000, guid: e6be43e9b4f48c94395a6d867e12195f, type: 2}
   - {fileID: 11400000, guid: 064d0bc5485ef5d49acff8efdc767826, type: 2}
+  - {fileID: 11400000, guid: 64c0f3221a683094291e88c9efa9436b, type: 2}
   maxActiveQuests: 3
   notificationUI: {fileID: 1134617915}
 --- !u!4 &1064399132

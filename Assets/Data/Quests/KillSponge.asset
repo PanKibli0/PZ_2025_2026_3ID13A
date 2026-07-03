@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: KillSponge
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questName: "G\u0105bki "
-  description: "Zabij  2 g\u0105bki"
+  description: "Zabij 5 g\u0105bek"
   objectiveType: 0
   enemyType: 1
-  requiredAmount: 2
-  moneyReward: 11
-  experienceReward: 22
+  requiredAmount: 5
+  moneyReward: 40
+  experienceReward: 50

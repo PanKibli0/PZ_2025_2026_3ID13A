@@ -12,13 +12,11 @@ public class EnemyReward : MonoBehaviour
 
     public void GiveRewards()
     {
-        Debug.Log("GiveRewards");
         PlayerExperience player =
             FindFirstObjectByType<PlayerExperience>();
 
         if (player != null)
             player.AddExperience(enemyData.experienceReward);
-        Debug.Log($"Drop chance: {enemyData.moneyDropChance}");
 
         PlayerStats playerStats = FindFirstObjectByType<PlayerStats>();
         float dropChance = enemyData.moneyDropChance;
@@ -29,7 +27,6 @@ public class EnemyReward : MonoBehaviour
 
         if (UnityEngine.Random.value <= dropChance)
         {
-            Debug.Log("Money dropped");
             GameObject money = Instantiate(
                 moneyPrefab,
                 transform.position,

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MoneyQuest
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questName: Zbieranie hajsu
-  description: Zbierz 5 golda
+  description: Zbierz 100 golda
   objectiveType: 2
   enemyType: 0
-  requiredAmount: 10
+  requiredAmount: 100
   moneyReward: 0
-  experienceReward: 50
+  experienceReward: 100

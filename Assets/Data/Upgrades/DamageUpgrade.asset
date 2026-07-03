@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4298ae3563bcc747833582002a9f30e, type: 3}
   m_Name: DamageUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::StatUpgrade
-  upgradeName: "Zwi\u0119kszenie obra\u017Ce\u0144"
+  upgradeName: "Si\u0142acz"
   description: "Zwi\u0119ksza obra\u017Cenia zadawane o 5%"
   icon: {fileID: 0}
   statType: 0

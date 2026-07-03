@@ -2,19 +2,32 @@ using UnityEngine;
 
 public class HotbarUI : MonoBehaviour
 {
-    [SerializeField] private HotbarSlotUI[] slots;
+    [SerializeField] private HotbarSlotUI slotPrefab;
+    [SerializeField] private Transform slotParent;
+    private PlayerInventory inventory;
 
+    private HotbarSlotUI[] slots;
     private int currentIndex = 0;
-
-    private void Start()
+    public void Init(GameObject player)
     {
+        inventory = player.GetComponentInChildren<PlayerInventory>();
+
+        slots = new HotbarSlotUI[inventory.HotbarSlotCount];
+
         for (int i = 0; i < slots.Length; i++)
         {
-            slots[i].SetKeyNumber(i + 1);
-        }
-        RefreshSelection();
-    }
+            HotbarSlotUI slot = Instantiate(slotPrefab, slotParent);
 
+            slot.SetKeyNumber(i + 1);
+
+            slots[i] = slot;
+        }
+
+        inventory.OnInventoryChanged += RefreshIcons;
+
+        RefreshSelection();
+        RefreshIcons();
+    }
     private void Update()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -44,5 +57,28 @@ public class HotbarUI : MonoBehaviour
         {
             slots[i].SetSelected(i == currentIndex);
         }
+    }
+    private void RefreshIcons()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (i < inventory.WeaponSlotCount)
+            {
+                WeaponData weapon = inventory.GetWeapon(i);
+                slots[i].SetIcon(weapon != null ? weapon.weaponSprite : null);
+            }
+            else
+            {
+                int itemIndex = i - inventory.WeaponSlotCount;
+
+                ItemData item = inventory.GetItem(itemIndex);
+                slots[i].SetIcon(item != null ? item.icon : null);
+            }
+        }
+    }
+    private void OnDestroy()
+    {
+        if (inventory != null)
+            inventory.OnInventoryChanged -= RefreshIcons;
     }
 }

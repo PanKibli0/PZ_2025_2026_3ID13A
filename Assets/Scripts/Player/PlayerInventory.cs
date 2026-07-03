@@ -1,12 +1,16 @@
 using UnityEngine;
+using System;
 
 public class PlayerInventory : MonoBehaviour
 {
     public WeaponData[] weapons = new WeaponData[5];
     [SerializeField] private ItemData[] items = new ItemData[5];
-
+    public int WeaponSlotCount => weapons.Length;
+    public int ItemSlotCount => items.Length;
+    public int HotbarSlotCount => WeaponSlotCount + ItemSlotCount;
     public int coins = 0;
-    
+
+    public event Action OnInventoryChanged;
 
     public bool AddWeapon(WeaponData weapon)
     {
@@ -15,6 +19,7 @@ public class PlayerInventory : MonoBehaviour
             if (weapons[i] == null)
             {
                 weapons[i] = weapon;
+                OnInventoryChanged?.Invoke();
                 return true;
             }
         }
@@ -36,6 +41,7 @@ public class PlayerInventory : MonoBehaviour
             return;
 
         weapons[index] = weapon;
+        OnInventoryChanged?.Invoke();
     }
     public bool AddItem(ItemData item)
     {
@@ -44,6 +50,7 @@ public class PlayerInventory : MonoBehaviour
             if (items[i] == null)
             {
                 items[i] = item;
+                OnInventoryChanged?.Invoke();
                 return true;
             }
         }
@@ -63,6 +70,7 @@ public class PlayerInventory : MonoBehaviour
             return;
 
         items[index] = null;
+        OnInventoryChanged?.Invoke();
     }
     public bool UseItem(int index, GameObject target)
     {
