@@ -833,6 +833,9 @@ MonoBehaviour:
   - {fileID: 7571476338226003143}
   lootPrefab: {fileID: 0}
   zoneSpawner: {fileID: 7525143138387332625}
+  enemySpawner: {fileID: 3351410660538911699}
+  keyPickupPrefab: {fileID: 0}
+  keySpawnPoint: {fileID: 0}
   roomCenter: {fileID: 5695433949399981687}
 --- !u!1 &4688266955012212015
 GameObject:
@@ -1194,6 +1197,8 @@ MonoBehaviour:
   totalMaxEnemies: 8
   zoneVisual: {fileID: 8444801533267303440}
   zoneCollider: {fileID: 5298166874479512100}
+  isBossRoom: 0
+  bossEnemy: {fileID: 0}
 --- !u!1 &7226473603740592943
 GameObject:
   m_ObjectHideFlags: 0

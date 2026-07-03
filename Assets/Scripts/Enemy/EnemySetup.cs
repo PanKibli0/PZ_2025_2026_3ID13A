@@ -30,9 +30,25 @@ public class EnemySetup : MonoBehaviour
     private void HandleDeath()
     {
         unit.health.OnDeath -= HandleDeath;
-        reward.GiveRewards();
-        EventBus.PublishEnemyKilled(data.enemyType);
-
-        spawner.OnEnemyDeath(gameObject);
+        Debug.Log($"Przeciwnik {gameObject.name} ginie!");
+        try
+        {
+            if (reward != null) reward.GiveRewards();
+            EventBus.PublishEnemyKilled(data.enemyType);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"B³¹d podczas przydzielania nagród lub EventBusa: {e.Message}. Ale gramy dalej!");
+        }
+        if (spawner != null)
+        {
+            spawner.OnEnemyDeath(gameObject);
+            Debug.Log("Poinformowano spawner o œmierci.");
+        }
+        else
+        {
+            Debug.LogError("Referencja 'spawner' jest NULL w przeciwniku!");
+        }
+        Destroy(gameObject, 0.1f);
     }
 }
